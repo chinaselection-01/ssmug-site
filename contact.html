@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get a Quote — SSMug Drinkware OEM/ODM</title>
+<meta name="description" content="Request a free quote for custom stainless steel bottles, tumblers and flasks. SSMug replies with price tiers, packaging options and compliance files.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="container nav">
+    <div class="logo">SS<span>Mug</span></div>
+    <nav><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">Factory</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html" class="btn btn-steel">Get a Quote</a></li>
+    </ul></nav>
+    <button class="menu-btn">☰</button>
+  </div>
+</header>
+
+<div class="container"><div class="crumb"><a href="index.html">Home</a> / Contact</div></div>
+
+<section style="padding-top:24px">
+  <div class="container">
+    <div class="center" style="margin-bottom:26px">
+      <div class="eyebrow">Get a Free Quote</div>
+      <h2>Tell Us About Your Project</h2>
+      <p class="lead" style="margin:0 auto">Send your requirements and we'll reply within 1 business day with price tiers, packaging options and compliance files. Samples ready in 5–7 days.</p>
+    </div>
+
+    <!--
+      OPTIONAL: connect a real inbox.
+      1) Sign up at formspree.io, create a form, get an ID.
+      2) Replace action="mailto:..." below with action="https://formspree.io/f/YOUR_ID" method="POST".
+      Until then the form opens the visitor's email app pre-filled.
+    -->
+    <form class="form-wrap" action="mailto:sales@ssmug.com" method="post" enctype="text/plain">
+      <div class="two">
+        <div class="field"><label>Name *</label><input name="name" required></div>
+        <div class="field"><label>Company *</label><input name="company" required></div>
+      </div>
+      <div class="two">
+        <div class="field"><label>Email *</label><input type="email" name="email" required></div>
+        <div class="field"><label>Country</label><input name="country"></div>
+      </div>
+      <div class="field"><label>Product of Interest</label>
+        <select name="product">
+          <option>Insulated Water Bottle</option>
+          <option>Tumbler / Coffee Mug</option>
+          <option>Beer Growler / Wine Flask</option>
+          <option>Plastic Bottle / Cup</option>
+          <option>Lunch Box / Cooler</option>
+          <option>Custom / Not Sure Yet</option>
+        </select>
+      </div>
+      <div class="field"><label>Quantity (pcs)</label><input name="qty" placeholder="e.g. 3000"></div>
+      <div class="field"><label>Message</label><textarea name="message" placeholder="Target price, customization, logo, deadline..."></textarea></div>
+      <button class="btn btn-primary" type="submit" style="width:100%">Send Inquiry</button>
+      <p class="muted" style="font-size:13px;margin-top:12px;text-align:center">Or email us directly: <a href="mailto:sales@ssmug.com">sales@ssmug.com</a></p>
+    </form>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of Yongkang STWADD Houseware Co., Ltd.</div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+</body>
+</html>
