@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SSMug Social Bottle — Claim &amp; Connect</title>
+<meta name="description" content="This bottle has a story. Tap to claim it or connect with its owner.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://ssmug.com/bottle.html">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="container nav">
+    <div class="logo">SS<span>Mug</span></div>
+    <nav><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">Factory</a></li>
+      <li><a href="social-bottle.html" style="color:var(--steel)">Social Bottle</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></nav>
+    <button class="menu-btn" aria-label="menu">☰</button>
+  </div>
+</header>
+
+<div class="container"><div class="crumb"><a href="index.html">Home</a> / <a href="social-bottle.html">Social Bottle</a> / <span id="crumbSn">Bottle</span></div></div>
+
+<section style="padding-top:10px">
+  <div class="container">
+    <div class="center" style="margin-bottom:18px">
+      <div class="eyebrow" id="statusLine">SSMug Social Bottle</div>
+      <h2 id="titleLine">This Bottle Has a Story</h2>
+      <p class="lead" style="margin:0 auto" id="subLine">Serial <code id="snCode">—</code></p>
+    </div>
+
+    <!-- PUBLIC PROFILE VIEW (what a tapper sees) -->
+    <div class="form-wrap" id="profileView" style="display:none">
+      <div class="center" style="margin-bottom:14px">
+        <div id="avatar" style="width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--steel),var(--steel-l));color:#fff;font-size:40px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">🥤</div>
+        <h3 id="pName" style="margin:0">—</h3>
+        <p class="muted" id="pCity">—</p>
+        <div id="pStatus" class="status-badge" style="display:none"></div>
+      </div>
+      <p id="pBio" class="muted" style="text-align:center"></p>
+      <div id="pLinks" class="certbar"></div>
+      <div class="btns" style="display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="addContactBtn">＋ Add to Contacts</button>
+        <button class="btn btn-outline" id="sayHiBtn">Say hi</button>
+        <a class="btn btn-outline" id="followBtn" style="display:none" target="_blank" rel="noopener">＋ Follow</a>
+      </div>
+      <p class="muted" style="font-size:13px;text-align:center;margin-top:14px">Own this bottle? <a href="#" id="claimLink">Claim it here →</a></p>
+    </div>
+
+    <!-- CLAIM FORM (owner sets profile) -->
+    <form class="form-wrap" id="claimForm">
+      <h3 id="claimTitle" style="margin-bottom:4px">Claim this bottle</h3>
+      <p class="muted" style="margin-bottom:16px" id="claimSub">Set a 20-second public profile. Tap your bottle anytime to edit it.</p>
+      <div class="field"><label>Display name *</label><input name="name" id="f_name" required placeholder="e.g. Alex"></div>
+      <div class="field"><label>City / Country</label><input name="city" id="f_city" placeholder="e.g. Warsaw, PL"></div>
+      <div class="two">
+        <div class="field"><label>Phone</label><input name="phone" id="f_phone" placeholder="+48..."></div>
+        <div class="field"><label>Email</label><input type="email" name="email" id="f_email" placeholder="you@email.com"></div>
+      </div>
+      <div class="field"><label>Social handles</label><input name="socials" id="f_socials" placeholder="Instagram @alex · WeChat alex_cn · LinkedIn /alex"></div>
+      <div class="field"><label>Short bio</label><textarea name="bio" id="f_bio" placeholder="Coffee, climbing, and good playlists."></textarea></div>
+      <div class="field"><label>WeChat ID <span class="muted" style="font-weight:400">（让对方一键加你）</span></label><input name="wechat" id="f_wechat" placeholder="alex_cn"></div>
+      <div class="field"><label>Follow link <span class="muted" style="font-weight:400">（IG / TikTok / 主页，碰完可一键跳转关注）</span></label><input name="follow" id="f_follow" placeholder="https://instagram.com/alex"></div>
+      <div class="field"><label>Mood · 今天想怎么被认识？</label>
+        <select name="status" id="f_status">
+          <option value="green">🟢 开心交友，随便聊</option>
+          <option value="yellow">🟡 可撩 / 想认识人</option>
+          <option value="blue">🔵 只换同好 / 职业联系</option>
+          <option value="gray">⚪ 今天只想喝水，别理我</option>
+        </select>
+      </div>
+      <div class="field"><label>Avatar emoji</label><input name="emoji" id="f_emoji" maxlength="2" value="🥤" style="width:90px"></div>
+      <div class="field" style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" id="f_showphone" style="width:auto"> <label style="margin:0" for="f_showphone">Show my phone to people who tap (off = they can only “Say hi”)</label>
+      </div>
+      <button class="btn btn-primary" type="submit" style="width:100%" id="claimBtn">Save my bottle</button>
+      <p class="muted" style="font-size:13px;margin-top:12px;text-align:center">Demo mode stores on this device only. Wire a backend (see comments) to make profiles persist across phones.</p>
+    </form>
+
+  </div>
+</section>
+
+<footer class="site" style="margin-top:30px">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+
+<script>
+/* =========================================================================
+   SSMug Social Bottle — tap destination / claim + profile page (DRAFT)
+   -------------------------------------------------------------------------
+   HOW IT WORKS
+   The NFC tag encodes:  https://ssmug.com/bottle.html?sn=SMG000123
+   Phone opens this page, we read ?sn= and show the owner's profile or the
+   claim form.
+
+   BACKEND HOOKS (to make profiles real across devices):
+   1) READ profile:  replace getProfile() with a fetch to your API, e.g.
+        fetch('https://YOUR-API/bottle?sn='+sn).then(r=>r.json())
+   2) SAVE profile: replace the localStorage save in handleClaim() with a
+      POST to Formspree or your API:
+        fetch('https://formspree.io/f/YOUR_ID',{method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({sn, ...profile})})
+      (or action="https://formspree.io/f/YOUR_ID" on the <form>).
+   3) "Say hi": POST a message to the owner's email / your inbox.
+   Until then everything runs client-side with demo data + localStorage.
+   ========================================================================= */
+
+var params = new URLSearchParams(location.search);
+var sn = (params.get('sn') || 'SMG000000').toUpperCase();
+document.getElementById('snCode').textContent = sn;
+document.getElementById('crumbSn').textContent = sn;
+
+/* Demo profiles so a tapper sees something before anyone claims. */
+var DEMO = {
+  'SMG000123': {name:'Alex', city:'Warsaw, PL', bio:'Coffee, climbing, good playlists.', socials:'Instagram @alex', wechat:'alex_cn', follow:'https://instagram.com/alex', status:'yellow', emoji:'🧗', showPhone:false, phone:'', email:'alex@example.com'},
+  'SMG000456': {name:'Mia',  city:'Berlin, DE', bio:'Designer. Always carrying a bottle.', socials:'LinkedIn /mia', wechat:'', follow:'https://linkedin.com/in/mia', status:'blue', emoji:'🎨', showPhone:false, phone:'', email:'mia@example.com'}
+};
+function getProfile(s){ return DEMO[s] || null; }
+function getClaimed(){ try{return JSON.parse(localStorage.getItem('ssmug_bottle_'+sn)||'null');}catch(e){return null;} }
+
+var profileView = document.getElementById('profileView');
+var claimForm   = document.getElementById('claimForm');
+
+function esc(s){ return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+var STATUS_LABEL = {
+  green:'🟢 开心交友，随便聊',
+  yellow:'🟡 可撩 / 想认识人',
+  blue:'🔵 只换同好 / 职业联系',
+  gray:'⚪ 今天只想喝水，别理我'
+};
+
+function renderProfile(p){
+  document.getElementById('statusLine').textContent = 'SSMug Social Bottle';
+  document.getElementById('titleLine').textContent  = p.name + "'s Bottle";
+  document.getElementById('subLine').innerHTML      = 'Serial <code>'+esc(sn)+'</code>';
+  document.getElementById('avatar').textContent     = p.emoji || '🥤';
+  document.getElementById('pName').textContent      = p.name;
+  document.getElementById('pCity').textContent      = p.city || '';
+  document.getElementById('pBio').textContent       = p.bio || '';
+  var sb = document.getElementById('pStatus');
+  if(p.status && STATUS_LABEL[p.status]){ sb.style.display='inline-block'; sb.className='status-badge status-'+p.status; sb.textContent = STATUS_LABEL[p.status]; }
+  else { sb.style.display='none'; }
+  var links = document.getElementById('pLinks'); links.innerHTML='';
+  (p.socials||'').split('·').forEach(function(s){ s=s.trim(); if(s){var d=document.createElement('div');d.className='cert';d.textContent=s;links.appendChild(d);} });
+  if(p.wechat){ var w=document.createElement('div');w.className='cert';w.textContent='💬 WeChat '+p.wechat; links.appendChild(w); }
+  if(p.email){ var e=document.createElement('div');e.className='cert';e.textContent='✉ '+p.email; links.appendChild(e); }
+  if(p.showPhone && p.phone){ var ph=document.createElement('div');ph.className='cert';ph.textContent='📞 '+p.phone; links.appendChild(ph); }
+  var fb = document.getElementById('followBtn');
+  if(p.follow && /^https?:\/\//i.test(p.follow)){ fb.style.display='inline-block'; fb.href=p.follow; }
+  else { fb.style.display='none'; }
+  profileView.style.display='block';
+  claimForm.style.display='none';
+  /* gentle haptic tap on load (Android Chrome supports; iPhone Safari does NOT support vibrate) */
+  try{ if(navigator.vibrate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){ navigator.vibrate(60); } }catch(e){}
+}
+
+function showClaimForm(p){
+  var edit = !!p;
+  document.getElementById('claimTitle').textContent = edit ? 'Edit your bottle' : 'Claim this bottle';
+  document.getElementById('claimSub').textContent   = edit ? 'Update your public profile.' : 'Set a 20-second public profile. Tap your bottle anytime to edit it.';
+  document.getElementById('statusLine').textContent = 'SSMug Social Bottle';
+  document.getElementById('titleLine').textContent  = 'Make It Yours';
+  document.getElementById('subLine').innerHTML      = 'Serial <code>'+esc(sn)+'</code>';
+  if(p){
+    f_name.value=p.name||''; f_city.value=p.city||''; f_phone.value=p.phone||'';
+    f_email.value=p.email||''; f_socials.value=p.socials||''; f_bio.value=p.bio||'';
+    f_emoji.value=p.emoji||'🥤'; f_showphone.checked=!!p.showPhone;
+    f_wechat.value=p.wechat||''; f_follow.value=p.follow||'';
+    if(p.status) f_status.value=p.status;
+  }
+  profileView.style.display='none';
+  claimForm.style.display='block';
+}
+
+/* Initial render */
+(function init(){
+  var claimed = getClaimed();
+  if(claimed){ renderProfile(claimed); return; }
+  var p = getProfile(sn);
+  if(p){ renderProfile(p); return; }
+  showClaimForm(false);
+})();
+
+/* "Own this bottle? Claim it" link inside the public view */
+document.getElementById('claimLink').addEventListener('click', function(e){ e.preventDefault(); showClaimForm(getClaimed()||getProfile(sn)); });
+
+/* Add to Contacts → download a vCard */
+document.getElementById('addContactBtn').addEventListener('click', function(){
+  var p = getClaimed() || getProfile(sn) || {};
+  var note = [p.socials||'', p.wechat?('WeChat '+p.wechat):''].filter(Boolean).join(' · ');
+  var v = [
+    'BEGIN:VCARD','VERSION:3.0','N:'+p.name,'FN:'+p.name,
+    p.city?('ADR:;;'+p.city+';;;;'):'', p.phone?('TEL;TYPE=CELL:'+p.phone):'',
+    p.email?('EMAIL:'+p.email):'', note?('NOTE:'+note):'', 'END:VCARD'
+  ].filter(Boolean).join('\n');
+  var blob = new Blob([v],{type:'text/vcard'});
+  var a = document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download = (p.name||'contact')+'.vcf'; a.click();
+});
+
+/* Say hi → mailto (replace with backend POST for real inbox delivery) */
+document.getElementById('sayHiBtn').addEventListener('click', function(){
+  var p = getClaimed() || getProfile(sn) || {};
+  var to = p.email || 'bob@ssmug.com';
+  location.href = 'mailto:'+to+'?subject='+encodeURIComponent('Hi from your SSMug bottle '+sn)+'&body='+encodeURIComponent('Hey '+p.name+'! We met and tapped bottles...');
+});
+
+/* Claim / save */
+document.getElementById('claimForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var profile = {
+    name: f_name.value.trim(),
+    city: f_city.value.trim(),
+    phone: f_phone.value.trim(),
+    email: f_email.value.trim(),
+    socials: f_socials.value.trim(),
+    bio: f_bio.value.trim(),
+    wechat: f_wechat.value.trim(),
+    follow: f_follow.value.trim(),
+    status: f_status.value,
+    emoji: f_emoji.value.trim() || '🥤',
+    showPhone: f_showphone.checked,
+    sn: sn
+  };
+  /* ---- BACKEND HOOK: replace next line with POST to Formspree / your API ---- */
+  localStorage.setItem('ssmug_bottle_'+sn, JSON.stringify(profile));
+  /* -------------------------------------------------------------------------- */
+  renderProfile(profile);
+  document.getElementById('statusLine').textContent = '✓ Saved';
+});
+
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+</body>
+</html>
