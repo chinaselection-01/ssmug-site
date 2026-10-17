@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSMug 签到终端 · 硬件 BOM 采购简报</title>
+<style>
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#f6f7f9;color:#1c2430}
+  .wrap{max-width:900px;margin:0 auto;padding:32px 20px}
+  h1{font-size:26px;margin:0 0 4px}
+  .sub{color:#667;font-size:14px;margin-bottom:24px}
+  .card{background:#fff;border:1px solid #e4e8ee;border-radius:14px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  h2{font-size:18px;margin:0 0 14px;color:#16324f}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid #eef1f5}
+  th{color:#889;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  td.n{font-weight:700;color:#16324f}
+  .total{background:#16324f;color:#fff;border-radius:10px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;font-size:15px;margin:8px 0 18px}
+  .total b{font-size:20px}
+  .note{background:#fff7e6;border:1px solid #ffe0a3;border-radius:10px;padding:12px 16px;font-size:13px;color:#7a5b16;margin-bottom:16px}
+  .warn{background:#fdecec;border:1px solid #f6c5c5;color:#9b2c2c}
+  .ok{background:#e9f7ef;border:1px solid #bfe6cd;color:#1f7a47}
+  code{background:#eef1f5;padding:1px 6px;border-radius:5px;font-size:12px}
+  .steps{font-size:14px;line-height:1.7}
+  .steps li{margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>SSMug 签到终端 · 硬件 BOM 采购简报</h1>
+  <div class="sub">场景：咖啡店/景区放一台固定 NFC 读取终端，顾客拿 Social Bottle 碰一下即打卡，大屏显示今日榜，店家后台看谁来过。<br>定位：卖给店家/景区的「定制硬件 + 部署」一次性包，不养服务器（后端走 Cloudflare Workers，月费≈0）。</div>
+
+  <div class="card">
+    <h2>推荐方案 A — 安卓平板 + USB NFC（最快落地）</h2>
+    <table>
+      <tr><th>部件</th><th>选型</th><th>数量</th><th>估成本/台</th><th>说明</th></tr>
+      <tr><td class="n">主机</td><td>安卓平板 10–11" 国产/二手（紫光/台电等）</td><td>1</td><td>¥300–500</td><td>竖屏壁挂/立架，跑 terminal.html（Chrome 全屏）</td></tr>
+      <tr><td class="n">NFC 读卡器</td><td>ACS ACR122U (USB)</td><td>1</td><td>¥80–130</td><td>读 NTAG215 标签 UID/NDEF；Web NFC 亦可（安卓 Chrome）</td></tr>
+      <tr><td class="n">立架/外壳</td><td>亚克力立牌 + 定制 logo 贴 / epoxy 外壳</td><td>1</td><td>¥50–200</td><td>套咖啡店形象，工厂 OEM 强项</td></tr>
+      <tr><td class="n">供电/联网</td><td>5V 电源 + WiFi</td><td>1</td><td>¥0（店家提供）</td><td>需稳定 WiFi，断网则无法写后端</td></tr>
+      <tr><td class="n">部署</td><td>Chrome kiosk 全屏 + Workers API</td><td>—</td><td>一次</td><td>远程可更新页面</td></tr>
+    </table>
+    <div class="total"><span>单台总成本（方案 A）</span><b>¥430 – ¥830</b></div>
+    <div class="note ok">✅ 优点：软件就是 terminal.html，零额外开发；平板即屏即算力；店家自己插电即用。</div>
+  </div>
+
+  <div class="card">
+    <h2>备选方案 B — 树莓派 + 小屏（更便宜但开发重）</h2>
+    <table>
+      <tr><th>部件</th><th>选型</th><th>数量</th><th>估成本/台</th><th>说明</th></tr>
+      <tr><td class="n">主板</td><td>Raspberry Pi Zero 2 W</td><td>1</td><td>¥150–220</td><td>带 WiFi</td></tr>
+      <tr><td class="n">屏幕</td><td>7" HDMI 触摸屏</td><td>1</td><td>¥150–260</td><td>竖屏</td></tr>
+      <tr><td class="n">NFC 模块</td><td>PN532 (I2C/SPI)</td><td>1</td><td>¥25–45</td><td>需自己写读取逻辑</td></tr>
+      <tr><td class="n">电源/外壳</td><td>5V 电源 + 3D 打印壳</td><td>1</td><td>¥40–120</td><td>定制外壳</td></tr>
+    </table>
+    <div class="total"><span>单台总成本（方案 B）</span><b>¥365 – ¥645</b></div>
+    <div class="note">⚠️ 需自写 NFC 读取 + 本地渲染（不能用现成 Web NFC，得用 Python/Node 读 PN532 再调 API），开发量比 A 大；适合量起后压成本。</div>
+  </div>
+
+  <div class="card">
+    <h2>最容易翻车的 3 个点（DFM / 运维）</h2>
+    <div class="note warn">1. <b>供电与 WiFi 稳定性</b>：终端要 7×24 在线。断网=无法写后端、榜不更新。给店家配稳定 WiFi 或 4G 路由兜底。</div>
+    <div class="note warn">2. <b>读卡器位置</b>：顾客是"拿杯碰终端"，杯子里的 NFC 贴片若在金属杯底会被屏蔽（同 v2 杯的 RF 净空坑）。终端读取区要明显标识"放这里"，并测试不同杯型的读取距离。</div>
+    <div class="note warn">3. <b>店家不会维护</b>：做成"插电即用、远端更新页面"，故障率集中在屏碎/读卡器掉线。备 1 台周转机比教店家修更省事。</div>
+  </div>
+
+  <div class="card">
+    <h2>落地步骤（MVP）</h2>
+    <ol class="steps">
+      <li><b>先软件后硬件</b>：用 terminal.html + admin.html（mock 数据）去谈 1–2 家咖啡店，确认有兴趣。</li>
+      <li><b>接真后端</b>：部署 Cloudflare Workers（见 workers/README.md），把 terminal.html / admin.html 的 <code>API</code> 改成 workers.dev 域名。</li>
+      <li><b>打样 1–2 台终端</b>：按方案 A 买平板+ACR122U+定制外壳，送店实测读卡距离与 WiFi。</li>
+      <li><b>铺杯</b>：前提是顾客有 Social Bottle（带 NFC 贴片 + 已登记资料），否则终端无用武之地。</li>
+      <li><b>上线运营</b>：店家后台看"谁来过/今日榜"，你按台收硬件+部署费，后端不养。</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>商业口径（给店家的话术）</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0">"我们提供一台带您店 logo 的签到终端 + 会员社交杯。顾客拿杯碰一下就打卡上榜，您后台能看到谁来过、攒积分、解锁隐藏菜单——不用装 App，不用掏手机。一次买断硬件+部署，数据走我们的轻量云，没有月租。"</p>
+  </div>
+
+  <div class="sub" style="text-align:center;margin-top:10px">Powered by STWADD · SSMug Social Bottle 生态</div>
+</div>
+</body>
+</html>
