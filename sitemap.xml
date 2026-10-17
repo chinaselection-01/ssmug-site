@@ -14,4 +14,7 @@
   <url><loc>https://ssmug.com/custom-stainless-bottles-usa.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ssmug.com/social-bottle.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ssmug.com/bottle.html</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://ssmug.com/terminal.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ssmug.com/admin.html</loc><changefreq>weekly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://ssmug.com/terminal-bom.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
 </urlset>
