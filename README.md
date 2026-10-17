@@ -45,7 +45,7 @@ ssmug-site/
 
 现在表单是 mailto 兜底。要直接收进邮箱：
 1. 注册 https://formspree.io （免费档每月 50 封），建表单拿到 ID。
-2. 把 contact.html 里 `action="mailto:bob@stwadd.com"` 改成 `action="https://formspree.io/f/你的ID"`，method 改 `POST`（目前为 mailto 兜底，会拉起访客邮件客户端发往 bob@stwadd.com）。
+2. 把 contact.html 里 `action="mailto:bob@ssmug.com"` 改成 `action="https://formspree.io/f/你的ID"`，method 改 `POST`（目前为 mailto 兜底，会拉起访客邮件客户端发往 bob@ssmug.com，即 bob@stwadd.com 的域别名、同一邮箱）。
 3. 建议收件邮箱用恒定可靠的（如 hengdacup@foxmail.com 或网易企业邮箱）。
 
 ## 四、上线后 SEO 三件事
