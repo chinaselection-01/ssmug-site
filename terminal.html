@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Bean &amp; Co. — Tap to Check In</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  body{margin:0;background:radial-gradient(circle at 50% 0%,#3a2a1e 0%,#1c130d 70%);color:#fff;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+  .term{display:flex;flex-direction:column;height:100vh;max-width:560px;margin:0 auto;padding:24px 20px;box-sizing:border-box}
+  .brand{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:6px}
+  .brand .logo{width:46px;height:46px;border-radius:50%;background:#c98a4b;display:flex;align-items:center;justify-content:center;font-size:24px}
+  .brand h1{font-size:24px;margin:0;letter-spacing:.5px}
+  .brand small{display:block;font-size:11px;color:#c9b3a0;font-weight:400;letter-spacing:2px}
+  .tagline{text-align:center;color:#c9b3a0;font-size:13px;margin-bottom:18px}
+  .ring-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+  .ring{width:230px;height:230px;border-radius:50%;border:3px dashed #c98a4b;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;transition:.3s}
+  .ring.active{border-color:#7fd1a0;box-shadow:0 0 0 12px rgba(127,209,160,.12)}
+  .ring .inner{font-size:15px;color:#e7d8c8;padding:0 30px;line-height:1.5}
+  .ring .cup{font-size:54px;margin-bottom:8px}
+  .pulse{position:absolute;width:230px;height:230px;border-radius:50%;border:3px solid #c98a4b;animation:pulse 2s infinite;opacity:.5}
+  @keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.25);opacity:0}}
+  .status{text-align:center;margin-top:18px;font-size:14px;color:#c9b3a0;min-height:20px}
+  .manual{margin-top:14px;display:flex;gap:8px;justify-content:center}
+  .manual input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;padding:10px 12px;width:160px;font-size:14px}
+  .manual button{background:#c98a4b;border:none;color:#1c130d;font-weight:700;border-radius:10px;padding:10px 16px;font-size:14px;cursor:pointer}
+  .board{margin-top:18px;background:rgba(255,255,255,.05);border-radius:14px;padding:14px 16px}
+  .board h3{margin:0 0 10px;font-size:13px;letter-spacing:2px;color:#c98a4b;text-transform:uppercase}
+  .board .row{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px}
+  .board .row:last-child{border:none}
+  .board .av{width:30px;height:30px;border-radius:50%;background:#543f2c;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .board .nm{font-weight:600}
+  .board .tm{margin-left:auto;color:#c9b3a0;font-size:12px}
+  .success{position:absolute;inset:0;background:rgba(28,19,13,.96);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:5}
+  .success .big{font-size:64px;animation:pop .5s}
+  @keyframes pop{0%{transform:scale(.4);opacity:0}100%{transform:scale(1);opacity:1}}
+  .success h2{margin:10px 0 4px;font-size:26px}
+  .success p{color:#c9b3a0;font-size:14px}
+  .success .next{margin-top:18px;font-size:12px;color:#8a7666}
+  .footnote{position:absolute;bottom:10px;width:100%;text-align:center;font-size:10px;color:#6b5a4a}
+</style>
+</head>
+<body>
+<div class="term">
+  <div class="brand">
+    <div class="logo">☕</div>
+    <div><h1>Bean &amp; Co.</h1><small>TAP · CHECK IN · CONNECT</small></div>
+  </div>
+  <div class="tagline">Bring your SSMug Social Bottle. Tap to check in.</div>
+
+  <div class="ring-wrap">
+    <div class="ring" id="ring">
+      <div class="pulse"></div>
+      <div class="inner">
+        <div class="cup">🥤</div>
+        Hold your bottle near the reader
+      </div>
+    </div>
+    <div class="status" id="status">Listening for your bottle…</div>
+    <div class="manual">
+      <input id="manualSn" placeholder="or type SN (SMG000123)">
+      <button onclick="manualCheckin()">Check in</button>
+    </div>
+
+    <div class="board" id="board">
+      <h3>Today's Check-ins</h3>
+      <div id="boardList"><div class="row" style="color:#8a7666">No check-ins yet — be the first!</div></div>
+    </div>
+
+    <div class="success" id="success">
+      <div class="big">✅</div>
+      <h2 id="suName">Checked in!</h2>
+      <p id="suSub">Welcome to Bean &amp; Co.</p>
+      <div class="next">Returning to reader in 4s…</div>
+    </div>
+  </div>
+
+  <div class="footnote">Powered by STWADD · Social Bottle check-in terminal</div>
+</div>
+
+<script>
+// ===== Config =====
+const LOC = new URLSearchParams(location.search).get('loc') || 'CAFE001';
+const API = '/api'; // Cloudflare Workers route (set to full URL if cross-origin)
+
+// Demo fallback when backend is not deployed yet
+const MOCK = {
+  'SMG000123': {name:'Alex', avatar:'🧗', public:true},
+  'SMG000456': {name:'Mia',  avatar:'🎨', public:true},
+  'SMG000789': {name:'',     avatar:'🥤', public:false}
+};
+let mockBoard = [];
+
+// ===== NFC read (Android Chrome; iOS Safari unsupported — manual fallback shown) =====
+async function startNFC(){
+  if('NDEFReader' in window){
+    try{
+      const reader = new NDEFReader();
+      await reader.scan();
+      reader.onreading = (e)=>{
+        for(const rec of e.message.records){
+          if(rec.recordType === 'url'){
+            const url = new TextDecoder().decode(rec.data);
+            const sn = new URL(url).searchParams.get('sn');
+            if(sn) handleCheckin(sn);
+          }
+        }
+      };
+      setStatus('Listening for your bottle… (NFC on)');
+    }catch(err){
+      setStatus('NFC unavailable — type your SN below.');
+    }
+  }else{
+    setStatus('NFC not supported on this device — type your SN below.');
+  }
+}
+
+function setStatus(t){ document.getElementById('status').textContent = t; }
+
+async function manualCheckin(){
+  const sn = document.getElementById('manualSn').value.trim();
+  if(sn) handleCheckin(sn);
+}
+
+async function handleCheckin(sn){
+  document.getElementById('ring').classList.add('active');
+  setStatus('Reading ' + sn + ' …');
+  // Try real backend, fall back to mock
+  let profile = null;
+  try{
+    const r = await fetch(API + '/checkin', {
+      method:'POST', headers:{'content-type':'application/json'},
+      body: JSON.stringify({loc:LOC, sn:sn})
+    });
+    if(r.ok){ const d = await r.json(); profile = d.profile; }
+  }catch(e){ /* offline → mock */ }
+  if(!profile){ profile = MOCK[sn] || {name:'', avatar:'🥤', public:false}; mockBoard.push({...profile, sn, t:Date.now()}); }
+
+  showSuccess(profile);
+  loadBoard();
+  setTimeout(()=>{
+    document.getElementById('success').style.display='none';
+    document.getElementById('ring').classList.remove('active');
+    setStatus('Listening for your bottle…');
+  }, 4000);
+}
+
+function showSuccess(p){
+  document.getElementById('suName').textContent = p.public && p.name ? (p.name + ' checked in!') : 'Anonymous check-in ✓';
+  document.getElementById('suSub').textContent = p.public && p.name ? 'Welcome to Bean & Co.' : 'Thanks for visiting — see you soon!';
+  document.getElementById('success').style.display='flex';
+  if(navigator.vibrate) navigator.vibrate(120);
+}
+
+async function loadBoard(){
+  let list = [];
+  try{
+    const r = await fetch(API + '/board?loc=' + LOC);
+    if(r.ok){ const d = await r.json(); list = d.checkins || []; }
+  }catch(e){ list = mockBoard; }
+  if(!list.length && !mockBoard.length){
+    document.getElementById('boardList').innerHTML = '<div class="row" style="color:#8a7666">No check-ins yet — be the first!</div>';
+    return;
+  }
+  const all = list.length ? list : mockBoard;
+  document.getElementById('boardList').innerHTML = all.slice(-8).reverse().map(c=>{
+    const nm = c.public && c.name ? c.name : 'Anonymous';
+    const av = c.avatar || '🥤';
+    const tm = c.t ? new Date(c.t).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : '';
+    return '<div class="row"><div class="av">'+av+'</div><div class="nm">'+nm+'</div><div class="tm">'+tm+'</div></div>';
+  }).join('');
+}
+
+startNFC();
+loadBoard();
+</script>
+</body>
+</html>
