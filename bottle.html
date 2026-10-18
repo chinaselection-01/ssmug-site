@@ -43,6 +43,11 @@
         <p class="muted" id="pCity">—</p>
         <div id="pStatus" class="status-badge" style="display:none"></div>
       </div>
+      <div id="iceCard" class="ice-card" style="display:none">
+        <div class="ice-row"><span>🩸 Blood 血型</span><b id="pBlood">—</b></div>
+        <div class="ice-row"><span>📞 ICE 紧急联系人</span><b id="pIce">—</b></div>
+        <div class="ice-row" id="pAllergyRow" style="display:none"><span>⚠️ Allergies 过敏/病史</span><b id="pAllergy">—</b></div>
+      </div>
       <p id="pBio" class="muted" style="text-align:center"></p>
       <div id="pLinks" class="certbar"></div>
       <div class="btns" style="display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap">
@@ -75,11 +80,31 @@
           <option value="gray">⚪ 今天只想喝水，别理我</option>
         </select>
       </div>
+      <div class="two">
+        <div class="field"><label>Blood type 血型</label>
+          <select name="blood" id="f_blood">
+            <option value="">— 不选 —</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+          </select>
+        </div>
+        <div class="field"><label>ICE 紧急联系人</label><input name="ice" id="f_ice" placeholder="wife +48 600 111 222"></div>
+      </div>
+      <div class="field"><label>Allergies / medical 过敏史 / 病史</label><input name="allergy" id="f_allergy" placeholder="penicillin · peanut · asthma inhaler"></div>
+      <div class="field" style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" id="f_showice" style="width:auto" checked> <label style="margin:0" for="f_showice">把急救卡（血型+紧急联系人）做成“谁碰都能看”，方便户外救援（推荐）</label>
+      </div>
       <div class="field"><label>Avatar emoji</label><input name="emoji" id="f_emoji" maxlength="2" value="🥤" style="width:90px"></div>
       <div class="field" style="display:flex;align-items:center;gap:8px">
         <input type="checkbox" id="f_showphone" style="width:auto"> <label style="margin:0" for="f_showphone">Show my phone to people who tap (off = they can only “Say hi”)</label>
       </div>
       <button class="btn btn-primary" type="submit" style="width:100%" id="claimBtn">Save my bottle</button>
+      <div class="field" id="iceEncodeBox" style="display:none;margin-top:14px">
+        <label>离线急救标签内容（无信号也能被读 — 让工厂/自己把这行写进 NFC 标签的 NDEF 文本区）</label>
+        <textarea id="iceNdef" readonly style="font-family:monospace;font-size:12px;min-height:64px"></textarea>
+        <button type="button" class="btn btn-outline" id="writeTagBtn" style="display:none;margin-top:8px">📲 写入我的杯子标签（安卓 Chrome）</button>
+        <p class="muted" style="font-size:12px;margin-top:6px">户外无信号时，救援者碰一下杯，手机直接弹出这行文字（无需联网）。Web NFC 写入仅安卓 Chrome 支持；iPhone 需工厂预写或借安卓机写一次。</p>
+      </div>
       <p class="muted" style="font-size:13px;margin-top:12px;text-align:center">Demo mode stores on this device only. Wire a backend (see comments) to make profiles persist across phones.</p>
     </form>
 
@@ -119,7 +144,7 @@ document.getElementById('crumbSn').textContent = sn;
 
 /* Demo profiles so a tapper sees something before anyone claims. */
 var DEMO = {
-  'SMG000123': {name:'Alex', city:'Warsaw, PL', bio:'Coffee, climbing, good playlists.', socials:'Instagram @alex', wechat:'alex_cn', follow:'https://instagram.com/alex', status:'yellow', emoji:'🧗', showPhone:false, phone:'', email:'alex@example.com'},
+  'SMG000123': {name:'Alex', city:'Warsaw, PL', bio:'Coffee, climbing, good playlists.', socials:'Instagram @alex', wechat:'alex_cn', follow:'https://instagram.com/alex', status:'yellow', emoji:'🧗', showPhone:false, phone:'', email:'alex@example.com', blood:'O+', ice:'Maria +48 600 111 222', allergy:'penicillin', showICE:true},
   'SMG000456': {name:'Mia',  city:'Berlin, DE', bio:'Designer. Always carrying a bottle.', socials:'LinkedIn /mia', wechat:'', follow:'https://linkedin.com/in/mia', status:'blue', emoji:'🎨', showPhone:false, phone:'', email:'mia@example.com'}
 };
 function getProfile(s){ return DEMO[s] || null; }
@@ -148,6 +173,16 @@ function renderProfile(p){
   var sb = document.getElementById('pStatus');
   if(p.status && STATUS_LABEL[p.status]){ sb.style.display='inline-block'; sb.className='status-badge status-'+p.status; sb.textContent = STATUS_LABEL[p.status]; }
   else { sb.style.display='none'; }
+  /* Emergency / ICE card (outdoor) — shown only if owner enabled it and provided data */
+  var ice = document.getElementById('iceCard');
+  if(p.showICE && (p.blood || p.ice || p.allergy)){
+    ice.style.display='block';
+    document.getElementById('pBlood').textContent = p.blood || '—';
+    document.getElementById('pIce').textContent  = p.ice || '—';
+    var ar = document.getElementById('pAllergyRow');
+    if(p.allergy){ ar.style.display='flex'; document.getElementById('pAllergy').textContent = p.allergy; }
+    else { ar.style.display='none'; }
+  } else { ice.style.display='none'; }
   var links = document.getElementById('pLinks'); links.innerHTML='';
   (p.socials||'').split('·').forEach(function(s){ s=s.trim(); if(s){var d=document.createElement('div');d.className='cert';d.textContent=s;links.appendChild(d);} });
   if(p.wechat){ var w=document.createElement('div');w.className='cert';w.textContent='💬 WeChat '+p.wechat; links.appendChild(w); }
@@ -175,6 +210,8 @@ function showClaimForm(p){
     f_emoji.value=p.emoji||'🥤'; f_showphone.checked=!!p.showPhone;
     f_wechat.value=p.wechat||''; f_follow.value=p.follow||'';
     if(p.status) f_status.value=p.status;
+    f_blood.value=p.blood||''; f_ice.value=p.ice||''; f_allergy.value=p.allergy||'';
+    f_showice.checked=!!p.showICE;
   }
   profileView.style.display='none';
   claimForm.style.display='block';
@@ -228,6 +265,10 @@ document.getElementById('claimForm').addEventListener('submit', function(e){
     status: f_status.value,
     emoji: f_emoji.value.trim() || '🥤',
     showPhone: f_showphone.checked,
+    blood: f_blood.value,
+    ice: f_ice.value.trim(),
+    allergy: f_allergy.value.trim(),
+    showICE: f_showice.checked,
     sn: sn
   };
   /* ---- BACKEND HOOK: replace next line with POST to Formspree / your API ---- */
@@ -236,6 +277,47 @@ document.getElementById('claimForm').addEventListener('submit', function(e){
   renderProfile(profile);
   document.getElementById('statusLine').textContent = '✓ Saved';
 });
+
+/* ---- Outdoor / Emergency ID: build OFFLINE-readable NDEF text ----
+   Critical for outdoor: encode blood type + ICE directly into the NFC tag's
+   text record so a rescuer can read it with NO signal and NO server.
+   (A pure URL won't load in the backcountry.) */
+function buildIceText(p){
+  if(!(p.showICE && (p.blood || p.ice || p.allergy))) return '';
+  var parts = ['SSMug ICE'];
+  if(p.name) parts.push('Name: ' + p.name);
+  if(p.blood) parts.push('Blood: ' + p.blood);
+  if(p.ice)   parts.push('ICE: ' + p.ice);
+  if(p.allergy) parts.push('Allergy: ' + p.allergy);
+  return parts.join(' | ');
+}
+function updateIceBox(){
+  var box = document.getElementById('iceEncodeBox');
+  if(f_showice.checked){
+    box.style.display='block';
+    document.getElementById('iceNdef').value = buildIceText({
+      name:f_name.value.trim(), blood:f_blood.value, ice:f_ice.value.trim(),
+      allergy:f_allergy.value.trim(), showICE:true
+    });
+  } else { box.style.display='none'; }
+}
+document.getElementById('claimForm').addEventListener('input', function(){
+  if(document.getElementById('iceEncodeBox')) updateIceBox();
+});
+f_showice.addEventListener('change', updateIceBox);
+
+/* Web NFC write (Android Chrome only) — writes the offline ICE text to the tag */
+if('NDEFWriter' in window){
+  var wt = document.getElementById('writeTagBtn');
+  wt.style.display='inline-block';
+  wt.addEventListener('click', async function(){
+    try{
+      var writer = new NDEFWriter();
+      await writer.write({ records:[{ recordType:'text', data:document.getElementById('iceNdef').value }] });
+      wt.textContent='✓ 已写入标签';
+    }catch(e){ wt.textContent='写入失败：'+ (e.message||e); }
+  });
+}
 
 document.getElementById('y').textContent=new Date().getFullYear();
 var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
