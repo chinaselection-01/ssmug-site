@@ -171,3 +171,10 @@ footer.site a:hover{color:#fff}
   .hero{padding:54px 0 48px}
   .nav ul.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:18px 20px;gap:16px;box-shadow:var(--shadow)}
 }
+/* Owner password gate modal */
+.modal-mask{position:fixed;inset:0;background:rgba(15,23,32,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.modal-mask.show{display:flex}
+.modal{background:#fff;border-radius:16px;max-width:360px;width:100%;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.28)}
+.modal h3{margin:0 0 4px}
+.modal .field input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px}
+.modal .btn{margin:0}
