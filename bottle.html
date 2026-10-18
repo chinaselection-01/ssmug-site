@@ -50,6 +50,7 @@
       </div>
       <p id="pBio" class="muted" style="text-align:center"></p>
       <div id="pInterests" class="certbar" style="display:none"></div>
+      <div id="pMatch" class="match-card" style="display:none"></div>
       <div id="pLinks" class="certbar"></div>
       <div class="btns" style="display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap">
         <button class="btn btn-primary" id="addContactBtn">＋ Add to Contacts</button>
@@ -72,6 +73,7 @@
       <div class="field"><label>Social handles</label><input name="socials" id="f_socials" placeholder="Instagram @alex · WeChat alex_cn · LinkedIn /alex"></div>
       <div class="field"><label>Short bio</label><textarea name="bio" id="f_bio" placeholder="Coffee, climbing, and good playlists."></textarea></div>
       <div class="field"><label>Interests · 爱好 / 话题 <span class="muted" style="font-weight:400">（碰杯的人能据此找话题，用 · 分隔）</span></label><input name="interests" id="f_interests" placeholder="攀岩 · 露营 · 黑胶唱片 · 精酿 · 养猫"></div>
+      <div class="field"><label>Birthday 生日 <span class="muted" style="font-weight:400">（用来算星座配对，可不填）</span></label><input type="date" name="birthday" id="f_birthday"></div>
       <div class="field"><label>WeChat ID <span class="muted" style="font-weight:400">（让对方一键加你）</span></label><input name="wechat" id="f_wechat" placeholder="alex_cn"></div>
       <div class="field"><label>Follow link <span class="muted" style="font-weight:400">（IG / TikTok / 主页，碰完可一键跳转关注）</span></label><input name="follow" id="f_follow" placeholder="https://instagram.com/alex"></div>
       <div class="field"><label>Mood · 今天想怎么被认识？</label>
@@ -146,8 +148,8 @@ document.getElementById('crumbSn').textContent = sn;
 
 /* Demo profiles so a tapper sees something before anyone claims. */
 var DEMO = {
-  'SMG000123': {name:'Alex', city:'Warsaw, PL', bio:'Coffee, climbing, good playlists.', socials:'Instagram @alex', wechat:'alex_cn', follow:'https://instagram.com/alex', status:'yellow', emoji:'🧗', showPhone:false, phone:'', email:'alex@example.com', blood:'O+', ice:'Maria +48 600 111 222', allergy:'penicillin', showICE:true, interests:'攀岩 · 露营 · 黑胶唱片 · 精酿'},
-  'SMG000456': {name:'Mia',  city:'Berlin, DE', bio:'Designer. Always carrying a bottle.', socials:'LinkedIn /mia', wechat:'', follow:'https://linkedin.com/in/mia', status:'blue', emoji:'🎨', showPhone:false, phone:'', email:'mia@example.com', interests:'插画 · 独立电影 · 手冲咖啡'}
+  'SMG000123': {name:'Alex', city:'Warsaw, PL', bio:'Coffee, climbing, good playlists.', socials:'Instagram @alex', wechat:'alex_cn', follow:'https://instagram.com/alex', status:'yellow', emoji:'🧗', showPhone:false, phone:'', email:'alex@example.com', blood:'O+', ice:'Maria +48 600 111 222', allergy:'penicillin', showICE:true, interests:'攀岩 · 露营 · 黑胶唱片 · 精酿', birthday:'1995-04-12', zodiac:'aries', czodiac:'猪'},
+  'SMG000456': {name:'Mia',  city:'Berlin, DE', bio:'Designer. Always carrying a bottle.', socials:'LinkedIn /mia', wechat:'', follow:'https://linkedin.com/in/mia', status:'blue', emoji:'🎨', showPhone:false, phone:'', email:'mia@example.com', interests:'插画 · 独立电影 · 手冲咖啡', birthday:'1992-10-05', zodiac:'libra', czodiac:'猴'}
 };
 function getProfile(s){ return DEMO[s] || null; }
 function getClaimed(){ try{return JSON.parse(localStorage.getItem('ssmug_bottle_'+sn)||'null');}catch(e){return null;} }
@@ -163,6 +165,85 @@ var STATUS_LABEL = {
   blue:'🔵 只换同好 / 职业联系',
   gray:'⚪ 今天只想喝水，别理我'
 };
+
+/* ---------- Compatibility / 破冰配对 (pure client-side, no backend) ---------- */
+var SIGN = {
+  aries:['fire','♈','白羊'], taurus:['earth','♉','金牛'], gemini:['air','♊','双子'],
+  cancer:['water','♋','巨蟹'], leo:['fire','♌','狮子'], virgo:['earth','♍','处女'],
+  libra:['air','♎','天秤'], scorpio:['water','♏','天蝎'], sagittarius:['fire','♐','射手'],
+  capricorn:['earth','♑','摩羯'], aquarius:['air','♒','水瓶'], pisces:['water','♓','双鱼']
+};
+/* East-Asian style blood-type matrix (playful): rows=you, cols=them */
+var BLOOD = {
+  'O': {'O':82,'A':78,'B':80,'AB':75},
+  'A': {'O':78,'A':70,'B':64,'AB':72},
+  'B': {'O':80,'A':64,'B':76,'AB':79},
+  'AB':{'O':75,'A':72,'B':79,'AB':70}
+};
+function zodiacFromDate(d){
+  var m=d.getMonth()+1, day=d.getDate();
+  if((m==1&&day>=20)||(m==2&&day<=18)) return 'aquarius';
+  if((m==2&&day>=19)||(m==3&&day<=20)) return 'pisces';
+  if((m==3&&day>=21)||(m==4&&day<=19)) return 'aries';
+  if((m==4&&day>=20)||(m==5&&day<=20)) return 'taurus';
+  if((m==5&&day>=21)||(m==6&&day<=20)) return 'gemini';
+  if((m==6&&day>=21)||(m==7&&day<=22)) return 'cancer';
+  if((m==7&&day>=23)||(m==8&&day<=22)) return 'leo';
+  if((m==8&&day>=23)||(m==9&&day<=22)) return 'virgo';
+  if((m==9&&day>=23)||(m==10&&day<=22)) return 'libra';
+  if((m==10&&day>=23)||(m==11&&day<=21)) return 'scorpio';
+  if((m==11&&day>=22)||(m==12&&day<=21)) return 'sagittarius';
+  return 'capricorn';
+}
+function czodiacFromYear(y){ var a=['鼠','牛','虎','兔','龙','蛇','马','羊','猴','鸡','狗','猪']; return a[(((y-4)%12)+12)%12]; }
+function zodiacScore(a,b){
+  if(!a||!b||!SIGN[a]||!SIGN[b]) return null;
+  var ea=SIGN[a][0], eb=SIGN[b][0], base;
+  if(ea===eb) base=92;
+  else if((ea==='fire'&&eb==='air')||(ea==='air'&&eb==='fire')) base=86;
+  else if((ea==='earth'&&eb==='water')||(ea==='water'&&eb==='earth')) base=86;
+  else if((ea==='air'&&eb==='earth')||(ea==='earth'&&eb==='air')) base=70;
+  else if((ea==='fire'&&eb==='water')||(ea==='water'&&eb==='fire')) base=63;
+  else if((ea==='fire'&&eb==='earth')||(ea==='earth'&&eb==='fire')) base=68;
+  else if((ea==='air'&&eb==='water')||(ea==='water'&&eb==='air')) base=72;
+  else base=72;
+  if(a===b) base=Math.min(99,base+4);
+  var h=0,s=a+b; for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))%11;
+  return Math.max(50, Math.min(99, base - 5 + h));
+}
+function bloodScore(a,b){
+  if(!a||!b) return null;
+  var bt=a.replace('+','').replace('-',''); b=b.replace('+','').replace('-','');
+  if(!BLOOD[bt]||!BLOOD[bt][b]) return null;
+  return BLOOD[bt][b];
+}
+function bucketNote(s){ return s>=88?'天作之合，破冰零压力 🔥':(s>=78?'挺合拍，话题不会断':(s>=68?'互补型，慢慢聊有惊喜':'差异型，反而更有新鲜感')); }
+/* Viewer's own profile: locally claimed bottle, else a demo sample so the card still renders */
+function getMe(){
+  try{ var m=JSON.parse(localStorage.getItem('ssmug_me')||'null'); if(m && m.sn) return m; }catch(e){}
+  var d=DEMO['SMG000123']; if(d){ d=Object.assign({},d); d.__sample=true; return d; }
+  return null;
+}
+function renderMatch(me, them){
+  var box=document.getElementById('pMatch');
+  if(!me || me.sn===them.sn){ box.style.display='none'; return; }
+  var zs=zodiacScore(me.zodiac, them.zodiac);
+  var bs=bloodScore(me.blood, them.blood);
+  if(zs==null && bs==null){ box.style.display='none'; return; }
+  box.style.display='block';
+  var html='<h4>🔮 你和 '+esc(them.name)+' 的破冰配对</h4>';
+  if(zs!=null){
+    var a=SIGN[me.zodiac], b=SIGN[them.zodiac];
+    html+='<div class="match-row"><span>'+a[1]+a[2]+' × '+b[1]+b[2]+'</span><span class="match-pct">'+zs+'%</span></div><div class="match-bar"><i style="width:'+zs+'%"></i></div>';
+  }
+  if(bs!=null){
+    html+='<div class="match-row"><span>🩸 '+(me.blood||'?')+' × '+(them.blood||'?')+'</span><span class="match-pct">'+bs+'%</span></div><div class="match-bar"><i style="width:'+bs+'%"></i></div>';
+  }
+  var overall=(zs!=null&&bs!=null)?Math.round(zs*0.6+bs*0.4):(zs!=null?zs:bs);
+  html+='<p class="muted" style="margin:12px 0 0;font-size:13px">'+bucketNote(overall)+'</p>';
+  if(me.__sample) html+='<p class="muted" style="margin:6px 0 0;font-size:12px">（示例：认领你自己的杯子后，会显示你和他的真实配对）</p>';
+  box.innerHTML=html;
+}
 
 function renderProfile(p){
   document.getElementById('statusLine').textContent = 'SSMug Social Bottle';
@@ -196,6 +277,7 @@ function renderProfile(p){
     intr.style.display='flex'; intr.innerHTML='';
     ('# '+p.interests).split('·').forEach(function(s){ s=s.trim(); if(s){var d=document.createElement('div');d.className='cert';d.textContent='# '+s; intr.appendChild(d);} });
   } else { intr.style.display='none'; }
+  renderMatch(getMe(), p);
   var fb = document.getElementById('followBtn');
   if(p.follow && /^https?:\/\//i.test(p.follow)){ fb.style.display='inline-block'; fb.href=p.follow; }
   else { fb.style.display='none'; }
@@ -218,6 +300,7 @@ function showClaimForm(p){
     f_emoji.value=p.emoji||'🥤'; f_showphone.checked=!!p.showPhone;
     f_wechat.value=p.wechat||''; f_follow.value=p.follow||'';
     f_interests.value=p.interests||'';
+    f_birthday.value=p.birthday||'';
     if(p.status) f_status.value=p.status;
     f_blood.value=p.blood||''; f_ice.value=p.ice||''; f_allergy.value=p.allergy||'';
     f_showice.checked=!!p.showICE;
@@ -279,10 +362,14 @@ document.getElementById('claimForm').addEventListener('submit', function(e){
     ice: f_ice.value.trim(),
     allergy: f_allergy.value.trim(),
     showICE: f_showice.checked,
+    birthday: f_birthday.value,
+    zodiac: (function(){ try{ return f_birthday.value? zodiacFromDate(new Date(f_birthday.value)) : ''; }catch(e){ return ''; } })(),
+    czodiac: (function(){ try{ return f_birthday.value? czodiacFromYear(new Date(f_birthday.value).getFullYear()) : ''; }catch(e){ return ''; } })(),
     sn: sn
   };
   /* ---- BACKEND HOOK: replace next line with POST to Formspree / your API ---- */
   localStorage.setItem('ssmug_bottle_'+sn, JSON.stringify(profile));
+  localStorage.setItem('ssmug_me', JSON.stringify(profile)); /* viewer's own profile, for compatibility matching */
   /* -------------------------------------------------------------------------- */
   renderProfile(profile);
   document.getElementById('statusLine').textContent = '✓ Saved';
