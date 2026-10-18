@@ -140,6 +140,14 @@ footer.site a:hover{color:#fff}
 .article ul,.article ol{margin:0 0 16px 22px}
 .article li{margin-bottom:8px}
 
+/* Emergency / ICE card (outdoor) */
+.ice-card{background:linear-gradient(135deg,#fff4f4,#fff);border:1.5px solid #f0b4b4;border-radius:14px;padding:14px 18px;margin:14px auto 0;max-width:420px;text-align:left}
+.ice-row{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed #f0d0d0;font-size:15px}
+.ice-row:last-child{border-bottom:0}
+.ice-row span{color:#b4453f;font-weight:600}
+.ice-row b{color:var(--ink);text-align:right}
+#iceNdef{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg-2);color:var(--ink)}
+
 @media(max-width:900px){
   .grid-3{grid-template-columns:repeat(2,1fr)}
   .stats{grid-template-columns:repeat(2,1fr)}
