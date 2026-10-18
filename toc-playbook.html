@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSMug Social Bottle · To C 启动手册（先验证再投）</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .doc{max-width:880px;margin:0 auto}
+  .doc h1{font-size:34px;margin:0 0 6px}
+  .doc h2{font-size:24px;margin:38px 0 12px;border-bottom:2px solid var(--steel);padding-bottom:6px}
+  .doc h3{font-size:18px;margin:22px 0 8px}
+  .doc p,.doc li{font-size:15.5px;line-height:1.7}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+  th{background:var(--section);font-weight:700}
+  .kpi-good{color:#1a8a4a;font-weight:700}
+  .kpi-bad{color:#c0392b;font-weight:700}
+  .script{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0;box-shadow:var(--shadow)}
+  .script .tag{display:inline-block;background:var(--steel);color:#fff;border-radius:6px;font-size:12px;padding:2px 9px;margin-right:6px}
+  .warn{background:#fff7e6;border-left:4px solid #f0a500;padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0}
+</style>
+</head>
+<body>
+<section class="section">
+<div class="container doc">
+
+  <h1>🥤 SSMug Social Bottle · To C 启动手册</h1>
+  <p class="muted">路线 A：先验证再投。本手册是用来卡"证伪/止损线"的，不是用来自我安慰的。</p>
+
+  <div class="warn">
+    <strong>一句话定位：</strong>杯子靠<strong>颜值+生活方式+故事</strong>当产品，NFC 碰一下是<strong>盒里的小惊喜/话题钩子</strong>，不是产品本身。冷启动靠<strong>种草</strong>，不靠"别人也有杯"。
+  </div>
+
+  <h2>一、小批 500 支成本 / 定价 / 毛利模型</h2>
+  <table>
+    <tr><th>项目</th><th>估算（¥/支）</th><th>说明</th></tr>
+    <tr><td>杯身（保温杯 OEM）</td><td>25–35</td><td>用现有圣瓦达产线，小批价</td></tr>
+    <tr><td>NFC 贴纸 NTAG215 + 写码</td><td>1.5–3</td><td>1688 标品，工厂预写 NDEF</td></tr>
+    <tr><td>包装（含二维码兜底+心情卡）</td><td>3–5</td><td>印二维码，老手机也能扫</td></tr>
+    <tr><td>人工写码/质检</td><td>2</td><td>首批量小，手工可cover</td></tr>
+    <tr><td><strong>单支成本合计</strong></td><td><strong>32–45</strong></td><td></td></tr>
+    <tr><td>首发预约价</td><td>99</td><td>对标 ¥159 常态价</td></tr>
+    <tr><td>毛利（未扣运费/CAC）</td><td>54–67</td><td>毛利率 55–68%</td></tr>
+    <tr><td>到消费者运费/包材</td><td>8–12</td><td>国内快递</td></tr>
+    <tr><td><strong>净毛利（未扣 CAC）</strong></td><td><strong>42–59</strong></td><td></td></tr>
+  </table>
+
+  <h3>首单净利 = 净毛利 − CAC（关键看这条）</h3>
+  <table>
+    <tr><th>CAC 情景（国内信息流）</th><th>首单净利/支</th><th>判断</th></tr>
+    <tr><td>¥30（内容自然流量为主）</td><td class="kpi-good">+12 ~ +29</td><td class="kpi-good">可跑</td></tr>
+    <tr><td>¥50（正常投放）</td><td class="kpi-good">−8 ~ +9</td><td>持平/微利</td></tr>
+    <tr><td>¥80（纯付费硬广）</td><td class="kpi-bad">−38 ~ −21</td><td class="kpi-bad">首单亏 → 触发止损</td></tr>
+  </table>
+  <p class="muted">结论：<strong>这套生意是否成立，取决于 CAC 能不能压到 ¥50 以下 + 复购/口碑。</strong>所以验证阶段核心是"用种草把 CAC 打下来"，而不是砸广告。</p>
+
+  <h2>二、KOC 种草脚本（先送 50–100 个，换内容）</h2>
+  <p>给咖啡店主、户外领队、生活方式博主白送杯，要他们产出"碰杯"内容。下面是可直接发的 brief + 文案草稿。</p>
+
+  <div class="script">
+    <span class="tag">咖啡店</span><strong>钩子：碰一下加微信</strong>
+    <p>"店里新到的杯子有点东西——客人碰一下杯身，我的微信就弹出来了😂 社恐福音。#城市咖啡 #碰杯交友"</p>
+  </div>
+  <div class="script">
+    <span class="tag">户外/登山</span><strong>钩子：没信号也能读急救卡</strong>
+    <p>"上山前把血型写进杯子芯片，队友摔了碰一下就知道该打给谁。比带张纸条靠谱。#户外急救 #徒步装备"</p>
+  </div>
+  <div class="script">
+    <span class="tag">闺蜜送礼</span><strong>钩子：失恋治愈</strong>
+    <p>"送闺蜜一只会交朋友的杯子，她把心情设成黄色，后来真在咖啡店碰到了人💛 这杯子比我还操心她。#送礼 #治愈"</p>
+  </div>
+  <div class="script">
+    <span class="tag">职场社恐</span><strong>钩子：不开口破冰</strong>
+    <p>"开会不想说话，但杯子替我表明了态度——今天灰色，别理我☕ 想聊的碰一下就行。#社恐 #职场"</p>
+  </div>
+  <div class="script">
+    <span class="tag">音乐节/市集</span><strong>钩子：碰杯换联系</strong>
+    <p>"音乐节最怕加不到人。现在碰一下杯就行，比扫二维码浪漫多了🎪 #音乐节 #碰杯"</p>
+  </div>
+  <div class="script">
+    <span class="tag">情侣/可撩</span><strong>钩子：心情颜色</strong>
+    <p>"把杯子设成黄色，意思是'可以撩'。今晚在酒吧，看谁先碰我杯🟡 #单身 #交友"</p>
+  </div>
+
+  <h2>三、证伪触发 + 止损看板</h2>
+  <table>
+    <tr><th>指标</th><th>绿灯（继续）</th><th>红灯（砍/转）</th><th>动作</th></tr>
+    <tr><td>落地页转化率</td><td class="kpi-good">≥ 2%</td><td class="kpi-bad">&lt; 2%</td><td>砍广告，回 OEM 话术</td></tr>
+    <tr><td>CAC</td><td class="kpi-good">≤ ¥50</td><td class="kpi-bad">&gt; ¥80</td><td>停付费，转纯种草</td></tr>
+    <tr><td>种子复购/转介绍</td><td class="kpi-good">≥ 10% 朋友也买</td><td class="kpi-bad">&lt; 10%</td><td>确认单人猎奇品，剥离社交依赖改颜值线</td></tr>
+    <tr><td>首批 500 动销</td><td class="kpi-good">60 天内清 &gt;70%</td><td class="kpi-bad">积压 &gt;50%</td><td>不再开模，转尾货/赠品</td></tr>
+  </table>
+  <div class="warn"><strong>铁律：</strong>首批量 cap 500–1000 支，最多试一次。绝不先开 1 万支模具。亏也亏得明。</div>
+
+  <h2>四、落地页 → 表单 → 后端 接法</h2>
+  <ol>
+    <li><code>preorder.html</code> 已建好（中文消费版），表单接 Formspree 占位 <code>YOUR_FORM_ID</code>。</li>
+    <li>去 <a href="https://formspree.io" target="_blank">formspree.io</a> 建表单，把 action 改成你的地址 → 邮箱自动收集。</li>
+    <li>广告像素（FB/抖音/小红书）装在 <code>preorder.html</code> &lt;head&gt;，即可测转化与 CAC。</li>
+    <li>数据看板：Formspree 后台 + 广告后台双看；每周更新上表。</li>
+  </ol>
+  <p class="muted">注：preorder.html 是中文国内版，与 ssmug.com 英文 B2B 站分开测。若后续要做海外 To C，再出英文版（逻辑同）。</p>
+
+  <h2>五、下一步（按路线 A）</h2>
+  <ul>
+    <li><strong>本周：</strong>接 Formspree + 装像素，把 preorder.html 挂到一个能访问的地址（可先用 ssmug.com/preorder.html 或新域名）。</li>
+    <li><strong>本周：</strong>寄 50 支杯给 KOC，发上面 6 类 brief。</li>
+    <li><strong>2 周：</strong>看转化/CAC 数据，填第三节看板，决定是否放量。</li>
+    <li><strong>放量前提：</strong>转化≥2% 且 CAC≤¥50，才开第二批；否则按红灯动作执行。</li>
+  </ul>
+
+</div>
+</section>
+</body>
+</html>
