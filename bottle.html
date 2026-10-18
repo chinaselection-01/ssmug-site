@@ -49,6 +49,7 @@
         <div class="ice-row" id="pAllergyRow" style="display:none"><span>⚠️ Allergies 过敏/病史</span><b id="pAllergy">—</b></div>
       </div>
       <p id="pBio" class="muted" style="text-align:center"></p>
+      <div id="pInterests" class="certbar" style="display:none"></div>
       <div id="pLinks" class="certbar"></div>
       <div class="btns" style="display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap">
         <button class="btn btn-primary" id="addContactBtn">＋ Add to Contacts</button>
@@ -70,6 +71,7 @@
       </div>
       <div class="field"><label>Social handles</label><input name="socials" id="f_socials" placeholder="Instagram @alex · WeChat alex_cn · LinkedIn /alex"></div>
       <div class="field"><label>Short bio</label><textarea name="bio" id="f_bio" placeholder="Coffee, climbing, and good playlists."></textarea></div>
+      <div class="field"><label>Interests · 爱好 / 话题 <span class="muted" style="font-weight:400">（碰杯的人能据此找话题，用 · 分隔）</span></label><input name="interests" id="f_interests" placeholder="攀岩 · 露营 · 黑胶唱片 · 精酿 · 养猫"></div>
       <div class="field"><label>WeChat ID <span class="muted" style="font-weight:400">（让对方一键加你）</span></label><input name="wechat" id="f_wechat" placeholder="alex_cn"></div>
       <div class="field"><label>Follow link <span class="muted" style="font-weight:400">（IG / TikTok / 主页，碰完可一键跳转关注）</span></label><input name="follow" id="f_follow" placeholder="https://instagram.com/alex"></div>
       <div class="field"><label>Mood · 今天想怎么被认识？</label>
@@ -144,8 +146,8 @@ document.getElementById('crumbSn').textContent = sn;
 
 /* Demo profiles so a tapper sees something before anyone claims. */
 var DEMO = {
-  'SMG000123': {name:'Alex', city:'Warsaw, PL', bio:'Coffee, climbing, good playlists.', socials:'Instagram @alex', wechat:'alex_cn', follow:'https://instagram.com/alex', status:'yellow', emoji:'🧗', showPhone:false, phone:'', email:'alex@example.com', blood:'O+', ice:'Maria +48 600 111 222', allergy:'penicillin', showICE:true},
-  'SMG000456': {name:'Mia',  city:'Berlin, DE', bio:'Designer. Always carrying a bottle.', socials:'LinkedIn /mia', wechat:'', follow:'https://linkedin.com/in/mia', status:'blue', emoji:'🎨', showPhone:false, phone:'', email:'mia@example.com'}
+  'SMG000123': {name:'Alex', city:'Warsaw, PL', bio:'Coffee, climbing, good playlists.', socials:'Instagram @alex', wechat:'alex_cn', follow:'https://instagram.com/alex', status:'yellow', emoji:'🧗', showPhone:false, phone:'', email:'alex@example.com', blood:'O+', ice:'Maria +48 600 111 222', allergy:'penicillin', showICE:true, interests:'攀岩 · 露营 · 黑胶唱片 · 精酿'},
+  'SMG000456': {name:'Mia',  city:'Berlin, DE', bio:'Designer. Always carrying a bottle.', socials:'LinkedIn /mia', wechat:'', follow:'https://linkedin.com/in/mia', status:'blue', emoji:'🎨', showPhone:false, phone:'', email:'mia@example.com', interests:'插画 · 独立电影 · 手冲咖啡'}
 };
 function getProfile(s){ return DEMO[s] || null; }
 function getClaimed(){ try{return JSON.parse(localStorage.getItem('ssmug_bottle_'+sn)||'null');}catch(e){return null;} }
@@ -188,6 +190,12 @@ function renderProfile(p){
   if(p.wechat){ var w=document.createElement('div');w.className='cert';w.textContent='💬 WeChat '+p.wechat; links.appendChild(w); }
   if(p.email){ var e=document.createElement('div');e.className='cert';e.textContent='✉ '+p.email; links.appendChild(e); }
   if(p.showPhone && p.phone){ var ph=document.createElement('div');ph.className='cert';ph.textContent='📞 '+p.phone; links.appendChild(ph); }
+  /* Interests / 爱好 — chips so a tapper can find a conversation topic */
+  var intr = document.getElementById('pInterests');
+  if(p.interests){
+    intr.style.display='flex'; intr.innerHTML='';
+    ('# '+p.interests).split('·').forEach(function(s){ s=s.trim(); if(s){var d=document.createElement('div');d.className='cert';d.textContent='# '+s; intr.appendChild(d);} });
+  } else { intr.style.display='none'; }
   var fb = document.getElementById('followBtn');
   if(p.follow && /^https?:\/\//i.test(p.follow)){ fb.style.display='inline-block'; fb.href=p.follow; }
   else { fb.style.display='none'; }
@@ -209,6 +217,7 @@ function showClaimForm(p){
     f_email.value=p.email||''; f_socials.value=p.socials||''; f_bio.value=p.bio||'';
     f_emoji.value=p.emoji||'🥤'; f_showphone.checked=!!p.showPhone;
     f_wechat.value=p.wechat||''; f_follow.value=p.follow||'';
+    f_interests.value=p.interests||'';
     if(p.status) f_status.value=p.status;
     f_blood.value=p.blood||''; f_ice.value=p.ice||''; f_allergy.value=p.allergy||'';
     f_showice.checked=!!p.showICE;
@@ -232,7 +241,7 @@ document.getElementById('claimLink').addEventListener('click', function(e){ e.pr
 /* Add to Contacts → download a vCard */
 document.getElementById('addContactBtn').addEventListener('click', function(){
   var p = getClaimed() || getProfile(sn) || {};
-  var note = [p.socials||'', p.wechat?('WeChat '+p.wechat):''].filter(Boolean).join(' · ');
+  var note = [p.socials||'', p.wechat?('WeChat '+p.wechat):'', p.interests?('Into: '+p.interests):''].filter(Boolean).join(' · ');
   var v = [
     'BEGIN:VCARD','VERSION:3.0','N:'+p.name,'FN:'+p.name,
     p.city?('ADR:;;'+p.city+';;;;'):'', p.phone?('TEL;TYPE=CELL:'+p.phone):'',
@@ -262,6 +271,7 @@ document.getElementById('claimForm').addEventListener('submit', function(e){
     bio: f_bio.value.trim(),
     wechat: f_wechat.value.trim(),
     follow: f_follow.value.trim(),
+    interests: f_interests.value.trim(),
     status: f_status.value,
     emoji: f_emoji.value.trim() || '🥤',
     showPhone: f_showphone.checked,
