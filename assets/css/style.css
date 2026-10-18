@@ -148,6 +148,13 @@ footer.site a:hover{color:#fff}
 .ice-row b{color:var(--ink);text-align:right}
 #iceNdef{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg-2);color:var(--ink)}
 
+/* Compatibility / 破冰配对 card */
+.match-card{background:linear-gradient(135deg,#fff,#eef4ff);border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0;text-align:left}
+.match-card h4{margin:0 0 12px;font-size:16px;color:var(--steel-d)}
+.match-row{display:flex;align-items:center;gap:10px;margin:10px 0 4px;font-size:14px;font-weight:600}
+.match-bar{flex:1;height:8px;border-radius:6px;background:#e6ebf2;overflow:hidden}
+.match-bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--steel),var(--steel-l));border-radius:6px}
+
 @media(max-width:900px){
   .grid-3{grid-template-columns:repeat(2,1fr)}
   .stats{grid-template-columns:repeat(2,1fr)}
