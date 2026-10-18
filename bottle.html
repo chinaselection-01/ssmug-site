@@ -57,7 +57,7 @@
         <button class="btn btn-outline" id="sayHiBtn">Say hi</button>
         <a class="btn btn-outline" id="followBtn" style="display:none" target="_blank" rel="noopener">＋ Follow</a>
       </div>
-      <p class="muted" style="font-size:13px;text-align:center;margin-top:14px">Own this bottle? <a href="#" id="claimLink">Claim it here →</a></p>
+      <p class="muted" style="font-size:13px;text-align:center;margin-top:14px">这是你的瓶子？<a href="#" id="claimLink">🔒 编辑资料（需密码）</a></p>
     </div>
 
     <!-- CLAIM FORM (owner sets profile) -->
@@ -99,9 +99,11 @@
         <input type="checkbox" id="f_showice" style="width:auto" checked> <label style="margin:0" for="f_showice">把急救卡（血型+紧急联系人）做成“谁碰都能看”，方便户外救援（推荐）</label>
       </div>
       <div class="field"><label>Avatar emoji</label><input name="emoji" id="f_emoji" maxlength="2" value="🥤" style="width:90px"></div>
+      <div class="field"><label>编辑密码 <span class="muted" style="font-weight:400">（首次设置后，以后修改资料要输这个密码；4–20 位）</span></label><input type="password" name="pwd" id="f_pwd" placeholder="设一个你能记住的密码" autocomplete="new-password"></div>
       <div class="field" style="display:flex;align-items:center;gap:8px">
         <input type="checkbox" id="f_showphone" style="width:auto"> <label style="margin:0" for="f_showphone">Show my phone to people who tap (off = they can only “Say hi”)</label>
       </div>
+      <p class="err" id="claimErr" style="color:#c0392b;font-size:13px;min-height:16px;margin:0 0 8px;text-align:center"></p>
       <button class="btn btn-primary" type="submit" style="width:100%" id="claimBtn">Save my bottle</button>
       <div class="field" id="iceEncodeBox" style="display:none;margin-top:14px">
         <label>离线急救标签内容（无信号也能被读 — 让工厂/自己把这行写进 NFC 标签的 NDEF 文本区）</label>
@@ -114,6 +116,20 @@
 
   </div>
 </section>
+
+<!-- OWNER PASSWORD GATE (edit requires the owner's edit password) -->
+<div class="modal-mask" id="pwdGate">
+  <div class="modal">
+    <h3>🔒 主人验证</h3>
+    <p class="muted" style="margin:0 0 14px">输入编辑密码才能修改这支杯子的资料。<br>只读信息任何人都能看，只有主人能改。</p>
+    <div class="field"><input type="password" id="gatePwd" placeholder="编辑密码" autocomplete="off"></div>
+    <p class="err" id="gateErr" style="color:#c0392b;font-size:13px;min-height:18px;margin:6px 0 0"></p>
+    <div class="btns" style="display:flex;gap:10px;margin-top:8px">
+      <button class="btn btn-primary" id="gateOk" style="flex:1">确认</button>
+      <button class="btn btn-outline" id="gateCancel" style="flex:1">取消</button>
+    </div>
+  </div>
+</div>
 
 <footer class="site" style="margin-top:30px">
   <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
@@ -151,13 +167,15 @@ var DEMO = {
   'SMG000123': {name:'Alex', city:'Warsaw, PL', bio:'Coffee, climbing, good playlists.', socials:'Instagram @alex', wechat:'alex_cn', follow:'https://instagram.com/alex', status:'yellow', emoji:'🧗', showPhone:false, phone:'', email:'alex@example.com', blood:'O+', ice:'Maria +48 600 111 222', allergy:'penicillin', showICE:true, interests:'攀岩 · 露营 · 黑胶唱片 · 精酿', birthday:'1995-04-12', zodiac:'aries', czodiac:'猪'},
   'SMG000456': {name:'Mia',  city:'Berlin, DE', bio:'Designer. Always carrying a bottle.', socials:'LinkedIn /mia', wechat:'', follow:'https://linkedin.com/in/mia', status:'blue', emoji:'🎨', showPhone:false, phone:'', email:'mia@example.com', interests:'插画 · 独立电影 · 手冲咖啡', birthday:'1992-10-05', zodiac:'libra', czodiac:'猴'}
 };
-function getProfile(s){ return DEMO[s] || null; }
+function getProfile(s){ var d=DEMO[s]; if(d){ d=Object.assign({},d); d.isDemo=true; } return d||null; }
 function getClaimed(){ try{return JSON.parse(localStorage.getItem('ssmug_bottle_'+sn)||'null');}catch(e){return null;} }
 
 var profileView = document.getElementById('profileView');
 var claimForm   = document.getElementById('claimForm');
 
 function esc(s){ return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function simpleHash(s){ var h=0; for(var i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; } return 'h'+h.toString(36); }
+var currentIsDemo=false;
 
 var STATUS_LABEL = {
   green:'🟢 开心交友，随便聊',
@@ -246,6 +264,7 @@ function renderMatch(me, them){
 }
 
 function renderProfile(p){
+  currentIsDemo = !!p.isDemo;
   document.getElementById('statusLine').textContent = 'SSMug Social Bottle';
   document.getElementById('titleLine').textContent  = p.name + "'s Bottle";
   document.getElementById('subLine').innerHTML      = 'Serial <code>'+esc(sn)+'</code>';
@@ -319,7 +338,25 @@ function showClaimForm(p){
 })();
 
 /* "Own this bottle? Claim it" link inside the public view */
-document.getElementById('claimLink').addEventListener('click', function(e){ e.preventDefault(); showClaimForm(getClaimed()||getProfile(sn)); });
+document.getElementById('claimLink').addEventListener('click', function(e){ e.preventDefault(); openEditGate(); });
+function openEditGate(){
+  if(currentIsDemo){ alert('这是演示示例资料，无法编辑。请用你自己的杯子序列号测试认领（例如 ?sn=SMG999999）。'); return; }
+  document.getElementById('gatePwd').value='';
+  document.getElementById('gateErr').textContent='';
+  document.getElementById('pwdGate').classList.add('show');
+  setTimeout(function(){ try{document.getElementById('gatePwd').focus();}catch(e){} },50);
+}
+function closeGate(){ document.getElementById('pwdGate').classList.remove('show'); }
+document.getElementById('gateOk').addEventListener('click', function(){
+  var inp=document.getElementById('gatePwd').value;
+  var claimed=getClaimed();
+  if(claimed && claimed.ownerPwd){
+    if(simpleHash(inp)===claimed.ownerPwd){ closeGate(); showClaimForm(claimed); }
+    else { document.getElementById('gateErr').textContent='密码错误，请重试'; }
+  } else { closeGate(); showClaimForm(claimed); }
+});
+document.getElementById('gateCancel').addEventListener('click', closeGate);
+document.getElementById('pwdGate').addEventListener('click', function(e){ if(e.target===this) closeGate(); });
 
 /* Add to Contacts → download a vCard */
 document.getElementById('addContactBtn').addEventListener('click', function(){
@@ -367,7 +404,27 @@ document.getElementById('claimForm').addEventListener('submit', function(e){
     czodiac: (function(){ try{ return f_birthday.value? czodiacFromYear(new Date(f_birthday.value).getFullYear()) : ''; }catch(e){ return ''; } })(),
     sn: sn
   };
-  /* ---- BACKEND HOOK: replace next line with POST to Formspree / your API ---- */
+  /* ---- OWNER PASSWORD: first claim requires a password; later edits may keep it ---- */
+  var existing = getClaimed();
+  var pwdRaw = (f_pwd.value||'').trim();
+  document.getElementById('claimErr').textContent='';
+  if(!existing){
+    if(pwdRaw.length < 4){ document.getElementById('claimErr').textContent='首次认领请设置编辑密码（至少 4 位）'; return; }
+    profile.ownerPwd = simpleHash(pwdRaw);
+  } else {
+    if(pwdRaw){ profile.ownerPwd = simpleHash(pwdRaw); }
+    else { profile.ownerPwd = existing.ownerPwd; }
+  }
+  /* ---- BACKEND HOOK (production, replaces the two localStorage lines below) ----
+     The edit password is now part of `profile.ownerPwd` (hashed client-side here
+     only for demo; in production hash + verify SERVER-SIDE):
+       1) FIRST CLAIM: server must check the sn is not already taken
+          (prevents a stranger from "claiming" someone else's bottle).
+       2) EDIT: POST must include ownerPwd; server verifies it before allowing
+          the write. Without this, anyone who knows the sn could overwrite.
+     Use e.g. Cloudflare Workers (see workers/checkin.js) — never trust the
+     client. Formspree alone CANNOT enforce passwords, so a real API is required.
+     -------------------------------------------------------------------------- */
   localStorage.setItem('ssmug_bottle_'+sn, JSON.stringify(profile));
   localStorage.setItem('ssmug_me', JSON.stringify(profile)); /* viewer's own profile, for compatibility matching */
   /* -------------------------------------------------------------------------- */
