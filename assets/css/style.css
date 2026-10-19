@@ -87,6 +87,7 @@ section{padding:64px 0}
 .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.2s}
 .card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
 .card .ph{aspect-ratio:4/3;background:linear-gradient(135deg,#dfeaf3,#c2d6e8);display:flex;align-items:center;justify-content:center;color:#fff}
+.card .ph-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#eef3f8}
 .card .body{padding:18px}
 .card h3{color:var(--steel-d)}
 .tag{display:inline-block;font-size:12px;background:var(--bg-2);color:var(--steel);padding:3px 10px;border-radius:999px;margin-bottom:8px}
