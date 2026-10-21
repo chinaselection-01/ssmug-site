@@ -68,41 +68,88 @@
     </div>
 
     <!--
-      OPTIONAL: connect a real inbox.
-      1) Sign up at formspree.io, create a form, get an ID.
-      2) Replace action="mailto:..." below with action="https://formspree.io/f/YOUR_ID" method="POST".
-      Until then the form opens the visitor's email app pre-filled.
+      Inquiry form. Delivery is handled by assets/js/inquiry.js:
+        1) fill FORM_CONFIG.web3forms (access key from web3forms.com)  -> best
+        2) or fill FORM_CONFIG.formspree (form id)                    -> alternative
+        3) leave both empty -> the form still works through the visitor's mail app
+      Every inquiry carries a hidden source tag (tiktok / google / email / direct),
+      so you can see which channel produced the lead.
     -->
-    <form class="form-wrap" action="mailto:bob@ssmug.com" method="post" enctype="text/plain">
+    <form class="form-wrap" id="inquiryForm" action="mailto:bob@ssmug.com" method="post" enctype="text/plain">
       <div class="two">
-        <div class="field"><label>Name *</label><input name="name" required></div>
-        <div class="field"><label>Company *</label><input name="company" required></div>
+        <div class="field"><label>Name <span class="req">*</span></label><input name="name" required autocomplete="name"></div>
+        <div class="field"><label>Company <span class="req">*</span></label><input name="company" required autocomplete="organization"></div>
       </div>
       <div class="two">
-        <div class="field"><label>Email *</label><input type="email" name="email" required></div>
-        <div class="field"><label>Country</label><input name="country"></div>
+        <div class="field"><label>Work Email <span class="req">*</span></label><input type="email" name="email" required autocomplete="email" placeholder="you@company.com"></div>
+        <div class="field"><label>Country</label><input name="country" autocomplete="country-name"></div>
       </div>
-      <div class="field"><label>Product of Interest</label>
-        <select name="product">
-          <option>Thermos Flask / Coffee Pot</option>
-          <option>Tumbler / Can Cup</option>
-          <option>Mug / Camp Cup / Beer Stein</option>
-          <option>Plastic Bottle / Cup</option>
-          <option>Lunch Box</option>
-          <option>Custom / Not Sure Yet</option>
-        </select>
+      <div class="two">
+        <div class="field"><label>WhatsApp / Telegram</label><input name="whatsapp" placeholder="+49 170 0000000"></div>
+        <div class="field"><label>Phone</label><input name="phone" placeholder="optional"></div>
       </div>
-      <div class="field"><label>Quantity (pcs)</label><input name="qty" placeholder="e.g. 3000"></div>
-      <div class="field"><label>Message</label><textarea name="message" placeholder="Target price, customization, logo, deadline..."></textarea></div>
-      <button class="btn btn-primary" type="submit" style="width:100%">Send Inquiry</button>
-      <p class="muted" style="font-size:13px;margin-top:12px;text-align:center">Or email us directly: <a href="mailto:bob@ssmug.com">bob@ssmug.com</a></p>
+      <div class="two">
+        <div class="field"><label>Product of Interest</label>
+          <select name="product">
+            <option>Vacuum Flask / Coffee Pot</option>
+            <option>Tumbler / Can Cup (Stanley shape)</option>
+            <option>Mug / Camp Cup / Beer Stein</option>
+            <option>Plastic Bottle / Cup</option>
+            <option>Lunch Box</option>
+            <option>Kids Bottle / Pet Bottle &amp; Bowl</option>
+            <option>Custom / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="field"><label>Quantity (pcs)</label><input name="qty" placeholder="e.g. 3000"></div>
+      </div>
+      <div class="two">
+        <div class="field"><label>Target Unit Price (USD)</label><input name="target_price" placeholder="optional, e.g. 2.10"></div>
+        <div class="field"><label>Required Delivery Date</label><input name="deadline" placeholder="e.g. 2026-12-20"></div>
+      </div>
+      <div class="field"><label>What do you need customised?</label>
+        <div class="chk-grid">
+          <label class="chk"><input type="checkbox" name="customization" value="Logo printing"> Logo printing</label>
+          <label class="chk"><input type="checkbox" name="customization" value="Colour &amp; finish"> Colour &amp; finish</label>
+          <label class="chk"><input type="checkbox" name="customization" value="Custom packaging"> Custom packaging</label>
+          <label class="chk"><input type="checkbox" name="customization" value="Design from scratch"> Design from scratch</label>
+          <label class="chk"><input type="checkbox" name="customization" value="Certification files"> Certification files (LFGB / FDA / REACH)</label>
+        </div>
+      </div>
+      <div class="field"><label>Message</label><textarea name="message" placeholder="Target market, packaging preference, logo file, MOQ, deadline..."></textarea></div>
+
+      <!-- hidden routing / anti-spam -->
+      <input type="hidden" name="channel" value="">
+      <input type="hidden" name="utm_source" value="">
+      <input type="hidden" name="utm_medium" value="">
+      <input type="hidden" name="utm_campaign" value="">
+      <input type="hidden" name="utm_content" value="">
+      <input type="hidden" name="ref" value="">
+      <input type="hidden" name="referrer" value="">
+      <input type="hidden" name="landing" value="">
+      <input type="hidden" name="page_ts" value="">
+      <div class="hp-field" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+
+      <button class="btn btn-primary" id="submitBtn" type="submit" style="width:100%">Send Inquiry</button>
+      <div id="formStatus" class="form-status" style="display:none"></div>
+      <p class="muted" style="font-size:13px;margin-top:12px;text-align:center">
+        Prefer your own mail app? <a href="mailto:bob@ssmug.com" id="mailFallbackBtn">bob@ssmug.com</a>
+      </p>
     </form>
+
+    <div id="formDone" class="form-done" style="display:none">
+      <div class="done-mark"></div>
+      <h3>Your inquiry is in</h3>
+      <p>We reply within one business day (China time, UTC+8) with price tiers, MOQ, packaging options and available compliance files. Samples can be ready in 5&ndash;7 days.</p>
+      <p class="muted">Channel: <strong data-ch>direct</strong> &middot; Need it faster? Email <a href="mailto:bob@ssmug.com">bob@ssmug.com</a></p>
+      <button class="btn btn-steel" id="againBtn" type="button">Send another inquiry</button>
+    </div>
   </div>
 </section>
 
 <footer class="site">
   <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
 </footer>
+<script src="assets/js/inquiry.js"></script>
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
 var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');

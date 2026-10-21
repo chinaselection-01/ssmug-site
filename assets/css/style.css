@@ -179,3 +179,22 @@ footer.site a:hover{color:#fff}
 .modal h3{margin:0 0 4px}
 .modal .field input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px}
 .modal .btn{margin:0}
+
+/* ---------- Inquiry form (contact page) ---------- */
+.req{color:#c0392b;font-weight:700}
+.chk-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-top:4px}
+.chk{display:flex;align-items:flex-start;gap:8px;font-weight:500;font-size:14px;margin:0;line-height:1.5;cursor:pointer}
+.chk input{width:auto;flex:none;margin-top:2px}
+.hp-field{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.form-status{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:14px;border:1px solid var(--line);background:var(--bg-2);color:var(--ink)}
+.form-status.busy{background:#f4f7fb;border-color:#d7e0ea}
+.form-status.err{background:#fdf1f0;border-color:#f0c8c4;color:#a8332a}
+.form-status.ok{background:#f0f8f2;border-color:#bfe0c9;color:#1f6b38}
+.form-done{max-width:620px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);text-align:center}
+.form-done h3{margin:14px 0 8px;font-size:22px}
+.form-done p{margin:0 auto 10px;max-width:460px;color:var(--gray);line-height:1.6}
+.form-done .done-mark{width:56px;height:56px;margin:0 auto;border-radius:50%;background:#e8f6ec;border:3px solid #2f9e57;position:relative}
+.form-done .done-mark:after{content:"";position:absolute;left:18px;top:12px;width:14px;height:26px;border:solid #2f9e57;border-width:0 4px 4px 0;transform:rotate(42deg)}
+.form-done .btn{margin-top:8px}
+@media(max-width:640px){.chk-grid{grid-template-columns:1fr}}
+
