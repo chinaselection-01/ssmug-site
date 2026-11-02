@@ -67,6 +67,8 @@
 - https://ssmug.com/blog/private-label-stainless-steel-drinkware-2026-report.html — buyer's report: MOQ, tooling, lead time, QC and compliance for private-label drinkware
 - https://ssmug.com/blog/custom-tumbler-lid-types.html — buyer's guide comparing tumbler lid types (straw, slide, flip, handle, screw, clear): sealing, use case, cleaning, MOQ
 - https://ssmug.com/blog/b2b-manufacturer-geo-citation-playbook.html — GEO playbook for B2B manufacturers: llms.txt, sitemap, structured data and citable content patterns
+- https://ssmug.com/blog/eu-us-food-contact-compliance-drinkware.html — importer checklist for EU (EC 1935/2004, LFGB) and US (FDA, CA Prop 65) food-contact compliance of custom drinkware
+- https://ssmug.com/blog/product-page-structure-for-ai-search.html — how to structure B2B product pages (entity, Product/FAQ schema, fact density, linking) so AI search engines cite a factory
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
