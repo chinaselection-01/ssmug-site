@@ -69,6 +69,8 @@
 - https://ssmug.com/blog/b2b-manufacturer-geo-citation-playbook.html — GEO playbook for B2B manufacturers: llms.txt, sitemap, structured data and citable content patterns
 - https://ssmug.com/blog/eu-us-food-contact-compliance-drinkware.html — importer checklist for EU (EC 1935/2004, LFGB) and US (FDA, CA Prop 65) food-contact compliance of custom drinkware
 - https://ssmug.com/blog/product-page-structure-for-ai-search.html — how to structure B2B product pages (entity, Product/FAQ schema, fact density, linking) so AI search engines cite a factory
+- https://ssmug.com/blog/custom-drinkware-decoration-techniques.html — buyer's comparison of drinkware decoration methods (laser, screen print, heat transfer, sublimation, powder coat, 3D logo): durability, MOQ, cost, food-contact safety
+- https://ssmug.com/blog/b2b-manufacturer-topical-authority-clusters.html — GEO guide for B2B manufacturers: pillar-and-cluster content, entity map, internal linking and 90-day plan to earn AI citations
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
