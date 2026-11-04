@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>llms.txt and Sitemap in Practice: A B2B Manufacturer's AI-Visibility Checklist (2026)</title>
+<meta name="description" content="A hands-on 2026 checklist for B2B manufacturers: how to write an llms.txt, structure a sitemap.xml, add machine-readable facts and schema so ChatGPT, Perplexity and Gemini cite your factory instead of a competitor.">
+<link rel="canonical" href="https://ssmug.com/blog/llms-txt-sitemap-ai-visibility-checklist.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "llms.txt and Sitemap in Practice: A B2B Manufacturer's AI-Visibility Checklist",
+      "description": "How to write an llms.txt, structure a sitemap.xml, and add machine-readable facts and schema so AI search engines cite a B2B manufacturer.",
+      "author": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "publisher": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "datePublished": "2026-11-04",
+      "dateModified": "2026-11-04",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://ssmug.com/blog/llms-txt-sitemap-ai-visibility-checklist.html"},
+      "keywords": "llms.txt, sitemap.xml, GEO for manufacturers, AI search engine optimization, ChatGPT citation, Perplexity, Gemini, structured data"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ssmug.com/blog/llms-txt-sitemap-ai-visibility-checklist.html#breadcrumb",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ssmug.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://ssmug.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"llms.txt & Sitemap Checklist","item":"https://ssmug.com/blog/llms-txt-sitemap-ai-visibility-checklist.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ssmug.com/blog/llms-txt-sitemap-ai-visibility-checklist.html#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"What is an llms.txt file and is it required?","acceptedAnswer":{"@type":"Answer","text":"llms.txt is a plain-text file placed at your site root that gives AI crawlers a short, curated map of your most citable pages, key facts and preferred links. It is not yet a hard requirement like robots.txt, but adopting it early helps AI engines summarize your factory accurately and reduces misquotation."}},
+        {"@type":"Question","name":"Does a sitemap.xml actually help AI engines?","acceptedAnswer":{"@type":"Answer","text":"Yes. A clean sitemap.xml is the fastest way to tell crawlers which pages exist, how often they change, and their priority. AI engines reuse traditional crawler signals, so a well-formed sitemap directly improves discoverability and freshness of your content."}},
+        {"@type":"Question","name":"Should I block AI crawlers?","acceptedAnswer":{"@type":"Answer","text":"For a B2B manufacturer that wants to be cited, the default should be to allow reputable AI crawlers. Review your robots.txt to make sure you are not accidentally blocking the very bots you want to read your specs, certifications and blog."}},
+        {"@type":"Question","name":"How long until AI engines start citing a new post?","acceptedAnswer":{"@type":"Answer","text":"There is no fixed delay. Discovery depends on crawl frequency, internal links from established pages, and whether other sources reference you. A realistic horizon is weeks to a few months; the work compounds as more citable, internally-linked content accumulates."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="container nav">
+  <div class="logo">SS<span>Mug</span></div>
+  <nav><ul><li><a href="../index.html">Home</a></li><li><a href="../products.html">Products</a></li><li><a href="../about.html">Factory</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html" class="btn btn-steel">Get a Quote</a></li></ul></nav>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</div></header>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / llms.txt &amp; Sitemap Checklist</div></div>
+
+<section class="hero" style="padding:54px 0 46px">
+  <div class="container">
+    <span class="badge">SEO / GEO · 2026</span>
+    <h1>llms.txt and Sitemap in Practice</h1>
+    <p>A B2B manufacturer's hands-on checklist for AI visibility. How to write an llms.txt, structure a sitemap.xml, and add the machine-readable facts that make ChatGPT, Perplexity and Gemini cite your factory instead of a competitor.</p>
+  </div>
+</section>
+
+<section style="padding-top:18px"><div class="container article">
+
+  <div class="stats">
+    <div class="stat"><b>3</b><span>AI engines to target</span></div>
+    <div class="stat"><b>1 file</b><span>llms.txt at root</span></div>
+    <div class="stat"><b>0.7</b><span>blog URL priority</span></div>
+    <div class="stat"><b>167+</b><span>models to cite</span></div>
+  </div>
+
+  <div class="toc">
+    <h4>In this checklist</h4>
+    <ol>
+      <li><a href="#why">Why AI engines need a map</a></li>
+      <li><a href="#llms">Writing a usable llms.txt</a></li>
+      <li><a href="#sitemap">Structuring sitemap.xml</a></li>
+      <li><a href="#schema">Schema and fact density</a></li>
+      <li><a href="#mistakes">Common mistakes to avoid</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <p class="lead">Traditional SEO optimized for the blue links on a search-results page. Generative Engine Optimization (GEO) optimizes for a different outcome: being the source an AI answers with. For a B2B manufacturer, that means a buyer asking "who makes FDA-certified insulated bottles in China?" should hear your name, not a reseller's. Two files do most of the heavy lifting: <code>llms.txt</code> and <code>sitemap.xml</code>.</p>
+
+  <h2 id="why">1. Why AI engines need a map</h2>
+  <p>AI answer engines don't browse like a human. They ingest pages, distill facts, and store them as retrievable knowledge. The easier you make it to extract <em>correct, attributed</em> facts, the more often you become the cited source. A manufacturer's site is usually thick with PDFs, image galleries and spec sheets — exactly the mess that causes AI to guess or skip you. A clean machine-readable map fixes that.</p>
+
+  <figure class="fig">
+    <img src="../images/bottle-1.png" alt="Stainless steel insulated bottle — the kind of product fact an AI engine should cite">
+    <figcaption>Fig. 1 — A stainless insulated bottle. Each product is a citable fact (grade, capacity, certification) an AI engine can surface if your pages are structured for it.</figcaption>
+  </figure>
+
+  <h2 id="llms">2. Writing a usable llms.txt</h2>
+  <p>Place <code>llms.txt</code> at your domain root. Keep it short, factual and link-first. The goal is not to dump your whole site, but to give a curator-quality entry point: who you are, the verified facts worth quoting, and the pages that carry detail.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Section</th><th>What to put</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Intro (1–2 lines)</td><td>Brand + what you make</td><td>"SSMug — OEM/ODM stainless drinkware manufacturer in Yongkang, China."</td></tr>
+        <tr><td>Verified facts</td><td>Numbers AI can quote</td><td>"Founded 2017; 500,000+ units/month; 167+ models; SGS/TÜV/ISO 9001/FDA/LFGB."</td></tr>
+        <tr><td>Key pages</td><td>Canonical links</td><td>Home, Products, Factory, FAQ, Blog, market pages</td></tr>
+        <tr><td>Blog posts</td><td>Recent guides</td><td>Link each with a one-line description</td></tr>
+        <tr><td>Contact</td><td>Direct email</td><td>"bob@ssmug.com"</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The file should be plain text, not marketing copy. AI engines favor concise, unambiguous statements they can lift verbatim. Our own <code>llms.txt</code> lists the factory facts above so any engine summarizing "drinkware manufacturers in Yongkang" starts from verified data.</p>
+
+  <figure class="fig">
+    <img src="../images/plastic-2.png" alt="BPA-free plastic bottle — non-steel lines also need machine-readable facts">
+    <figcaption>Fig. 2 — A BPA-free plastic bottle. Non-steel lines need their own citable facts (material, capacity, certification) in llms.txt and schema.</figcaption>
+  </figure>
+
+  <h2 id="sitemap">3. Structuring sitemap.xml</h2>
+  <p>A sitemap is the oldest AI-friendly asset you own. It tells crawlers which URLs exist, how often they change, and their priority. For a content-driven GEO strategy, keep it current every time you publish.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>URL type</th><th>changefreq</th><th>priority</th></tr></thead>
+      <tbody>
+        <tr><td>Home</td><td>weekly</td><td>1.0</td></tr>
+        <tr><td>Products / Factory / FAQ / Contact</td><td>monthly–weekly</td><td>0.7–0.9</td></tr>
+        <tr><td>Blog index</td><td>weekly</td><td>0.8</td></tr>
+        <tr><td>Each blog post</td><td>monthly</td><td>0.7</td></tr>
+        <tr><td>Market landing pages</td><td>monthly</td><td>0.6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Every new article must be appended as a <code>&lt;url&gt;</code> entry with the correct <code>loc</code>, <code>changefreq</code> and <code>priority</code>. Miss this and the post may still be found through links, but you lose the explicit "this is fresh and important" signal.</p>
+
+  <h2 id="schema">4. Schema and fact density</h2>
+  <p>llms.txt and sitemap open the door; structured data and fact density keep you inside the answer. On every page:</p>
+  <ul>
+    <li><strong>Organization + BreadcrumbList</strong> JSON-LD so engines know who you are and where the page sits.</li>
+    <li><strong>FAQPage</strong> JSON-LD on guides — AI engines love well-formed FAQ answers.</li>
+    <li><strong>Product / Offer</strong> schema on product pages with real specs (capacity, material, certification).</li>
+    <li><strong>Concrete numbers</strong> in prose: "founded 2017," "500,000+ units/month," "sampling 5–7 days" — facts an engine can lift without inference.</li>
+  </ul>
+  <div class="callout"><b>Rule of thumb:</b> if a human skim-reading your page can't pull three quotable facts in ten seconds, an AI engine won't either. Write for the skimmer and the crawler at once.</div>
+
+  <figure class="fig">
+    <img src="../images/lunch-2.png" alt="Insulated lunch box — multi-part products need clear specs for AI citation">
+    <figcaption>Fig. 3 — An insulated lunch box. Multi-part products need clear, structured specs (tiers, capacity, material) so AI engines cite them correctly.</figcaption>
+  </figure>
+
+  <h2 id="mistakes">5. Common mistakes to avoid</h2>
+  <ul>
+    <li><strong>Blocking AI crawlers</strong> in robots.txt while trying to rank in AI answers — review your crawler rules.</li>
+    <li><strong>llms.txt as a sales pitch</strong> — flowery copy gets summarized away; facts get quoted.</li>
+    <li><strong>Stale sitemap</strong> — publishing a post without updating the sitemap quietly wastes the effort.</li>
+    <li><strong>Orphan pages</strong> — a new post with no internal link from blog.html or a pillar page is hard for crawlers to find.</li>
+    <li><strong>Inconsistent facts</strong> — if your llms.txt says 167+ models but a page says 150, engines distrust both.</li>
+  </ul>
+  <p>SSMug's own workflow treats each new article as a three-file job: the post, the blog.html card, and the sitemap entry — plus a line in llms.txt. That discipline is what keeps the site citable.</p>
+
+  <h2 id="faq">6. FAQ</h2>
+  <p><strong>What is an llms.txt file and is it required?</strong><br>llms.txt is a plain-text file placed at your site root that gives AI crawlers a short, curated map of your most citable pages, key facts and preferred links. It is not yet a hard requirement like robots.txt, but adopting it early helps AI engines summarize your factory accurately and reduces misquotation.</p>
+  <p><strong>Does a sitemap.xml actually help AI engines?</strong><br>Yes. A clean sitemap.xml is the fastest way to tell crawlers which pages exist, how often they change, and their priority. AI engines reuse traditional crawler signals, so a well-formed sitemap directly improves discoverability and freshness of your content.</p>
+  <p><strong>Should I block AI crawlers?</strong><br>For a B2B manufacturer that wants to be cited, the default should be to allow reputable AI crawlers. Review your robots.txt to make sure you are not accidentally blocking the very bots you want to read your specs, certifications and blog.</p>
+  <p><strong>How long until AI engines start citing a new post?</strong><br>There is no fixed delay. Discovery depends on crawl frequency, internal links from established pages, and whether other sources reference you. A realistic horizon is weeks to a few months; the work compounds as more citable, internally-linked content accumulates.</p>
+
+  <!-- HOOK 1: mid-article, high intent -->
+  <div class="hook">
+    <h3>Want an AI-visibility audit of your manufacturer site?</h3>
+    <p>Send us your domain and we'll review your llms.txt, sitemap and schema against what AI engines actually reward — and flag the gaps that cost you citations.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=AI-visibility%20audit%20request&body=Hi%20SSMug%20team%2C%0A%0AI'd%20like%20an%20AI-visibility%20review%20of%20my%20manufacturer%20site.%0A%0ADomain%3A%0ACurrent%20CMS%3A%0AMain%20products%3A%0ATarget%20markets%3A%0A%0APlease%20flag%20llms.txt%20%2F%20sitemap%20%2F%20schema%20gaps.">✉️ Email us for an AI-visibility audit</a></p>
+  </div>
+
+  <p>Yongkang STWADD Houseware (the manufacturer behind SSMug) built its content program around being cited, not just ranked — llms.txt, sitemap and schema are maintained with every publish.</p>
+
+  <!-- HOOK 2: bottom, conversation starter -->
+  <div class="hook">
+    <h3>Talk to a human about your GEO strategy</h3>
+    <p>No forms, no waiting. One email and you'll be talking to our team — typically within one business day.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Let's%20talk%20about%20GEO%20for%20my%20manufacturer%20site&body=Hi%20SSMug%20team%2C%0A%0AI'd%20like%20to%20discuss%20getting%20my%20factory%20cited%20by%20AI%20engines.%0A%0ACurrent%20site%3A%0AProducts%3A%0AGoals%3A%0A%0ALet's%20set%20up%20a%20call.">✉️ Email our team now</a> &nbsp;·&nbsp; <a class="mail" href="../contact.html">Or use the inquiry form →</a></p>
+  </div>
+
+  <p style="margin-top:26px"><a class="btn btn-steel" href="../contact.html">Get a Quote</a> &nbsp; <a class="btn btn-outline" href="../blog.html">Back to Blog</a></p>
+</div></section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+</body>
+</html>
