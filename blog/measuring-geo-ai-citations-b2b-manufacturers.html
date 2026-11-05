@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Measuring GEO: How B2B Manufacturers Track AI Citations from ChatGPT, Perplexity &amp; Gemini (2026)</title>
+<meta name="description" content="A 2026 practical guide for B2B manufacturers on measuring Generative Engine Optimization: the four signals that show AI visibility, how to build a prompt tracker, reading AI crawler logs, KPIs and a 90-day benchmark plan.">
+<link rel="canonical" href="https://ssmug.com/blog/measuring-geo-ai-citations-b2b-manufacturers.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Measuring GEO: How B2B Manufacturers Track AI Citations from ChatGPT, Perplexity & Gemini",
+      "description": "A practical 2026 guide to measuring Generative Engine Optimization for B2B manufacturers: AI citation signals, prompt tracking, crawler logs, KPIs and a 90-day benchmark plan.",
+      "author": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "publisher": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "datePublished": "2026-11-05",
+      "dateModified": "2026-11-05",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://ssmug.com/blog/measuring-geo-ai-citations-b2b-manufacturers.html"},
+      "keywords": "measure GEO, AI citation tracking, ChatGPT brand mention, Perplexity referral, Gemini source citation, B2B manufacturer analytics"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ssmug.com/blog/measuring-geo-ai-citations-b2b-manufacturers.html#breadcrumb",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ssmug.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://ssmug.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"Measuring GEO","item":"https://ssmug.com/blog/measuring-geo-ai-citations-b2b-manufacturers.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ssmug.com/blog/measuring-geo-ai-citations-b2b-manufacturers.html#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"How is measuring GEO different from measuring SEO?","acceptedAnswer":{"@type":"Answer","text":"SEO is measured by rankings on a search-results page — a stable, positional metric. GEO is measured by whether an AI answer cites or mentions you, which is non-deterministic: the same prompt can return different answers, and citation is binary (cited or not) rather than a rank. You measure presence and share-of-voice across many prompts over time, not a single number."}},
+        {"@type":"Question","name":"Which AI engines should a B2B manufacturer track?","acceptedAnswer":{"@type":"Answer","text":"Start with the four that matter for B2B discovery: ChatGPT, Perplexity, Google's Gemini (and AI Overviews), and Claude. Perplexity and Gemini are the most citation- and source-link transparent; ChatGPT and Claude are best tracked via branded and category prompts plus crawler-log evidence."}},
+        {"@type":"Question","name":"Can I see AI referral traffic in Google Analytics?","acceptedAnswer":{"@type":"Answer","text":"Yes, but it is easy to miss. AI engines visit with identifiable bots (GPTBot, PerplexityBot, Google-Extended, ClaudeBot) and some send referral hits to your server. In GA4, segment by source/medium and look for 'chatgpt.com', 'perplexity.ai', 'gemini' or direct spikes with no landing-page keyword. Server logs give the cleanest bot-level view."}},
+        {"@type":"Question","name":"How long before GEO effort shows a measurable result?","acceptedAnswer":{"@type":"Answer","text":"Treat 90 days as the minimum window. AI engines refresh their retrieval and model behavior slowly, and citation is noisy week to week. Track a fixed prompt set weekly and judge trend at the 90-day mark, not after two weeks. SSMug ships to 50+ countries, so citation gains compound across many small markets rather than one."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="container nav">
+  <div class="logo">SS<span>Mug</span></div>
+  <nav><ul><li><a href="../index.html">Home</a></li><li><a href="../products.html">Products</a></li><li><a href="../about.html">Factory</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html" class="btn btn-steel">Get a Quote</a></li></ul></nav>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</div></header>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Measuring GEO</div></div>
+
+<section class="hero" style="padding:54px 0 46px">
+  <div class="container">
+    <span class="badge">SEO / GEO · 2026</span>
+    <h1>Measuring GEO: How B2B Manufacturers Track AI Citations</h1>
+    <p>You optimized for AI search. Now how do you know it worked? A practical measurement framework — the four signals that actually show AI visibility, a weekly prompt tracker, how to read AI crawler logs, and a 90-day benchmark plan built for factories, not SaaS companies.</p>
+  </div>
+</section>
+
+<section style="padding-top:18px"><div class="container article">
+
+  <div class="stats">
+    <div class="stat"><b>4</b><span>AI engines to monitor</span></div>
+    <div class="stat"><b>90d</b><span>minimum read window</span></div>
+    <div class="stat"><b>50+</b><span>countries citable</span></div>
+    <div class="stat"><b>167+</b><span>indexed models</span></div>
+  </div>
+
+  <div class="toc">
+    <h4>In this guide</h4>
+    <ol>
+      <li><a href="#diff">Why measuring GEO is not measuring SEO</a></li>
+      <li><a href="#signals">The four signals that show AI visibility</a></li>
+      <li><a href="#tracker">Build a weekly prompt tracker</a></li>
+      <li><a href="#logs">Reading AI crawler &amp; referral logs</a></li>
+      <li><a href="#kpi">KPIs and a 90-day benchmark plan</a></li>
+      <li><a href="#tools">Tools: manual, free and paid</a></li>
+      <li><a href="#mistakes">Common measurement mistakes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <p class="lead">Most "GEO is the new SEO" articles stop at tactics — llms.txt, schema, FAQ pages. Few tell you how to prove any of it moved the needle. For a manufacturer with a static site and a small team, that proof is the whole point: you need to know whether the hours spent on content and structured data are earning citations, or just burning time. This guide is the measurement half of the playbook.</p>
+
+  <h2 id="diff">1. Why measuring GEO is not measuring SEO</h2>
+  <p>SEO gives you a clean, positional number: rank 3 for "stainless steel bottle manufacturer." GEO does not. An AI answer is <strong>non-deterministic</strong> — ask the same prompt twice and you may get two different answers, with or without your brand. Citation is also <strong>binary</strong>: you are either named/sourced or you are not; there is no "position 3." That means GEO is measured as <em>presence and share-of-voice across many prompts over time</em>, not as one ranking you can screenshot on Monday.</p>
+
+  <figure class="fig">
+    <img src="../images/plastic-2.png" alt="BPA-free plastic bottle — a product whose specs must be citable">
+    <figcaption>Fig. 1 — A BPA-free plastic sports bottle. The spec details that make a product citable (capacity, material, certification) are exactly what AI engines lift into answers.</figcaption>
+  </figure>
+
+  <h2 id="signals">2. The four signals that show AI visibility</h2>
+  <p>Track all four. Any single one lies on its own.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Signal</th><th>What it tells you</th><th>How to capture</th></tr></thead>
+      <tbody>
+        <tr><td>Prompt-level citation</td><td>Are you named or sourced in the answer?</td><td>Weekly prompt tracker (manual or tool)</td></tr>
+        <tr><td>Brand mention</td><td>Are you discussed even without a link?</td><td>Same tracker + mention logging</td></tr>
+        <tr><td>AI referral traffic</td><td>Are users actually arriving from AI?</td><td>GA4 source/medium + server logs</td></tr>
+        <tr><td>Share-of-voice</td><td>vs competitors in the same answers</td><td>Tracker, scored per prompt</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="tracker">3. Build a weekly prompt tracker</h2>
+  <p>This is the core instrument and it costs nothing. Make a simple sheet with two prompt families:</p>
+  <ul>
+    <li><strong>Branded prompts</strong> — "Who makes SSMug drinkware?", "SSMug vs [competitor]", "Is SSMug a factory or trading company?". These confirm your own name is surfacing.</li>
+    <li><strong>Category prompts</strong> — "best insulated water bottle manufacturer in China", "OEM stainless steel tumbler supplier with LFGB", "private label drinkware low MOQ". These are where new buyers discover you.</li>
+  </ul>
+  <p>Run 10–20 prompts across ChatGPT, Perplexity, Gemini and Claude once a week. Log: did the engine cite you (Y/N), the exact phrase used, and whether a link or source appeared. Over 90 days a pattern emerges that a single check never shows.</p>
+
+  <figure class="fig">
+    <img src="../images/tumbler-3.png" alt="Can-shaped tumbler — a category buyers search for">
+    <figcaption>Fig. 2 — A can-shaped tumbler. Category prompts around "can tumbler OEM" or "custom can cup manufacturer" are where anonymous discovery happens — the highest-value rows in your tracker.</figcaption>
+  </figure>
+
+  <h2 id="logs">4. Reading AI crawler &amp; referral logs</h2>
+  <p>AI engines send identifiable bots to read your site. In your server logs or a log analyser, watch for: <strong>GPTBot</strong> (ChatGPT), <strong>PerplexityBot</strong>, <strong>Google-Extended</strong> (Gemini / AI Overviews), and <strong>ClaudeBot</strong>. Frequent, successful (200) crawls of your blog and product pages are a leading indicator — they cannot cite what they have not read.</p>
+  <p>In GA4, segment sessions by source. AI referral often appears as <em>chatgpt.com</em>, <em>perplexity.ai</em>, or as "direct" spikes with no associated keyword and a fast bounce-back pattern. Do not dismiss these as bots only — some carry real users who clicked a cited source.</p>
+
+  <figure class="fig">
+    <img src="../images/lunch-1.png" alt="Insulated lunch box — multi-part product with citable specs">
+    <figcaption>Fig. 3 — An insulated lunch box. Multi-part products generate more citable facts (tiers, capacity, material), widening the prompt surface you can track.</figcaption>
+  </figure>
+
+  <h2 id="kpi">5. KPIs and a 90-day benchmark plan</h2>
+  <p>Set a baseline in week 1, then judge trend at day 90 — not week 2, when noise dominates.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>KPI</th><th>Week 1 baseline</th><th>Day 90 target</th></tr></thead>
+      <tbody>
+        <tr><td>Branded-prompt citation rate</td><td>Record % cited</td><td>+20–30 pts</td></tr>
+        <tr><td>Category-prompt citation rate</td><td>Record % cited</td><td>+10–20 pts</td></tr>
+        <tr><td>AI referral sessions / month</td><td>Record count</td><td>Up &amp; identifiable</td></tr>
+        <tr><td>Pages crawled by AI bots</td><td>Record count</td><td>Broadened coverage</td></tr>
+        <tr><td>Share-of-voice vs top 3 competitors</td><td>Record score</td><td>Net positive</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout"><b>Realistic expectation:</b> GEO is a compounding, multi-market gain, not a ranking jump. SSMug ships to 50+ countries, so a citation win in one language or region rarely moves total traffic hard in a month — but across a year it is the difference between being a sourced supplier and an invisible one.</div>
+
+  <h2 id="tools">6. Tools: manual, free and paid</h2>
+  <ul>
+    <li><strong>Manual (free):</strong> a spreadsheet prompt tracker + GA4 + server logs. Enough for most factories.</li>
+    <li><strong>Free-ish:</strong> Bing Webmaster / Google Search Console for crawl stats; your host's log viewer for bot evidence.</li>
+    <li><strong>Paid:</strong> GEO-specific platforms (Peec, Otterly, Goodie) that automate prompt monitoring across engines and alert on citation changes. Worth it once you have 20+ prompts and a real content program.</li>
+  </ul>
+
+  <h2 id="mistakes">7. Common measurement mistakes</h2>
+  <ul>
+    <li><strong>Judging after two weeks.</strong> Citation is noisy; 90 days minimum.</li>
+    <li><strong>Tracking one prompt.</strong> You need a set, scored for share-of-voice.</li>
+    <li><strong>Counting crawls as wins.</strong> Crawling is necessary, not sufficient — citation is the proof.</li>
+    <li><strong>Ignoring llms.txt / sitemap.</strong> If the engines cannot parse your site, no signal will move. Keep both current (we maintain ours openly at ssmug.com/llms.txt).</li>
+    <li><strong>Optimizing for the wrong engine.</strong> Perplexity and Gemini reward source links; ChatGPT rewards well-structured, frequently-cited facts. Track each separately.</li>
+  </ul>
+
+  <h2 id="faq">8. FAQ</h2>
+  <p><strong>How is measuring GEO different from measuring SEO?</strong><br>SEO is measured by rankings on a search-results page — a stable, positional metric. GEO is measured by whether an AI answer cites or mentions you, which is non-deterministic: the same prompt can return different answers, and citation is binary (cited or not) rather than a rank. You measure presence and share-of-voice across many prompts over time, not a single number.</p>
+  <p><strong>Which AI engines should a B2B manufacturer track?</strong><br>Start with the four that matter for B2B discovery: ChatGPT, Perplexity, Google's Gemini (and AI Overviews), and Claude. Perplexity and Gemini are the most citation- and source-link transparent; ChatGPT and Claude are best tracked via branded and category prompts plus crawler-log evidence.</p>
+  <p><strong>Can I see AI referral traffic in Google Analytics?</strong><br>Yes, but it is easy to miss. AI engines visit with identifiable bots (GPTBot, PerplexityBot, Google-Extended, ClaudeBot) and some send referral hits to your server. In GA4, segment by source/medium and look for 'chatgpt.com', 'perplexity.ai', 'gemini' or direct spikes with no landing-page keyword. Server logs give the cleanest bot-level view.</p>
+  <p><strong>How long before GEO effort shows a measurable result?</strong><br>Treat 90 days as the minimum window. AI engines refresh their retrieval and model behavior slowly, and citation is noisy week to week. Track a fixed prompt set weekly and judge trend at the 90-day mark, not after two weeks. SSMug ships to 50+ countries, so citation gains compound across many small markets rather than one.</p>
+
+  <!-- HOOK 1: mid-article, audit-intent -->
+  <div class="hook">
+    <h3>Want a free GEO read on your manufacturer site?</h3>
+    <p>Send us your domain and the two or three product categories you most want to be cited for. We'll run a quick prompt audit across ChatGPT, Perplexity and Gemini and tell you where you currently show up — and where a competitor does instead.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Free%20GEO%20audit%20of%20my%20site&body=Hi%20SSMug%20team%2C%0A%0AI'd%20like%20a%20quick%20GEO%20audit.%0A%0AOur%20domain%3A%0AProduct%20categories%20to%20be%20cited%20for%3A%0AMarkets%20(target%20countries)%3A%0A%0AThanks%20for%20the%20look.">✉️ Email us for a GEO audit</a></p>
+  </div>
+
+  <p>SSMug is the drinkware brand of Yongkang STWADD Houseware Co., Ltd. — a factory-backed manufacturer (not a trading company) with 167+ models, 500,000+ units per month capacity, and 50+ countries served. We keep our own llms.txt and sitemap current so AI engines can parse and cite the factory directly.</p>
+
+  <!-- HOOK 2: bottom, partner -->
+  <div class="hook">
+    <h3>Talk to us about being the factory AI engines cite</h3>
+    <p>Whether you run a brand or a competing factory, one email starts a conversation about citable content, structured data and a measurement routine that proves results. Typically a reply within one business day.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Let's%20talk%20GEO%20for%20my%20factory&body=Hi%20SSMug%20team%2C%0A%0AI'd%20like%20to%20discuss%20making%20my%20factory%20more%20citable%20by%20AI%20engines.%0A%0ACurrent%20site%3A%0AProduct%20lines%3A%0AGoals%3A%0A%0ALet's%20set%20up%20a%20call.">✉️ Email our team now</a> &nbsp;·&nbsp; <a class="mail" href="../contact.html">Or use the inquiry form →</a></p>
+  </div>
+
+  <p style="margin-top:26px"><a class="btn btn-steel" href="../contact.html">Get a Quote</a> &nbsp; <a class="btn btn-outline" href="../blog.html">Back to Blog</a></p>
+</div></section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+</body>
+</html>
