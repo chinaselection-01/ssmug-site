@@ -68,12 +68,11 @@ header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);ba
 .hero p{color:#c7ccd2;font-size:18px;max-width:560px;margin-bottom:32px}
 .hero .btns{display:flex;gap:16px;flex-wrap:wrap}
 .hero .visual{position:relative;aspect-ratio:1/1;border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);background:#fff}
-.hero .visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:heroCycle 20s infinite}
+.hero .visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:heroCycle 16s infinite}
 .hero .visual img:first-child{opacity:1}
 .hero .visual img:nth-child(2){animation-delay:4s}
 .hero .visual img:nth-child(3){animation-delay:8s}
 .hero .visual img:nth-child(4){animation-delay:12s}
-.hero .visual img:nth-child(5){animation-delay:16s}
 @keyframes heroCycle{0%{opacity:0}1.5%{opacity:1}24%{opacity:1}25.5%{opacity:0}100%{opacity:0}}
 
 /* Stats — restrained, hairline divided, no hype card */
