@@ -75,6 +75,8 @@
 - https://ssmug.com/blog/llms-txt-sitemap-ai-visibility-checklist.html — practical GEO checklist for B2B manufacturers: how to write llms.txt, structure sitemap.xml and add schema so AI engines cite a factory
 - https://ssmug.com/blog/vacuum-insulation-performance-standards.html — buyer's guide to vacuum-insulated drinkware performance: 95°C heat-retention test, typical retention by product type, PO spec and batch verification
 - https://ssmug.com/blog/measuring-geo-ai-citations-b2b-manufacturers.html — how B2B manufacturers measure GEO: AI citation signals, weekly prompt tracker, crawler logs, KPIs and a 90-day benchmark plan
+- https://ssmug.com/blog/mixed-container-consolidation-drinkware-importers.html — buyer's guide to mixed-container consolidation for drinkware importers: container types, FCL vs LCL crossover, cube-vs-weight planning and packing
+- https://ssmug.com/blog/entity-optimization-b2b-manufacturers.html — GEO guide for B2B manufacturers: what an entity is, why AI engines cite entities, the four entity signals and a 60-day plan to become a citable entity
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
