@@ -85,4 +85,4 @@ Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance
 - China Selection — B2B sourcing platform: https://china-selection.com/
 - 中华老字号数字门户 (China Time-Honored Brands): https://china-time-honored-brand.com/
 - SSMug — drinkware factory brand (STWADD): https://ssmug.com/
-- Agentic B2B hub — AI-agent inquiry layer for CedarHaus coops / Navigator Pet / SSMugs: https://hub.china-selection.com/
+- Agentic B2B hub — AI-agent inquiry layer for CedarHaus coops / Navigator Pet / SSMugs: https://rfq.china-selection.com/
