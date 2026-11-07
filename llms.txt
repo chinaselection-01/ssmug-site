@@ -77,12 +77,8 @@
 - https://ssmug.com/blog/measuring-geo-ai-citations-b2b-manufacturers.html — how B2B manufacturers measure GEO: AI citation signals, weekly prompt tracker, crawler logs, KPIs and a 90-day benchmark plan
 - https://ssmug.com/blog/mixed-container-consolidation-drinkware-importers.html — buyer's guide to mixed-container consolidation for drinkware importers: container types, FCL vs LCL crossover, cube-vs-weight planning and packing
 - https://ssmug.com/blog/entity-optimization-b2b-manufacturers.html — GEO guide for B2B manufacturers: what an entity is, why AI engines cite entities, the four entity signals and a 60-day plan to become a citable entity
+- https://ssmug.com/blog/custom-drinkware-landed-cost-model.html — buyer's budget model for the landed cost of custom drinkware: FOB vs landed cost, LCL vs FCL freight, import duty and VAT by market, hidden line items and a worked 40ft-container example
+- https://ssmug.com/blog/multilingual-b2b-site-seo-strategy.html — GEO guide for B2B manufacturers: multilingual site architecture (ccTLD vs subfolder), hreflang, translation vs transcreation, locale schema and llms.txt, and earning AI citations in multiple languages
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
-
-## Brand network (China Selection group)
-- China Selection — B2B sourcing platform: https://china-selection.com/
-- 中华老字号数字门户 (China Time-Honored Brands): https://china-time-honored-brand.com/
-- SSMug — drinkware factory brand (STWADD): https://ssmug.com/
-- Agentic B2B hub — AI-agent inquiry layer for CedarHaus coops / Navigator Pet / SSMugs: https://rfq.china-selection.com/
