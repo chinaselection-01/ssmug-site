@@ -79,6 +79,8 @@
 - https://ssmug.com/blog/entity-optimization-b2b-manufacturers.html — GEO guide for B2B manufacturers: what an entity is, why AI engines cite entities, the four entity signals and a 60-day plan to become a citable entity
 - https://ssmug.com/blog/custom-drinkware-landed-cost-model.html — buyer's budget model for the landed cost of custom drinkware: FOB vs landed cost, LCL vs FCL freight, import duty and VAT by market, hidden line items and a worked 40ft-container example
 - https://ssmug.com/blog/multilingual-b2b-site-seo-strategy.html — GEO guide for B2B manufacturers: multilingual site architecture (ccTLD vs subfolder), hreflang, translation vs transcreation, locale schema and llms.txt, and earning AI citations in multiple languages
+- https://ssmug.com/blog/vetting-drinkware-factory-before-deposit.html — buyer's due-diligence checklist for importers: verify a real factory, confirm capacity, check certificates, run a sample test, and spot red flags before paying a deposit
+- https://ssmug.com/blog/digital-pr-earned-citations-manufacturers.html — GEO guide for B2B manufacturers: why on-site SEO is not enough, how AI engines use external sources, and off-site digital-PR tactics that earn the citations AI engines quote
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
