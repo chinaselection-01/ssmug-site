@@ -87,6 +87,8 @@
 - https://ssmug.com/blog/eeat-manufacturers-ai-citations.html — GEO guide for B2B manufacturers: what E-E-A-T (Experience, Expertise, Authoritativeness, Trust) means for a factory, the on-site and off-site signals AI engines cross-check, and a 60-day sprint to become a citable entity
 - https://ssmug.com/blog/drinkware-aql-quality-inspection-checklist.html — buyer's guide: AQL inspection for drinkware importers — what AQL means, sampling plan (ANSI/ASQ Z1.4 Level II), critical/major/minor defect classification, component-by-component checklist, in-house vs third-party and PO integration
 - https://ssmug.com/blog/answer-engine-optimization-b2b-manufacturers.html — GEO guide for B2B manufacturers: AEO vs SEO, how AI answer engines (ChatGPT, Perplexity, Gemini, Copilot) choose what to quote, question-first content structure, citable facts, schema and a 30-day plan
+- https://ssmug.com/blog/custom-drinkware-moq-lead-time-negotiation.html — buyer's guide: negotiating minimum order quantity and lead time on custom drinkware — why factories set a floor, the levers that move MOQ, how to ask for a lower minimum, lead-time anatomy and the price–MOQ–speed trade-off
+- https://ssmug.com/blog/manufacturer-structured-data-schema-cookbook.html — GEO/SEO cookbook for B2B manufacturers: copy-paste JSON-LD for Organization, Product, Offer, FAQPage and BreadcrumbList schema, validation and a deployment checklist
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
