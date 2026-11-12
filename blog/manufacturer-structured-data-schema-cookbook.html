@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Structured-Data Cookbook for Manufacturers: Product, Offer, FAQ &amp; Organization Schema</title>
+<meta name="description" content="A hands-on schema.org cookbook for B2B manufacturers: copy-paste JSON-LD for Organization, Product, Offer, FAQPage and BreadcrumbList, plus how structured data helps ChatGPT, Perplexity and Gemini cite your factory.">
+<link rel="canonical" href="https://ssmug.com/blog/manufacturer-structured-data-schema-cookbook.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Structured-Data Cookbook for Manufacturers: Product, Offer, FAQ & Organization Schema",
+      "description": "A hands-on schema.org cookbook for B2B manufacturers: copy-paste JSON-LD for Organization, Product, Offer, FAQPage and BreadcrumbList, and how structured data helps AI engines cite your factory.",
+      "author": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "publisher": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "datePublished": "2026-11-12",
+      "dateModified": "2026-11-12",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://ssmug.com/blog/manufacturer-structured-data-schema-cookbook.html"},
+      "keywords": "manufacturer structured data, schema.org cookbook, Product schema, FAQ schema, Organization schema, GEO for factories"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ssmug.com/blog/manufacturer-structured-data-schema-cookbook.html#breadcrumb",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ssmug.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://ssmug.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"Structured-Data Cookbook","item":"https://ssmug.com/blog/manufacturer-structured-data-schema-cookbook.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ssmug.com/blog/manufacturer-structured-data-schema-cookbook.html#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"Does adding schema guarantee my factory appears in AI answers?","acceptedAnswer":{"@type":"Answer","text":"No. Schema is a clarity signal, not a ranking bribe. It makes your facts machine-readable so engines can verify and quote them, but the underlying content must be accurate, specific and trustworthy. Treat schema as the label on the jar, not the food inside."}},
+        {"@type":"Question","name":"JSON-LD or microdata for a manufacturer site?","acceptedAnswer":{"@type":"Answer","text":"Use JSON-LD. It lives in a script tag, is easier to maintain, validates cleanly in Google's Rich Results Test, and is the format Google and most AI crawlers expect. Microdata is harder to keep consistent across a large catalog."}},
+        {"@type":"Question","name":"Which schema gives the biggest GEO payoff?","acceptedAnswer":{"@type":"Answer","text":"Organization (your identity + sameAs links) and FAQPage (the questions buyers actually ask) deliver the most reusable value, because they define who you are and answer natural-language queries directly. Product + Offer matter most on individual product pages."}},
+        {"@type":"Question","name":"How do I validate my structured data?","acceptedAnswer":{"@type":"Answer","text":"Use Google's Rich Results Test and the Schema.org validator for syntax, and a JSON parser for raw errors. Then check that the rendered HTML (not just the source) contains the script — client-side rendering that drops the JSON-LD is the most common failure."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="container nav">
+  <div class="logo">SS<span>Mug</span></div>
+  <nav><ul><li><a href="../index.html">Home</a></li><li><a href="../products.html">Products</a></li><li><a href="../about.html">Factory</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html" class="btn btn-steel">Get a Quote</a></li></ul></nav>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</div></header>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Structured-Data Cookbook</div></div>
+
+<section class="hero" style="padding:54px 0 46px">
+  <div class="container">
+    <span class="badge">SEO / GEO · 2026</span>
+    <h1>Structured-Data Cookbook for Manufacturers</h1>
+    <p>Copy-paste JSON-LD for the five schemas every B2B manufacturer site needs — Organization, Product, Offer, FAQPage and BreadcrumbList — and why structured data is the quiet force behind whether ChatGPT, Perplexity and Gemini cite your factory instead of your competitor's.</p>
+  </div>
+</section>
+
+<section style="padding-top:18px"><div class="container article">
+
+  <div class="stats">
+    <div class="stat"><b>5</b><span>core schemas</span></div>
+    <div class="stat"><b>1</b><span>format: JSON-LD</span></div>
+    <div class="stat"><b>50+</b><span>countries served</span></div>
+    <div class="stat"><b>0</b><span>cost to add</span></div>
+  </div>
+
+  <div class="toc">
+    <h4>In this cookbook</h4>
+    <ol>
+      <li><a href="#why">Why structured data drives AI citations</a></li>
+      <li><a href="#five">The five schemas every factory needs</a></li>
+      <li><a href="#org">1 · Organization + sameAs</a></li>
+      <li><a href="#product">2 · Product + Offer</a></li>
+      <li><a href="#faq">3 · FAQPage</a></li>
+      <li><a href="#crumb">4 · BreadcrumbList</a></li>
+      <li><a href="#validate">How to validate and deploy</a></li>
+      <li><a href="#checklist">Deployment checklist</a></li>
+      <li><a href="#faqsec">FAQ</a></li>
+    </ol>
+  </div>
+
+  <p class="lead">Most manufacturer sites publish excellent facts and still get ignored by AI answer engines. The gap is rarely the writing — it is that the facts are buried in prose a machine cannot reliably parse. Structured data is the fix: a standardized label wrapped around your content that tells crawlers exactly what each sentence means. This cookbook gives you the exact JSON-LD to paste, and the reasoning so you do not just copy blindly.</p>
+
+  <h2 id="why">1. Why structured data drives AI citations</h2>
+  <p>Answer engines do not "read" your page the way a person does. They extract entities and facts, then cross-check them against other sources before deciding what to quote. Schema.org markup is the lingua franca of that extraction. When your product page declares a <code>Product</code> with an <code>Offer</code>, an AI engine does not have to guess whether "25–35 days" is a lead time or a warranty period — you told it. The clearer the signal, the more likely your factory becomes the cited entity rather than a footnote.</p>
+
+  <figure class="fig">
+    <img src="../images/bottle-1.png" alt="Insulated stainless steel bottle — a product that benefits from Product + Offer schema">
+    <figcaption>Fig. 1 — A stainless steel bottle. Every product like this on your site should carry Product + Offer schema so engines can quote capacity, material and lead time without guessing.</figcaption>
+  </figure>
+
+  <h2 id="five">2. The five schemas every factory needs</h2>
+  <p>Not every schema helps a manufacturer equally. The table ranks the ones worth your time by the citation value they return.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Schema</th><th>What it tells the engine</th><th>Best placed on</th></tr></thead>
+      <tbody>
+        <tr><td>Organization</td><td>Who you are: legal name, location, certifications, sameAs links</td><td>Every page (or site header)</td></tr>
+        <tr><td>Product + Offer</td><td>What you sell: model, material, MOQ, lead time, price terms</td><td>Product &amp; category pages</td></tr>
+        <tr><td>FAQPage</td><td>The questions buyers ask, with direct answers</td><td>Blog posts, FAQ, product pages</td></tr>
+        <tr><td>BreadcrumbList</td><td>Your site hierarchy and current path</td><td>All inner pages</td></tr>
+        <tr><td>BlogPosting</td><td>Authorship, date, topic of an article</td><td>Blog posts</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="org">3. Organization + sameAs</h2>
+  <p>This is the anchor of your entire entity. It defines your factory as a recognized organization and links it to your other verified profiles (the <code>sameAs</code> array). Consistency of the legal name across these links is what lets an engine merge mentions of "SSMug", "STWADD" and your listings into one entity.</p>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://ssmug.com/#organization",
+  "name": "SSMug",
+  "legalName": "Yongkang STWADD Houseware Co., Ltd.",
+  "url": "https://ssmug.com",
+  "email": "bob@ssmug.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Yongkang",
+    "addressRegion": "Zhejiang",
+    "addressCountry": "CN"
+  },
+  "sameAs": [
+    "https://stwadd.com",
+    "https://www.linkedin.com/company/your-company"
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+  <figure class="fig">
+    <img src="../images/plastic-1.png" alt="BPA-free plastic sports bottle — products that should link back to the Organization entity">
+    <figcaption>Fig. 2 — A BPA-free plastic bottle. Its Product schema should reference the same Organization @id so engines connect the product to the factory that makes it.</figcaption>
+  </figure>
+
+  <h2 id="product">4. Product + Offer</h2>
+  <p>On a product page, declare the item and its commercial terms. Keep numbers as ranges where exact figures vary by inquiry — that is honest and still machine-readable. Reference the Organization @id from section 3 so the product is tied to you.</p>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Insulated Stainless Steel Water Bottle 500ml",
+  "brand": {"@type": "Brand", "name": "SSMug"},
+  "material": "Stainless steel 304",
+  "additionalProperty": [
+    {"@type": "PropertyValue", "name": "Capacity", "value": "500 ml"},
+    {"@type": "PropertyValue", "name": "Lead time", "value": "25-35 days after deposit"}
+  ],
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "Negotiated per inquiry",
+      "minPrice": null,
+      "valueAddedTaxIncluded": false
+    },
+    "availability": "https://schema.org/InStock",
+    "moq": 500,
+    "seller": {"@id": "https://ssmug.com/#organization"}
+  }
+}
+&lt;/script&gt;</code></pre>
+  <div class="callout"><b>Important:</b> never invent a precise price you cannot honor. Use "negotiated per inquiry" or a clearly stated range, and always invite the reader to email for an exact quote. A fabricated number is worse than none — it gets quoted by AI, then contradicted by your competitor, and your trust score drops.</div>
+
+  <h2 id="faq">5. FAQPage</h2>
+  <p>FAQ schema is the highest-leverage block for GEO because answer engines love direct question–answer pairs. Mirror the on-page FAQ exactly (engines compare them), and keep answers self-contained — each answer should make sense read aloud with no surrounding context.</p>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is your drinkware MOQ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For ODM catalog models, MOQ is typically 500-1,000 pcs per SKU; for OEM with a new mold, 1,000-3,000 pcs. Exact figures are confirmed per inquiry."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+  <figure class="fig">
+    <img src="../images/lunch-2.png" alt="Insulated lunch box — a multi-SKU product line that benefits from per-product schema">
+    <figcaption>Fig. 3 — An insulated lunch box. Multi-part products deserve their own Product schema so each SKU is individually citable by AI engines.</figcaption>
+  </figure>
+
+  <h2 id="crumb">6. BreadcrumbList</h2>
+  <p>Breadcrumb schema clarifies your site's structure for both search and answer engines, reinforcing the entity hierarchy (Home → Products → Specific model). It is small but cheap to add site-wide via your template.</p>
+  <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ssmug.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://ssmug.com/products.html"},
+    {"@type": "ListItem", "position": 3, "name": "Water Bottles", "item": "https://ssmug.com/products.html#bottles"}
+  ]
+}
+&lt;/script&gt;</code></pre>
+
+  <h2 id="validate">7. How to validate and deploy</h2>
+  <p>After pasting, confirm three things before you trust the markup:</p>
+  <ul>
+    <li><strong>Valid JSON.</strong> A single trailing comma breaks the whole block. Paste into any JSON parser first.</li>
+    <li><strong>Rendered, not dropped.</strong> If your site renders client-side, the JSON-LD may never reach the crawler. View source of the <em>served</em> HTML, not just your editor.</li>
+    <li><strong>Matches visible content.</strong> Schema that contradicts the page text triggers a trust penalty. The FAQ block must equal the on-page FAQ.</li>
+  </ul>
+  <p>Use Google's Rich Results Test and the Schema.org validator for syntax, and a JSON parser for raw errors. Then check that the rendered HTML contains the script — client-side rendering that drops the JSON-LD is the most common failure.</p>
+
+  <h2 id="checklist">8. Deployment checklist</h2>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Step</th><th>Owner</th><th>Done?</th></tr></thead>
+      <tbody>
+        <tr><td>Add Organization JSON-LD to the site template</td><td>Dev</td><td>☐</td></tr>
+        <tr><td>Add Product + Offer to every product/category page</td><td>Dev + Content</td><td>☐</td></tr>
+        <tr><td>Add FAQPage to posts, FAQ and key product pages</td><td>Content</td><td>☐</td></tr>
+        <tr><td>Add BreadcrumbList to all inner pages</td><td>Dev</td><td>☐</td></tr>
+        <tr><td>Validate JSON + rendered HTML</td><td>Dev</td><td>☐</td></tr>
+        <tr><td>Keep llms.txt + sitemap.xml in sync</td><td>Content</td><td>☐</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Structured data works best as part of a system: pair it with an <code>llms.txt</code> that states your verified company facts, and a <code>sitemap.xml</code> that helps crawlers discover every page. Schema is the per-page label; those two are the site-level map.</p>
+
+  <h2 id="faqsec">9. FAQ</h2>
+  <p><strong>Does adding schema guarantee my factory appears in AI answers?</strong><br>No. Schema is a clarity signal, not a ranking bribe. It makes your facts machine-readable so engines can verify and quote them, but the underlying content must be accurate, specific and trustworthy. Treat schema as the label on the jar, not the food inside.</p>
+  <p><strong>JSON-LD or microdata for a manufacturer site?</strong><br>Use JSON-LD. It lives in a script tag, is easier to maintain, validates cleanly in Google's Rich Results Test, and is the format Google and most AI crawlers expect. Microdata is harder to keep consistent across a large catalog.</p>
+  <p><strong>Which schema gives the biggest GEO payoff?</strong><br>Organization (your identity + sameAs links) and FAQPage (the questions buyers actually ask) deliver the most reusable value, because they define who you are and answer natural-language queries directly. Product + Offer matter most on individual product pages.</p>
+  <p><strong>How do I validate my structured data?</strong><br>Use Google's Rich Results Test and the Schema.org validator for syntax, and a JSON parser for raw errors. Then check that the rendered HTML (not just the source) contains the script — client-side rendering that drops the JSON-LD is the most common failure.</p>
+
+  <!-- HOOK 1: mid-article, high intent -->
+  <div class="hook">
+    <h3>Want us to audit your factory site's structured data?</h3>
+    <p>Send your site URL and we'll review your Organization, Product and FAQ markup against what AI engines expect — and tell you the gaps that are costing you citations. Reply within one business day.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Structured%20data%20audit%20for%20my%20factory%20site&body=Hi%20SSMug%20team%2C%0A%0ACan%20you%20audit%20the%20structured%20data%20on%20my%20site%3F%0A%0ASite%20URL%3A%0ACurrent%20CMS%20%2F%20platform%3A%0APages%20to%20prioritize%3A%0A%0AThanks%20for%20a%20quick%20review.">✉️ Email us your site for a schema audit</a></p>
+  </div>
+
+  <p>Even if you never become an SEO expert, getting these five blocks right puts most manufacturer sites ahead of 80% of their competitors, who still publish facts no machine can parse.</p>
+
+  <!-- HOOK 2: bottom, conversation starter -->
+  <div class="hook">
+    <h3>Talk to our team about getting cited by AI search</h3>
+    <p>No forms, no waiting. One email and you'll be talking to our sourcing and content team about a practical GEO plan for your factory — typically within one business day.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=GEO%20plan%20for%20my%20manufacturer%20site&body=Hi%20SSMug%20team%2C%0A%0AI%20want%20to%20make%20my%20factory%20site%20more%20visible%20to%20AI%20search%20engines.%0A%0ACurrent%20site%3A%0AMain%20products%3A%0ATarget%20markets%3A%0A%0ALet%27s%20set%20up%20a%20short%20call.">✉️ Email our team now</a> &nbsp;·&nbsp; <a class="mail" href="../contact.html">Or use the inquiry form →</a></p>
+  </div>
+
+  <p style="margin-top:26px"><a class="btn btn-steel" href="../contact.html">Get a Quote</a> &nbsp; <a class="btn btn-outline" href="../blog.html">Back to Blog</a></p>
+</div></section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+</body>
+</html>
