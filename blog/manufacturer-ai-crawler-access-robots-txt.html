@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Allowing AI Crawlers: robots.txt Rules That Make or Break Your GEO Visibility</title>
+<meta name="description" content="A practical GEO guide for B2B manufacturers: the AI crawler roster (GPTBot, Google-Extended, PerplexityBot, ClaudeBot), how robots.txt gates citations, the #1 mistake of blocking AI bots, and a safe config plus verification checklist.">
+<link rel="canonical" href="https://ssmug.com/blog/manufacturer-ai-crawler-access-robots-txt.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Allowing AI Crawlers: robots.txt Rules That Make or Break Your GEO Visibility",
+      "description": "A practical GEO guide for B2B manufacturers: the AI crawler roster, how robots.txt gates citations, the mistake of blocking AI bots, and a safe config plus verification checklist.",
+      "author": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "publisher": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-14",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://ssmug.com/blog/manufacturer-ai-crawler-access-robots-txt.html"},
+      "keywords": "GEO robots.txt, AI crawler access, GPTBot, Google-Extended, PerplexityBot, ClaudeBot, generative engine optimization, manufacturer GEO"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ssmug.com/blog/manufacturer-ai-crawler-access-robots-txt.html#breadcrumb",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ssmug.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://ssmug.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"Allowing AI Crawlers","item":"https://ssmug.com/blog/manufacturer-ai-crawler-access-robots-txt.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ssmug.com/blog/manufacturer-ai-crawler-access-robots-txt.html#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"Will allowing AI crawlers hurt my Google search ranking?","acceptedAnswer":{"@type":"Answer","text":"No. Google's regular web indexer is Googlebot; Google-Extended is the separate token for Gemini and AI Overviews. Allowing Google-Extended does not change how Googlebot ranks your pages. The two are controlled independently, so you can keep classic SEO intact while opting into AI visibility."}},
+        {"@type":"Question","name":"Is it safe to let AI crawlers read my product specs and prices?","acceptedAnswer":{"@type":"Answer","text":"For a B2B manufacturer the answer is usually yes — your public catalog, specs and prices are already indexed by Googlebot and visible to competitors. Letting AI engines read the same public content is what makes them cite you. Keep truly sensitive material (internal docs, customer lists) off the public site entirely rather than trying to hide it behind robots.txt."}},
+        {"@type":"Question","name":"How do I check whether my site is actually crawlable by AI bots?","acceptedAnswer":{"@type":"Answer","text":"Start with your robots.txt: confirm none of the AI tokens are Disallowed. Then fetch key pages with each crawler's user-agent (for example, curl with a GPTBot or Google-Extended user-agent) and confirm a 200 response with fully rendered HTML, not a 401, 403 or a near-empty JavaScript shell. Server logs that show the tokens appearing are the final proof."}},
+        {"@type":"Question","name":"How long until a robots.txt change is picked up by AI engines?","acceptedAnswer":{"@type":"Answer","text":"Once you switch from Disallow to Allow, the AI engines typically re-crawl within roughly 24–48 hours, though it can be longer at peak. The bigger variable is whether your content is worth citing — crawl access is necessary but not sufficient. Pair the access fix with the citable, factual content the other GEO guides on this blog describe."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="container nav">
+  <div class="logo">SS<span>Mug</span></div>
+  <nav><ul><li><a href="../index.html">Home</a></li><li><a href="../products.html">Products</a></li><li><a href="../about.html">Factory</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html" class="btn btn-steel">Get a Quote</a></li></ul></nav>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</div></header>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Allowing AI Crawlers</div></div>
+
+<section class="hero" style="padding:54px 0 46px">
+  <div class="container">
+    <span class="badge">SEO / GEO · 2026</span>
+    <h1>Allowing AI Crawlers: robots.txt Rules That Make or Break Your GEO Visibility</h1>
+    <p>Every other generative-engine-optimization tactic fails if the AI engines can't read your site. This guide covers the AI crawler roster, how robots.txt gates citations, the single most common GEO mistake manufacturers make, and a safe configuration plus a verification checklist you can run today.</p>
+  </div>
+</section>
+
+<section style="padding-top:18px"><div class="container article">
+
+  <div class="stats">
+    <div class="stat"><b>4</b><span>named AI crawlers</span></div>
+    <div class="stat"><b>1</b><span>robots.txt governs them</span></div>
+    <div class="stat"><b>200</b><span>status = crawlable</span></div>
+    <div class="stat"><b>48h</b><span>typical re-crawl window</span></div>
+  </div>
+
+  <div class="toc">
+    <h4>In this guide</h4>
+    <ol>
+      <li><a href="#gate">Crawl access is the gate before every other GEO tactic</a></li>
+      <li><a href="#roster">The AI crawler roster</a></li>
+      <li><a href="#how">How robots.txt actually works</a></li>
+      <li><a href="#mistake">The #1 mistake: blocking AI bots, allowing Googlebot</a></li>
+      <li><a href="#config">A safe robots.txt for a GEO-focused manufacturer</a></li>
+      <li><a href="#beyond">Beyond robots.txt: server blocks and render traps</a></li>
+      <li><a href="#verify">Verify your content is actually crawlable</a></li>
+      <li><a href="#cadence">Cadence and monitoring</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <p class="lead">Generative-engine optimization lives or dies on a boring file most marketers never open: robots.txt. You can publish the most citable, fact-dense, schema-rich content on the web, but if ChatGPT, Gemini, Perplexity or Claude are told not to read it, none of that work is ever quoted. For manufacturers who spent years perfecting classic SEO, the trap is especially sharp — they allow Googlebot and quietly block the AI tokens, then wonder why AI assistants have never heard of them.</p>
+
+  <h2 id="gate">1. Crawl access is the gate before every other GEO tactic</h2>
+  <p>Think of GEO as a pipeline with a single on/off valve at the front. The stages after it — clean entities, structured data, factual content, llms.txt, digital PR — only matter if the AI engine can first fetch and parse your pages. Block the crawler and the rest of the pipeline is dead air. That is why crawl access belongs at the very top of any GEO checklist, ahead of schema and content.</p>
+
+  <figure class="fig">
+    <img src="../images/bottle-2.png" alt="A stainless steel bottle representing product content that AI engines must be allowed to read">
+    <figcaption>Fig. 1 — Your product content is only citable if the AI crawlers are permitted to fetch it. robots.txt is the switch that permits or denies that fetch.</figcaption>
+  </figure>
+
+  <h2 id="roster">2. The AI crawler roster</h2>
+  <p>Four crawlers cover the large majority of English-language AI answer surfaces. Each is identified by a user-agent token you can address individually in robots.txt.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Token</th><th>Engine / surface</th><th>What it feeds</th></tr></thead>
+      <tbody>
+        <tr><td>GPTBot</td><td>OpenAI</td><td>ChatGPT browsing and cited answers</td></tr>
+        <tr><td>Google-Extended</td><td>Google</td><td>Gemini and AI Overviews (separate from Googlebot)</td></tr>
+        <tr><td>PerplexityBot</td><td>Perplexity</td><td>Perplexity's cited, source-linked answers</td></tr>
+        <tr><td>ClaudeBot</td><td>Anthropic</td><td>Claude's web-aware responses</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Other tokens exist (Applebot-Extended, Omgilibot, Bytespider, CCBot and more), but the four above are the priority set for a B2B manufacturer targeting buyers who ask AI tools where to source drinkware. Address them explicitly so a config change is deliberate, not accidental.</p>
+
+  <h2 id="how">3. How robots.txt actually works</h2>
+  <p>robots.txt is a set of rules keyed to user-agent. The two directives that matter here are simple:</p>
+  <ul>
+    <li><strong>User-agent:</strong> names the crawler the following rules apply to. A <code>*</code> means "all crawlers."</li>
+    <li><strong>Disallow:</strong> blocks a path. <code>Disallow: /</code> blocks the entire site for that agent; <code>Disallow:</code> with nothing after it allows everything.</li>
+    <li><strong>Allow:</strong> explicitly permits a path, useful for re-opening a subfolder you blocked broadly.</li>
+  </ul>
+  <p>The critical behavior: a path that is not mentioned is allowed by default. The mistake almost everyone makes is adding a rule (often a copied SEO snippet) that Disallows one of the AI tokens, then forgetting it is there. Because the default for an unmentioned token is "allow," the silent failure mode is a single explicit Disallow line quietly shutting the door.</p>
+
+  <figure class="fig">
+    <img src="../images/plastic-2.png" alt="A BPA-free plastic bottle illustrating content that should be crawlable by AI engines">
+    <figcaption>Fig. 2 — Public catalog content like this should be crawlable by every AI token. There is no SEO downside to letting AI engines read what Googlebot already reads.</figcaption>
+  </figure>
+
+  <h2 id="mistake">4. The #1 mistake: blocking AI bots, allowing Googlebot</h2>
+  <p>The most common manufacturer GEO failure looks like this in robots.txt:</p>
+  <ul>
+    <li>Googlebot is allowed (classic SEO is working, rankings look fine).</li>
+    <li>A security or SEO plugin, or a well-meaning "block AI scrapers" setting, has added <code>Disallow:</code> lines for GPTBot, Google-Extended, PerplexityBot or ClaudeBot.</li>
+    <li>Result: the site ranks on Google but is invisible to every AI answer engine — exactly the surface where a buyer asks "who makes insulated bottles in China?"</li>
+  </ul>
+  <div class="callout"><b>The trap:</b> because classic rankings are unaffected, nobody notices. The site looks healthy in Search Console while being completely absent from ChatGPT, Gemini and Perplexity. GEO dead air is silent — there is no ranking to drop, only citations that never arrive.</div>
+
+  <h2 id="config">5. A safe robots.txt for a GEO-focused manufacturer</h2>
+  <p>For a public B2B catalog, the goal is to allow the AI tokens while keeping any admin or internal paths closed. A minimal, safe configuration:</p>
+  <pre style="background:#0f172a;color:#e2e8f0;padding:16px;border-radius:10px;overflow:auto;font-size:13px;line-height:1.6"><code>User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: *
+Disallow: /admin/
+Disallow: /cgi-bin/
+# Public catalog, blog and product pages remain crawlable by all agents</code></pre>
+  <p>If you prefer a single blanket rule, <code>User-agent: *</code> with no Disallow also permits the AI tokens — but the explicit per-token version above is safer because it documents intent and survives a later edit that might otherwise block everything.</p>
+
+  <h2 id="beyond">6. Beyond robots.txt: server blocks and render traps</h2>
+  <p>robots.txt is necessary but not sufficient. Three more things quietly stop AI engines even when the file looks correct:</p>
+  <ul>
+    <li><strong>Server-level blocks.</strong> A WAF, CDN rule, or country/rate firewall that returns 403 or a challenge page to unknown bots will also block AI crawlers. Allowlist the tokens at the edge, not just in robots.txt.</li>
+    <li><strong>Auth and paywalls.</strong> Any content behind a login is unreadable by definition. Keep the catalog, specs and guides public.</li>
+    <li><strong>JavaScript render traps.</strong> If your body content only appears after client-side JavaScript runs, a lightweight crawler may record an empty page. Serve real HTML in the initial response so the facts are present without execution.</li>
+  </ul>
+
+  <figure class="fig">
+    <img src="../images/lunch-2.png" alt="A stainless lunch box representing structured product content for AI engines">
+    <figcaption>Fig. 3 — Structured, server-rendered product content (specs, materials, certifications) is what AI engines quote. Make sure it is both allowed and actually present in the raw HTML.</figcaption>
+  </figure>
+
+  <h2 id="verify">7. Verify your content is actually crawlable</h2>
+  <p>Don't trust the file — test it. A short checklist:</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Check</th><th>How</th><th>Good signal</th></tr></thead>
+      <tbody>
+        <tr><td>robots.txt has no AI Disallow</td><td>Open /robots.txt</td><td>All four tokens Allowed or absent</td></tr>
+        <tr><td>Page returns 200 to AI UA</td><td>Fetch with each token's user-agent</td><td>200, not 401/403</td></tr>
+        <tr><td>HTML is fully rendered</td><td>View source of the fetched page</td><td>Facts present without JS</td></tr>
+        <tr><td>Crawler appears in logs</td><td>Inspect server/CDN logs</td><td>GPTBot/Google-Extended hits recorded</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Fetching with a specific user-agent is straightforward — for example, requesting a page while identifying as GPTBot or Google-Extended and confirming you get the same full HTML a browser would. If the response is a challenge page or an empty shell, the access problem is real even though robots.txt is clean.</p>
+
+  <h2 id="cadence">8. Cadence and monitoring</h2>
+  <p>robots.txt is not a set-and-forget file. Re-check it whenever you change CDN, security plugins, or SEO tools, because those are the systems that tend to rewrite it. A simple cadence:</p>
+  <ul>
+    <li><strong>Quarterly:</strong> re-read robots.txt and confirm the four AI tokens are still allowed.</li>
+    <li><strong>After any infrastructure change:</strong> re-run the verification checklist above.</li>
+    <li><strong>Ongoing:</strong> watch server logs for the tokens; their presence is the only proof the door is open.</li>
+  </ul>
+  <p>Pair this access work with the content and schema tactics covered in the other GEO guides on this blog — crawl access gets you in the room, but citable, factual, well-structured content is what gets you quoted.</p>
+
+  <h2 id="faq">9. FAQ</h2>
+  <p><strong>Will allowing AI crawlers hurt my Google search ranking?</strong><br>No. Google's regular web indexer is Googlebot; Google-Extended is the separate token for Gemini and AI Overviews. Allowing Google-Extended does not change how Googlebot ranks your pages. The two are controlled independently, so you can keep classic SEO intact while opting into AI visibility.</p>
+  <p><strong>Is it safe to let AI crawlers read my product specs and prices?</strong><br>For a B2B manufacturer the answer is usually yes — your public catalog, specs and prices are already indexed by Googlebot and visible to competitors. Letting AI engines read the same public content is what makes them cite you. Keep truly sensitive material (internal docs, customer lists) off the public site entirely rather than trying to hide it behind robots.txt.</p>
+  <p><strong>How do I check whether my site is actually crawlable by AI bots?</strong><br>Start with your robots.txt: confirm none of the AI tokens are Disallowed. Then fetch key pages with each crawler's user-agent (for example, curl with a GPTBot or Google-Extended user-agent) and confirm a 200 response with fully rendered HTML, not a 401, 403 or a near-empty JavaScript shell. Server logs that show the tokens appearing are the final proof.</p>
+  <p><strong>How long until a robots.txt change is picked up by AI engines?</strong><br>Once you switch from Disallow to Allow, the AI engines typically re-crawl within roughly 24–48 hours, though it can be longer at peak. The bigger variable is whether your content is worth citing — crawl access is necessary but not sufficient. Pair the access fix with the citable, factual content the other GEO guides on this blog describe.</p>
+
+  <!-- HOOK 1: mid-article, high intent -->
+  <div class="hook">
+    <h3>Want us to review your robots.txt for GEO?</h3>
+    <p>Send us your domain and we'll check whether GPTBot, Google-Extended, PerplexityBot and ClaudeBot are allowed to read your catalog — and flag any silent blocks before they cost you citations.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Review%20my%20robots.txt%20for%20GEO&body=Hi%20SSMug%20team%2C%0A%0ACould%20you%20review%20our%20robots.txt%20for%20AI-crawler%20(GEO)%20access%3F%0A%0ADomain%3A%0ACurrent%20CMS%20%2F%20CDN%3A%0AAny%20security%20plugin%20in%20use%3A%0A%0AThanks.">✉️ Request a robots.txt GEO review</a></p>
+  </div>
+
+  <p>The cheapest GEO win is the one you already own: open the door you accidentally closed. Most manufacturers are one line away from being citable.</p>
+
+  <!-- HOOK 2: bottom, conversation starter -->
+  <div class="hook">
+    <h3>Get a free GEO crawl-access audit</h3>
+    <p>We'll run the four-token checklist against your live site and send a short report: allowed or blocked, render status, and the exact robots.txt edit to make. No forms, just an email.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Free%20GEO%20crawl-access%20audit&body=Hi%20SSMug%20team%2C%0A%0AI%27d%20like%20the%20free%20GEO%20crawl-access%20audit%20for%3A%0A%0ADomain%3A%0AMain%20product%20pages%20to%20check%3A%0A%0ALet%20me%20know%20what%20you%20find.">✉️ Email us for a GEO audit</a> &nbsp;·&nbsp; <a class="mail" href="../contact.html">Or use the inquiry form →</a></p>
+  </div>
+
+  <p style="margin-top:26px"><a class="btn btn-steel" href="../contact.html">Get a Quote</a> &nbsp; <a class="btn btn-outline" href="../blog.html">Back to Blog</a></p>
+</div></section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+</body>
+</html>
