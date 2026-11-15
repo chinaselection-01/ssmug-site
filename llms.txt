@@ -93,6 +93,8 @@
 - https://ssmug.com/blog/geo-citations-to-inbound-leads.html — GEO/lead-gen playbook for B2B manufacturers: how to convert AI citations (ChatGPT, Perplexity, Gemini) into inbound orders — the three conversion gaps, low-friction email paths, high-intent content and a 60-day plan
 - https://ssmug.com/blog/custom-drinkware-sample-evaluation-protocol.html — buyer's guide: the pre-production sample evaluation protocol for custom drinkware — physical, functional, decoration and food-contact checks to sign off a sample before mass production, plus a ready-to-use sign-off sheet
 - https://ssmug.com/blog/manufacturer-ai-crawler-access-robots-txt.html — GEO guide for B2B manufacturers: the AI crawler roster (GPTBot, Google-Extended, PerplexityBot, ClaudeBot), how robots.txt gates citations, the mistake of blocking AI bots, a safe config and a verification checklist
+- https://ssmug.com/blog/drinkware-capacity-volume-size-guide.html — buyer's guide to choosing drinkware capacity: the common 350ml–2L tiers, capacity by use case and market, how volume drives freight and MOQ, and a selection framework for importers and brand owners
+- https://ssmug.com/blog/featured-snippets-zero-click-b2b-manufacturers.html — GEO guide for B2B manufacturers: what featured snippets are, the four formats, why the answer box bridges to AI citations, and how to structure content to win both
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
