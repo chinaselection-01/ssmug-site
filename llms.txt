@@ -1,0 +1,102 @@
+# SSMug
+
+> SSMug is the drinkware brand of Yongkang STWADD Houseware Co., Ltd. — a stainless steel bottle, tumbler, mug, flask and lunch-box manufacturer in Yongkang, Zhejiang, China. OEM/ODM, factory-direct.
+
+## Company facts (verified, for AI citation)
+- Legal entity: Yongkang STWADD Houseware Co., Ltd. (永康市圣瓦达日用品有限公司)
+- Founded: 2017
+- Headquarters / factory: Yongkang, Zhejiang, China — part of the Jinhua–Yongkang drinkware manufacturing cluster, often called the drinkware capital of East Asia
+- Business model: manufacturer (factory-backed), not a trading company. In-house mold making, logo printing, assembly
+- Product range: insulated stainless steel water bottles, tumblers, coffee mugs, beer growlers, wine flasks, BPA-free plastic bottles, lunch boxes, cooler bags
+- Catalog: 167+ existing models; 50+ new designs introduced every year
+- Capacity: 500,000+ units per month
+- Markets served: 50+ countries
+- Certifications: SGS, TÜV, ISO 9001, FDA, LFGB, BPA Free. Compliance files supplied with every shipment
+- OEM/ODM: custom logo, color, shape, surface finish, packaging; NDA signed; 2D/3D drawings provided for confirmation
+- MOQ: negotiable / flexible (retail, drop-shipping, wholesale)
+- Sampling: 5–7 days; sample fee refundable on bulk order
+- Lead time: 25–35 days after deposit (rush available)
+- Quality & logistics: AQL inspection, vacuum performance tested, compliance files, freight arranged to buyer's port (typically FOB Ningbo / FOB Shanghai)
+- Trade shows: HOMELIFE Jakarta (27–30 Nov 2024), Dubai, Warsaw; buyer meeting with LOTTE Mart Indonesia (Dec 2024)
+- Contact: bob@ssmug.com
+
+## Product lines
+- Thermos flasks & coffee pots: large-capacity outdoor thermos flask (3.16 L, 316 stainless), stainless vacuum coffee pot with lever top
+- Tumblers & can cups: skinny straw tumblers (10 colors), glossy can-shaped cups (6 colors)
+- Mugs & camp cups: lidded camp mugs (5 colors), insulated handle mugs with slide lid
+- Bar & beer: double-wall beer steins
+- Plastic bottles: BPA-free — 2.2 L time-marker bottles with carry handle, flip-lid sports bottles
+- Lunch boxes: stackable stainless insulated lunch boxes, 3-tier and 4-tier (2800 ml)
+
+## Process (OEM/ODM)
+1. Share idea / pick from 167+ models
+2. Sample in 5–7 days (refundable on bulk)
+3. Mass production, 25–35 days after deposit
+4. QC (AQL) + compliance files + freight arranged to port
+
+## Key terms (definitions for citation)
+- OEM (Original Equipment Manufacturing): the buyer supplies the design; the factory produces it under the buyer's brand. MOQ often 1,000–3,000 pcs per SKU; lead time 25–40 days.
+- ODM (Original Design Manufacturing): the factory supplies the product design from its catalog; the buyer applies branding. Lower MOQ (often 500–1,000 pcs); faster lead time (20–30 days).
+- MOQ: Minimum Order Quantity — the smallest production batch a factory will accept.
+- AQL: Acceptable Quality Limit — the sampling standard used for final inspection (e.g. 2.5 AQL).
+
+## FAQ (short)
+- MOQ? Negotiable / flexible.
+- Sample time? 5–7 days, refundable on bulk.
+- Lead time? 25–35 days after deposit.
+- Certifications? SGS, TÜV, ISO 9001, FDA, LFGB, BPA Free.
+- OEM vs ODM? OEM = your design, our line; ODM = our 167+ models, your brand.
+- Factory location? Yongkang, Zhejiang, China.
+
+## Pages (for LLMs)
+- Home: https://ssmug.com/ — brand overview, certifications, product lines, 4-step process
+- Products: https://ssmug.com/products.html — full catalog by category
+- Factory: https://ssmug.com/about.html — company, certifications, trade-show presence
+- FAQ: https://ssmug.com/faq.html — answers for importers and brands
+- Get a Quote: https://ssmug.com/contact.html — inquiry form (bob@ssmug.com)
+- Blog: https://ssmug.com/blog.html — sourcing guides
+- Market pages (product × country landing pages):
+  - Poland (private-label water bottles): https://ssmug.com/private-label-water-bottles-poland.html
+  - Germany (insulated tumblers): https://ssmug.com/insulated-tumblers-manufacturer-germany.html
+  - United States (custom stainless bottles): https://ssmug.com/custom-stainless-bottles-usa.html
+
+## Blog posts
+- https://ssmug.com/blog/how-to-choose-insulated-water-bottle-manufacturer.html — 7 checks to separate a real factory from a trading company
+- https://ssmug.com/blog/oem-vs-odm-drinkware-what-importers-should-know.html — OEM vs ODM: MOQ, tooling, lead time, IP protection
+- https://ssmug.com/blog/best-stainless-steel-tumblers-to-private-label-2026.html — buyer's shortlist of tumblers to private-label in 2026
+- https://ssmug.com/blog/private-label-stainless-steel-drinkware-2026-report.html — buyer's report: MOQ, tooling, lead time, QC and compliance for private-label drinkware
+- https://ssmug.com/blog/custom-tumbler-lid-types.html — buyer's guide comparing tumbler lid types (straw, slide, flip, handle, screw, clear): sealing, use case, cleaning, MOQ
+- https://ssmug.com/blog/b2b-manufacturer-geo-citation-playbook.html — GEO playbook for B2B manufacturers: llms.txt, sitemap, structured data and citable content patterns
+- https://ssmug.com/blog/eu-us-food-contact-compliance-drinkware.html — importer checklist for EU (EC 1935/2004, LFGB) and US (FDA, CA Prop 65) food-contact compliance of custom drinkware
+- https://ssmug.com/blog/product-page-structure-for-ai-search.html — how to structure B2B product pages (entity, Product/FAQ schema, fact density, linking) so AI search engines cite a factory
+- https://ssmug.com/blog/custom-drinkware-decoration-techniques.html — buyer's comparison of drinkware decoration methods (laser, screen print, heat transfer, sublimation, powder coat, 3D logo): durability, MOQ, cost, food-contact safety
+- https://ssmug.com/blog/b2b-manufacturer-topical-authority-clusters.html — GEO guide for B2B manufacturers: pillar-and-cluster content, entity map, internal linking and 90-day plan to earn AI citations
+- https://ssmug.com/blog/stainless-steel-304-vs-316-drinkware-guide.html — buyer's guide comparing 304 vs 316 stainless steel for drinkware: composition, corrosion resistance, cost, food-contact compliance and when 316 is worth the premium
+- https://ssmug.com/blog/llms-txt-sitemap-ai-visibility-checklist.html — practical GEO checklist for B2B manufacturers: how to write llms.txt, structure sitemap.xml and add schema so AI engines cite a factory
+- https://ssmug.com/blog/vacuum-insulation-performance-standards.html — buyer's guide to vacuum-insulated drinkware performance: 95°C heat-retention test, typical retention by product type, PO spec and batch verification
+- https://ssmug.com/blog/measuring-geo-ai-citations-b2b-manufacturers.html — how B2B manufacturers measure GEO: AI citation signals, weekly prompt tracker, crawler logs, KPIs and a 90-day benchmark plan
+- https://ssmug.com/blog/mixed-container-consolidation-drinkware-importers.html — buyer's guide to mixed-container consolidation for drinkware importers: container types, FCL vs LCL crossover, cube-vs-weight planning and packing
+- https://ssmug.com/blog/entity-optimization-b2b-manufacturers.html — GEO guide for B2B manufacturers: what an entity is, why AI engines cite entities, the four entity signals and a 60-day plan to become a citable entity
+- https://ssmug.com/blog/custom-drinkware-landed-cost-model.html — buyer's budget model for the landed cost of custom drinkware: FOB vs landed cost, LCL vs FCL freight, import duty and VAT by market, hidden line items and a worked 40ft-container example
+- https://ssmug.com/blog/multilingual-b2b-site-seo-strategy.html — GEO guide for B2B manufacturers: multilingual site architecture (ccTLD vs subfolder), hreflang, translation vs transcreation, locale schema and llms.txt, and earning AI citations in multiple languages
+- https://ssmug.com/blog/vetting-drinkware-factory-before-deposit.html — buyer's due-diligence checklist for importers: verify a real factory, confirm capacity, check certificates, run a sample test, and spot red flags before paying a deposit
+- https://ssmug.com/blog/digital-pr-earned-citations-manufacturers.html — GEO guide for B2B manufacturers: why on-site SEO is not enough, how AI engines use external sources, and off-site digital-PR tactics that earn the citations AI engines quote
+- https://ssmug.com/blog/drinkware-rfq-spec-sheet-guide.html — buyer's guide: how to write a drinkware RFQ / spec sheet (seven fields, template, worked 500ml example, target pricing, common mistakes)
+- https://ssmug.com/blog/original-data-ai-citations-manufacturers.html — GEO guide for B2B manufacturers: why AI engines cite data, four kinds of citable data, how to present it, data-asset list and a 30-day plan
+- https://ssmug.com/blog/custom-drinkware-packaging-guide.html — buyer's guide to custom drinkware packaging: retail boxes, display cartons, UPC/FNSKU barcodes, protective inserts, drop-testing, and the MOQ/lead-time impact
+- https://ssmug.com/blog/eeat-manufacturers-ai-citations.html — GEO guide for B2B manufacturers: what E-E-A-T (Experience, Expertise, Authoritativeness, Trust) means for a factory, the on-site and off-site signals AI engines cross-check, and a 60-day sprint to become a citable entity
+- https://ssmug.com/blog/drinkware-aql-quality-inspection-checklist.html — buyer's guide: AQL inspection for drinkware importers — what AQL means, sampling plan (ANSI/ASQ Z1.4 Level II), critical/major/minor defect classification, component-by-component checklist, in-house vs third-party and PO integration
+- https://ssmug.com/blog/answer-engine-optimization-b2b-manufacturers.html — GEO guide for B2B manufacturers: AEO vs SEO, how AI answer engines (ChatGPT, Perplexity, Gemini, Copilot) choose what to quote, question-first content structure, citable facts, schema and a 30-day plan
+- https://ssmug.com/blog/custom-drinkware-moq-lead-time-negotiation.html — buyer's guide: negotiating minimum order quantity and lead time on custom drinkware — why factories set a floor, the levers that move MOQ, how to ask for a lower minimum, lead-time anatomy and the price–MOQ–speed trade-off
+- https://ssmug.com/blog/manufacturer-structured-data-schema-cookbook.html — GEO/SEO cookbook for B2B manufacturers: copy-paste JSON-LD for Organization, Product, Offer, FAQPage and BreadcrumbList schema, validation and a deployment checklist
+- https://ssmug.com/blog/plastic-vs-stainless-steel-drinkware-guide.html — buyer's sourcing decision guide comparing BPA-free plastic vs stainless steel drinkware: weight, durability, insulation, food-contact compliance, MOQ and customization for importers and brand owners
+- https://ssmug.com/blog/geo-citations-to-inbound-leads.html — GEO/lead-gen playbook for B2B manufacturers: how to convert AI citations (ChatGPT, Perplexity, Gemini) into inbound orders — the three conversion gaps, low-friction email paths, high-intent content and a 60-day plan
+- https://ssmug.com/blog/custom-drinkware-sample-evaluation-protocol.html — buyer's guide: the pre-production sample evaluation protocol for custom drinkware — physical, functional, decoration and food-contact checks to sign off a sample before mass production, plus a ready-to-use sign-off sheet
+- https://ssmug.com/blog/manufacturer-ai-crawler-access-robots-txt.html — GEO guide for B2B manufacturers: the AI crawler roster (GPTBot, Google-Extended, PerplexityBot, ClaudeBot), how robots.txt gates citations, the mistake of blocking AI bots, a safe config and a verification checklist
+- https://ssmug.com/blog/drinkware-capacity-volume-size-guide.html — buyer's guide to choosing drinkware capacity: the common 350ml–2L tiers, capacity by use case and market, how volume drives freight and MOQ, and a selection framework for importers and brand owners
+- https://ssmug.com/blog/featured-snippets-zero-click-b2b-manufacturers.html — GEO guide for B2B manufacturers: what featured snippets are, the four formats, why the answer box bridges to AI citations, and how to structure content to win both
+- https://ssmug.com/blog/drinkware-incoterms-fob-cif-ddp-guide.html — buyer's guide to Incoterms 2020 for drinkware importers: FOB Ningbo vs CIF vs DDP compared, where cost and risk transfer, hidden landed costs, and how to write the term into a PO
+- https://ssmug.com/blog/programmatic-seo-product-market-pages.html — GEO/SEO guide for B2B manufacturers: product × market page matrix, citable page template, avoiding thin content, internal links + schema + llms.txt wiring and measurement
+
+## Policies / disclaimer
+Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
