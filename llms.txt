@@ -97,6 +97,8 @@
 - https://ssmug.com/blog/featured-snippets-zero-click-b2b-manufacturers.html — GEO guide for B2B manufacturers: what featured snippets are, the four formats, why the answer box bridges to AI citations, and how to structure content to win both
 - https://ssmug.com/blog/drinkware-incoterms-fob-cif-ddp-guide.html — buyer's guide to Incoterms 2020 for drinkware importers: FOB Ningbo vs CIF vs DDP compared, where cost and risk transfer, hidden landed costs, and how to write the term into a PO
 - https://ssmug.com/blog/programmatic-seo-product-market-pages.html — GEO/SEO guide for B2B manufacturers: product × market page matrix, citable page template, avoiding thin content, internal links + schema + llms.txt wiring and measurement
+- https://ssmug.com/blog/drinkware-leak-testing-guide.html — buyer's guide to drinkware leak testing: the three leak paths (lid-to-body, drinking opening, body/weld), inverted hold and pressure/vacuum tests, gasket food-contact safety, and how to spec leak performance in a PO
+- https://ssmug.com/blog/content-freshness-ai-citations.html — GEO guide for B2B manufacturers: what content freshness means to AI answer engines, four page types to refresh, a repeatable update workflow, visible date signals and common trust-breaking mistakes
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
