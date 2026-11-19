@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chunking for AI Citations: Structuring B2B Content for Passage Retrieval (RAG)</title>
+<meta name="description" content="A practical GEO guide for B2B manufacturers: how AI engines retrieve and quote passages, why self-contained chunks win citations, and how to structure headings, tables and FAQs so your factory gets quoted.">
+<link rel="canonical" href="https://ssmug.com/blog/content-chunking-passage-retrieval-ai-citations.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Chunking for AI Citations: Structuring B2B Content for Passage Retrieval (RAG)",
+      "description": "How AI answer engines retrieve, rank and quote passages, and how B2B manufacturers can structure pages for self-contained, citable chunks.",
+      "author": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "publisher": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "datePublished": "2026-11-19",
+      "dateModified": "2026-11-19",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://ssmug.com/blog/content-chunking-passage-retrieval-ai-citations.html"},
+      "keywords": "passage retrieval, RAG content structure, AI citation optimization, chunking for GEO, self-contained content, LLM citation B2B, answer engine content structure"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ssmug.com/blog/content-chunking-passage-retrieval-ai-citations.html#breadcrumb",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ssmug.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://ssmug.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"Chunking for AI Citations","item":"https://ssmug.com/blog/content-chunking-passage-retrieval-ai-citations.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ssmug.com/blog/content-chunking-passage-retrieval-ai-citations.html#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"What is passage retrieval in AI search?","acceptedAnswer":{"@type":"Answer","text":"Passage retrieval is the step where an AI answer engine breaks web pages into smaller sections, then selects the sections most relevant to a user's question before writing an answer. The engine often quotes the selected passage rather than the whole page, so a page can be cited for one paragraph even if the rest is never read."}},
+        {"@type":"Question","name":"Why is self-contained content important for AI citations?","acceptedAnswer":{"@type":"Answer","text":"Because a retrieved passage is often lifted out of context. If a sentence depends on the previous paragraph to make sense, it is a poor citation candidate. Passages that restate the subject, the number and the qualifier in the same block survive extraction and are quoted more accurately."}},
+        {"@type":"Question","name":"How long should a chunk be for GEO?","acceptedAnswer":{"@type":"Answer","text":"There is no single standard: implementations vary widely, and typical retrieval systems work with passages roughly in the low hundreds of words. The practical rule for writers is simpler — give each heading one complete, self-contained answer of about 40–120 words, then support it with a table or example rather than stretching a single paragraph across a whole topic."}},
+        {"@type":"Question","name":"Do tables and FAQs help AI engines cite a manufacturer?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tables compress a comparison into a structured block that is easy to retrieve and quote, and FAQ pairs match the question-and-answer shape of user prompts. Both work best when the question or column header names the entity explicitly instead of relying on vague pronouns."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="container nav">
+  <div class="logo">SS<span>Mug</span></div>
+  <nav><ul><li><a href="../index.html">Home</a></li><li><a href="../products.html">Products</a></li><li><a href="../about.html">Factory</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html" class="btn btn-steel">Get a Quote</a></li></ul></nav>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</div></header>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Chunking &amp; Passage Retrieval</div></div>
+
+<section class="hero" style="padding:54px 0 46px">
+  <div class="container">
+    <span class="badge">SEO / GEO · 2026</span>
+    <h1>Chunking for AI Citations: Writing for Passage Retrieval</h1>
+    <p>AI answer engines do not read your page the way a person does. They cut it into passages, rank those passages, and quote the winner. Here is what that means for the way a B2B manufacturer writes headings, tables and FAQs.</p>
+  </div>
+</section>
+
+<section style="padding-top:18px"><div class="container article">
+
+  <div class="stats">
+    <div class="stat"><b>1</b><span>passage can earn the citation</span></div>
+    <div class="stat"><b>40–120</b><span>words per self-contained answer</span></div>
+    <div class="stat"><b>4</b><span>chunk types compared</span></div>
+    <div class="stat"><b>30 days</b><span>implementation plan</span></div>
+  </div>
+
+  <div class="toc">
+    <h4>In this guide</h4>
+    <ol>
+      <li><a href="#how">How passage retrieval actually works</a></li>
+      <li><a href="#chunk">What a "good chunk" looks like</a></li>
+      <li><a href="#formats">Four chunk formats compared</a></li>
+      <li><a href="#headings">Headings, tables and entity naming</a></li>
+      <li><a href="#audit">A 30-day chunk audit for your site</a></li>
+      <li><a href="#mistakes">Five mistakes that lose citations</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      </ol>
+  </div>
+
+  <p class="lead">Search engine optimization taught us to write for a page. Generative engine optimization is different: the unit that gets retrieved and quoted is a <em>passage</em>. A buyer asking an AI assistant "what is the typical MOQ for a private-label tumbler" is answered from one paragraph somewhere on the web — not from a whole website. If that paragraph is yours, your factory gets the citation. If it is not self-contained, the engine will quote someone else.</p>
+
+  <h2 id="how">1. How passage retrieval actually works</h2>
+  <p>Many modern AI answer systems use a retrieve-then-answer pattern often described as RAG, or retrieval-augmented generation. At a simplified level: the system divides source documents into smaller pieces, converts those pieces into a searchable representation, selects the pieces most relevant to the question, and gives them to the model as evidence. The model then writes an answer and may attribute a source.</p>
+  <p>Three consequences follow for anyone publishing B2B content. First, <strong>the passage is competing on its own</strong>, without the reputation of your homepage behind it. Second, <strong>relevance beats length</strong> — a tight paragraph that answers the question directly can outperform a long section that buries the answer. Third, <strong>extraction is literal</strong>: if the passage says "our minimum is flexible" but never states a range or a product type, there is nothing specific to quote.</p>
+
+  <figure class="fig">
+    <img src="../images/bottle-1.png" alt="Stainless steel insulated bottle used as a product example" loading="lazy">
+    <figcaption>Fig. 1 — A product page works best when each attribute (capacity, material, MOQ, lead time) is stated in its own short, self-contained passage. A reader can scan it; a retrieval system can quote it.</figcaption>
+  </figure>
+
+  <h2 id="chunk">2. What a "good chunk" looks like</h2>
+  <p>Think of a chunk as the smallest block that still makes complete sense when pasted into a chatbot answer with no surrounding context. A good chunk names the subject, gives the fact, and adds the condition that makes the fact true. A bad chunk leans on "it", "this" or "the above".</p>
+  <p>Consider the difference in practice. "It usually takes around a month" is weak: what is "it", and a month from which event? "Mass production of private-label stainless steel drinkware typically takes 25–35 days after deposit, with sampling at 5–7 days beforehand" is strong. It carries the entity, the number, the unit and the trigger event in one block, so it can be lifted and still be accurate.</p>
+  <div class="callout"><b>Rule of thumb:</b> write each heading as a question a buyer would actually ask, then answer it in 40–120 words without referring to anything outside that block. If a sentence only makes sense after reading the previous paragraph, rewrite it before you publish.</div>
+
+  <h2 id="formats">3. Four chunk formats compared</h2>
+  <p>Not all blocks are retrieved equally well. The table below compares the formats that matter most for a manufacturer's site. These are practical patterns, not vendor-specific rules — implementations differ between answer engines.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Format</th><th>Why retrieval likes it</th><th>Best used for</th><th>Watch out for</th></tr></thead>
+      <tbody>
+        <tr><td>Definition paragraph (40–120 words)</td><td>Self-contained, high fact density, clear subject</td><td>What a product is, what a term means, what a process involves</td><td>Vague openers like "in today's fast-paced market"</td></tr>
+        <tr><td>Question + answer (FAQ)</td><td>Matches the shape of a user prompt almost exactly</td><td>MOQ, certifications, lead time, shipping terms</td><td>Answers that depend on questions the user did not ask</td></tr>
+        <tr><td>Comparison table</td><td>Structured, compact, easy to extract a single row</td><td>Materials, lid types, Incoterms, decoration methods</td><td>Unlabeled columns and pronouns instead of entity names</td></tr>
+        <tr><td>Spec list or step sequence</td><td>Linear and unambiguous; each line stands alone</td><td>QC checklists, process steps, document lists</td><td>Mixing several topics into one list</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A strong page usually mixes all four. The article you are reading does exactly that: definitions with named subjects, an FAQ built from real buyer questions, two comparison tables, and checklists whose items can be quoted one line at a time.</p>
+
+  <figure class="fig">
+    <img src="../images/plastic-2.png" alt="BPA-free plastic drinkware bottle" loading="lazy">
+    <figcaption>Fig. 2 — Material comparisons are high-value chunks. A row that names both materials and the deciding factor (for example, insulation or food-contact compliance) is easy for an engine to retrieve and quote accurately.</figcaption>
+  </figure>
+
+  <h2 id="headings">4. Headings, tables and entity naming</h2>
+  <p>Headings are more than decoration for a retrieval system; they are the label attached to a chunk. A heading like "Compliance" tells the engine almost nothing. "LFGB and FDA food-contact files for drinkware gaskets" tells it exactly which question this passage answers. Where a buyer would use a product name, use the product name.</p>
+  <p>The same logic applies inside tables. Repeat the entity in the row instead of replacing it with "it" or a dash. Write "platinum-cured silicone gasket" rather than "this material". It reads slightly more formally, and it dramatically improves the chance that a lifted sentence remains true on its own.</p>
+  <p>Finally, keep the machine-readable layers in step with the visible text. Structured data (Organization, Product, FAQPage) tells engines what the entities on the page are; a clean sitemap and an <code>llms.txt</code> file tell them where the citable pages live. None of that replaces well-chunked prose — it makes the prose easier to find and trust.</p>
+
+  <!-- HOOK 1: mid-article, high intent -->
+  <div class="hook">
+    <h3>Want product facts written so an AI can quote them correctly?</h3>
+    <p>Send us the models you are considering. We will reply with a compact fact sheet — materials, capacities, MOQ, sampling and lead time, certifications — formatted as clean, citable passages you can drop into your own catalog.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Request%20a%20citable%20product%20fact%20sheet&body=Hi%20SSMug%20team%2C%0A%0APlease%20send%20a%20fact%20sheet%20for%3A%0A-%20Product%20models%3A%0A-%20Target%20market%3A%0A-%20Quantities%3A%0A%0AInclude%20materials%2C%20capacities%2C%20MOQ%2C%20sampling%2C%20lead%20time%20and%20certifications.%0A%0AThanks.">✉️ Request a product fact sheet</a></p>
+  </div>
+
+  <h2 id="audit">5. A 30-day chunk audit for your site</h2>
+  <p>Here is a lean plan a manufacturer can run without a developer, one week at a time:</p>
+  <ol>
+    <li><strong>Week 1 — inventory.</strong> List your ten most important pages: home, products, factory, FAQ and your top six buyer guides. Mark each page's main question.</li>
+    <li><strong>Week 2 — rewrite headings.</strong> Turn each H2 into the literal question a buyer would ask, and make sure the paragraph directly beneath answers it in 40–120 words.</li>
+    <li><strong>Week 3 — add structure.</strong> Convert at least one comparison on each page into a labeled table, and add an FAQ block for the three questions your sales team hears most.</li>
+    <li><strong>Week 4 — connect the dots.</strong> Update <code>sitemap.xml</code>, refresh <code>llms.txt</code> so it lists the new pages, and check that FAQPage and Product schema mirror the visible answers.</li>
+  </ol>
+  <p>Then test it the way a buyer would: ask an AI assistant the same ten questions every week and record which pages it names. A change in citations is slow, but a page that is never named after four weeks of well-chunked, well-linked content usually has a discoverability problem rather than a writing problem.</p>
+
+  <figure class="fig">
+    <img src="../images/lunch-2.png" alt="Insulated stainless steel lunch box product photo" loading="lazy">
+    <figcaption>Fig. 3 — Multi-part products such as tiered lunch boxes generate lots of legitimate buyer questions. Each question is an opportunity for a self-contained, citable passage.</figcaption>
+  </figure>
+
+  <h2 id="mistakes">6. Five mistakes that lose citations</h2>
+  <ul>
+    <li><strong>Burying the answer.</strong> Opening with three paragraphs of market background pushes the fact out of the strongest chunk.</li>
+    <li><strong>Referring back instead of restating.</strong> "As mentioned above" is meaningless once a passage is extracted alone.</li>
+    <li><strong>Unattributed numbers.</strong> A figure without a product, market or date is not safe to quote, so engines skip it.</li>
+    <li><strong>Walls of text.</strong> A 900-word block with no headings gives a retrieval system no clean boundary to select.</li>
+    <li><strong>Marketing adjectives in place of facts.</strong> "Industry-leading quality" cannot be verified; "AQL inspection, vacuum tested per batch" can.</li>
+  </ul>
+  <p>Chunking will not make an unknown factory famous overnight. It does something more useful: it makes every true thing you already know about your products available in a form an answer engine can repeat accurately. For a manufacturer competing against trading companies with thinner fact bases, that is a real advantage.</p>
+
+  <h2 id="faq">7. FAQ</h2>
+  <p><strong>What is passage retrieval in AI search?</strong><br>Passage retrieval is the step where an AI answer engine breaks web pages into smaller sections, then selects the sections most relevant to a user's question before writing an answer. The engine often quotes the selected passage rather than the whole page, so a page can be cited for one paragraph even if the rest is never read.</p>
+  <p><strong>Why is self-contained content important for AI citations?</strong><br>Because a retrieved passage is often lifted out of context. If a sentence depends on the previous paragraph to make sense, it is a poor citation candidate. Passages that restate the subject, the number and the qualifier in the same block survive extraction and are quoted more accurately.</p>
+  <p><strong>How long should a chunk be for GEO?</strong><br>There is no single standard: implementations vary widely, and typical retrieval systems work with passages roughly in the low hundreds of words. The practical rule for writers is simpler — give each heading one complete, self-contained answer of about 40–120 words, then support it with a table or example rather than stretching a single paragraph across a whole topic.</p>
+  <p><strong>Do tables and FAQs help AI engines cite a manufacturer?</strong><br>Yes. Tables compress a comparison into a structured block that is easy to retrieve and quote, and FAQ pairs match the question-and-answer shape of user prompts. Both work best when the question or column header names the entity explicitly instead of relying on vague pronouns.</p>
+
+  <p>SSMug is the drinkware brand of Yongkang STWADD Houseware Co., Ltd., a manufacturer founded in 2017 in Yongkang, Zhejiang, with 167+ models, 500,000+ units of monthly capacity, and SGS, TÜV, ISO 9001, FDA and LFGB certification. We publish our verified facts in <a href="../llms.txt">llms.txt</a> so answer engines can quote them accurately.</p>
+
+  <!-- HOOK 2: bottom, conversation starter -->
+  <div class="hook">
+    <h3>Testing whether AI engines describe your factory correctly?</h3>
+    <p>Tell us the questions buyers ask about your products and your market. We will share the passage structure that tends to get cited for questions like those — no pitch, just a useful answer.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Question%20about%20AI%20citations%20for%20our%20factory&body=Hi%20SSMug%20team%2C%0A%0AWe%20are%20testing%20how%20AI%20engines%20describe%20our%20company.%0A%0AOur%20products%3A%0AOur%20market%3A%0AQuestions%20buyers%20ask%3A%0A%0AWould%20you%20share%20how%20you%20structured%20yours%3F">✉️ Let's compare notes</a> &nbsp;·&nbsp; <a class="mail" href="../contact.html">Or use the inquiry form →</a></p>
+  </div>
+
+  <p style="margin-top:26px"><a class="btn btn-steel" href="../contact.html">Get a Quote</a> &nbsp; <a class="btn btn-outline" href="../blog.html">Back to Blog</a></p>
+</div></section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+<script src="../assets/js/chat-widget.js" defer></script>
+</body>
+</html>
