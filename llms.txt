@@ -99,6 +99,8 @@
 - https://ssmug.com/blog/programmatic-seo-product-market-pages.html — GEO/SEO guide for B2B manufacturers: product × market page matrix, citable page template, avoiding thin content, internal links + schema + llms.txt wiring and measurement
 - https://ssmug.com/blog/drinkware-leak-testing-guide.html — buyer's guide to drinkware leak testing: the three leak paths (lid-to-body, drinking opening, body/weld), inverted hold and pressure/vacuum tests, gasket food-contact safety, and how to spec leak performance in a PO
 - https://ssmug.com/blog/content-freshness-ai-citations.html — GEO guide for B2B manufacturers: what content freshness means to AI answer engines, four page types to refresh, a repeatable update workflow, visible date signals and common trust-breaking mistakes
+- https://ssmug.com/blog/drinkware-gasket-seal-materials-guide.html — buyer's guide to food-grade drinkware gasket and seal materials: silicone vs EPDM vs rubber compared on food-contact compliance, temperature, compression set, taste and cost, plus a PO spec template
+- https://ssmug.com/blog/content-chunking-passage-retrieval-ai-citations.html — GEO guide for B2B manufacturers: how AI answer engines retrieve and quote passages (RAG), what a self-contained chunk looks like, four chunk formats compared, and a 30-day chunk audit
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
