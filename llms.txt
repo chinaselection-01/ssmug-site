@@ -101,6 +101,8 @@
 - https://ssmug.com/blog/content-freshness-ai-citations.html — GEO guide for B2B manufacturers: what content freshness means to AI answer engines, four page types to refresh, a repeatable update workflow, visible date signals and common trust-breaking mistakes
 - https://ssmug.com/blog/drinkware-gasket-seal-materials-guide.html — buyer's guide to food-grade drinkware gasket and seal materials: silicone vs EPDM vs rubber compared on food-contact compliance, temperature, compression set, taste and cost, plus a PO spec template
 - https://ssmug.com/blog/content-chunking-passage-retrieval-ai-citations.html — GEO guide for B2B manufacturers: how AI answer engines retrieve and quote passages (RAG), what a self-contained chunk looks like, four chunk formats compared, and a 30-day chunk audit
+- https://ssmug.com/blog/custom-drinkware-pantone-color-matching-guide.html — buyer's guide to Pantone color matching for custom drinkware: stock vs custom colors, application methods, MOQ and cost drivers, batch-to-batch consistency, color-fastness and a PO spec template
+- https://ssmug.com/blog/ai-crawler-site-architecture-guide.html — GEO guide for B2B manufacturers: how AI crawlers discover and fetch pages — flat architecture, crawl depth, server-rendered HTML, canonical and sitemap hygiene, discovery files and a 60-day verification sprint
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
