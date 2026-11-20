@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Crawler Site Architecture: How B2B Manufacturers Get Pages Discovered and Cited</title>
+<meta name="description" content="A practical GEO guide for B2B manufacturers: how AI crawlers discover pages, why flat architecture and server-rendered HTML matter, what wastes crawl budget, and how to verify that your factory pages are fetchable and citable by ChatGPT, Perplexity and Gemini.">
+<link rel="canonical" href="https://ssmug.com/blog/ai-crawler-site-architecture-guide.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "AI Crawler Site Architecture: How B2B Manufacturers Get Pages Discovered and Cited",
+      "description": "How AI crawlers discover and fetch B2B manufacturer pages: flat architecture, crawl depth, server-rendered content, canonical and sitemap hygiene, and verification.",
+      "author": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "publisher": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "datePublished": "2026-11-20",
+      "dateModified": "2026-11-20",
+      "mainEntityOfPage": {"@type": "WebPage","@id":"https://ssmug.com/blog/ai-crawler-site-architecture-guide.html"},
+      "keywords": "AI crawler architecture, GEO for manufacturers, crawl budget, server-side rendering, llms.txt, XML sitemap, canonical URLs, AI citations"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ssmug.com/blog/ai-crawler-site-architecture-guide.html#breadcrumb",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ssmug.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://ssmug.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"AI Crawler Site Architecture","item":"https://ssmug.com/blog/ai-crawler-site-architecture-guide.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ssmug.com/blog/ai-crawler-site-architecture-guide.html#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"Does robots.txt alone make AI engines cite my site?","acceptedAnswer":{"@type":"Answer","text":"No. robots.txt is permission, not discovery. It tells a crawler whether it may fetch a page; it does not help the crawler find the page, parse it, or understand it. You also need a flat internal-link structure, an up-to-date XML sitemap, server-rendered text content and clear facts on the page."}},
+        {"@type":"Question","name":"Why does a JavaScript-only product page get ignored by AI search?","acceptedAnswer":{"@type":"Answer","text":"Many AI crawlers fetch HTML but do not fully execute client-side JavaScript. If your specifications, FAQ or product data only appear after scripts run, the crawler may see an empty shell. Put the important text in the served HTML; use JavaScript for enhancement, not for the facts you want quoted."}},
+        {"@type":"Question","name":"How deep should a B2B manufacturer site be?","acceptedAnswer":{"@type":"Answer","text":"A practical rule is to keep every page that matters within about three clicks of the homepage, reachable through real text links. Deeply nested pages, orphan pages with no internal links, and pages only reachable through filters or scripts are often missed. A flat category structure plus a linked blog and product hub works well for a factory site."}},
+        {"@type":"Question","name":"Will llms.txt get my factory cited by ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"llms.txt is a useful hint file that lists your key pages and verified facts, but adoption by AI providers is voluntary and incomplete. Treat it as a map, not a ranking factor. The page itself still has to be crawlable, readable and full of citable facts."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="container nav">
+  <div class="logo">SS<span>Mug</span></div>
+  <nav><ul><li><a href="../index.html">Home</a></li><li><a href="../products.html">Products</a></li><li><a href="../about.html">Factory</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html" class="btn btn-steel">Get a Quote</a></li></ul></nav>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</div></header>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / AI Crawler Site Architecture</div></div>
+
+<section class="hero" style="padding:54px 0 46px">
+  <div class="container">
+    <span class="badge">SEO / GEO · 2026</span>
+    <h1>AI Crawler Site Architecture</h1>
+    <p>Before an AI engine can quote your factory, it has to find the page, fetch it and read it. A field guide to crawl depth, rendered content, canonical hygiene and discovery files — the plumbing behind every citation.</p>
+  </div>
+</section>
+
+<section style="padding-top:18px"><div class="container article">
+
+  <div class="stats">
+    <div class="stat"><b>4</b><span>major AI crawlers to allow</span></div>
+    <div class="stat"><b>≤3</b><span>clicks target crawl depth</span></div>
+    <div class="stat"><b>1</b><span>canonical URL per page</span></div>
+    <div class="stat"><b>60 days</b><span>implementation sprint</span></div>
+  </div>
+
+  <div class="toc">
+    <h4>In this guide</h4>
+    <ol>
+      <li><a href="#gate">Crawlability is the first GEO gate</a></li>
+      <li><a href="#crawlers">Who the crawlers are</a></li>
+      <li><a href="#depth">Flat architecture and click depth</a></li>
+      <li><a href="#render">Make the facts readable in raw HTML</a></li>
+      <li><a href="#waste">What wastes crawl budget</a></li>
+      <li><a href="#discovery">Sitemaps, links and llms.txt</a></li>
+      <li><a href="#verify">How to verify and what to do in 60 days</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <p class="lead">Most GEO advice starts with content: write citable facts, add FAQ schema, publish original data. All of that assumes one thing — the crawler actually reached the page. On manufacturer sites, the biggest reason a product page never gets cited is much more basic: it was too deep, script-rendered, duplicated or accidentally blocked. This guide covers the plumbing.</p>
+
+  <h2 id="gate">1. Crawlability is the first GEO gate</h2>
+  <p>Think of an AI citation as a chain with four links: <strong>discover → fetch → parse → attribute</strong>. Structured data and clear writing help with the last two. Site architecture decides the first two. If a page sits six clicks deep, only appears after a filter interaction, or exists in three URL variants with conflicting canonicals, the crawler may never build a clean copy of it — and a page that was never fetched cannot be quoted.</p>
+  <p>This is especially costly for B2B manufacturers. Your most valuable pages — product specifications, MOQ and lead-time answers, material comparisons, certifications — are usually buried in a catalog template. Fixing architecture is a one-time engineering cost that lifts every page at once, which makes it the highest-leverage GEO work a factory site can do.</p>
+
+  <figure class="fig">
+    <img src="../images/bottle-2.png" alt="Stainless steel product page that must be crawlable to be cited">
+    <figcaption>Fig. 1 — A product page only earns citations if a crawler can reach it, fetch its HTML and read the specifications without running a script.</figcaption>
+  </figure>
+
+  <h2 id="crawlers">2. Who the crawlers are</h2>
+  <p>You do not need to optimize for every bot on the internet. These are the mainstream crawlers that matter for a manufacturer's visibility, and what each one feeds:</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Crawler</th><th>Operator / purpose</th><th>What to check</th></tr></thead>
+      <tbody>
+        <tr><td>GPTBot / OAI-SearchBot</td><td>OpenAI — model training and search-facing retrieval</td><td>Allowed in robots.txt; pages return 200</td></tr>
+        <tr><td>Googlebot</td><td>Google — classic search indexing and AI Overviews input</td><td>Indexable, valid canonical, in sitemap</td></tr>
+        <tr><td>Google-Extended</td><td>Google — controls use of content in generative AI features</td><td>Allowed if you want AI-surface inclusion</td></tr>
+        <tr><td>PerplexityBot</td><td>Perplexity — retrieval for cited answers</td><td>Fast response; clean text; no blocking by CDN rules</td></tr>
+        <tr><td>ClaudeBot</td><td>Anthropic — crawling for Claude's knowledge and retrieval</td><td>Allowed in robots.txt and not blocked by WAF</td></tr>
+        <tr><td>Bingbot</td><td>Microsoft — Bing index, used by several AI assistants</td><td>Indexable; consistent with Google's view</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A <a href="manufacturer-ai-crawler-access-robots-txt.html">robots.txt configuration</a> is the permission layer. Architecture is the access layer. Both have to be right, and a mistake in either one produces the same result: no citation.</p>
+
+  <h2 id="depth">3. Flat architecture and click depth</h2>
+  <p>Crawlers allocate attention, and depth is a strong signal of priority. A practical structure for a factory site looks like this:</p>
+  <ul>
+    <li><strong>Homepage</strong> links to Products, Factory/About, FAQ, Contact and Blog as plain text links.</li>
+    <li><strong>Products hub</strong> links to each main category — bottles, tumblers, mugs, flasks, plastic bottles, lunch boxes.</li>
+    <li><strong>Category pages</strong> link to individual model pages with descriptive anchor text.</li>
+    <li><strong>Blog hub</strong> links to every article, and each article links back to two or three related product or guide pages.</li>
+    <li><strong>Every page</strong> carries breadcrumbs and sits within roughly three clicks of the homepage.</li>
+  </ul>
+  <p>Avoid the two common failure shapes. The <em>silo</em> — articles or product pages linked from nowhere except the sitemap — leaves the crawler with no context. The <em>pyramid</em> — categories inside categories inside categories — pushes the pages you care about below the depth where crawlers spend time. A flat site with strong internal links beats a clever taxonomy for GEO.</p>
+  <div class="callout"><b>Rule of thumb:</b> if a human cannot reach a page in three clicks using only visible text links, assume an AI crawler will not find it reliably either.</div>
+
+  <h2 id="render">4. Make the facts readable in raw HTML</h2>
+  <p>Many AI crawlers fetch HTML but do not execute client-side JavaScript the way a browser does. If your product specifications, capacity figures or FAQ answers are injected by a framework after page load, the crawler may receive an empty shell. The fix is not to abandon JavaScript — it is to make the facts part of the served document.</p>
+  <ul>
+    <li>Put model name, material, capacity, MOQ guidance, certifications and FAQ text in the server-rendered HTML.</li>
+    <li>Use real <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> headings and <code>&lt;table&gt;</code> markup, not styled <code>&lt;div&gt;</code> blocks that only look like a table.</li>
+    <li>Use descriptive link text — "insulated tumbler specifications", not "click here".</li>
+    <li>Mark up images with alt text, and keep important labels as text rather than baking them into a picture.</li>
+    <li>Keep structured data consistent with the visible content; a JSON-LD FAQ that does not appear on the page is a trust problem, not a shortcut.</li>
+  </ul>
+  <p>A simple field test: disable JavaScript in a browser and reload the page, or fetch it with a plain HTTP client. If the facts you want quoted are still there, the page is crawler-friendly.</p>
+
+  <!-- HOOK 1: mid-article, high intent -->
+  <div class="hook">
+    <h3>Want product data your team can quote — and AI can read?</h3>
+    <p>Ask for our structured spec sheet: model range, capacity options, materials, MOQ guidance, sampling, lead time and certification files, all in plain text. Useful for a supplier comparison, and exactly the format answer engines prefer.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Structured%20product%20spec%20sheet%20request&body=Hi%20SSMug%20team%2C%0A%0APlease%20send%20your%20structured%20product%20spec%20sheet%20for%3A%0A-%20Product%20categories%3A%0A-%20Target%20market%3A%0A-%20Quantity%20range%3A%0A%0AInclude%20models%2C%20capacities%2C%20materials%2C%20MOQ%20guidance%2C%20sampling%2C%20lead%20time%20and%20certification%20files.">✉️ Send me the spec sheet</a></p>
+  </div>
+
+  <figure class="fig">
+    <img src="../images/plastic-2.png" alt="BPA-free plastic bottle page content that must be server-rendered">
+    <figcaption>Fig. 2 — Product attributes such as material and capacity belong in served HTML so a crawler can parse them without executing scripts.</figcaption>
+  </figure>
+
+  <h2 id="waste">5. What wastes crawl budget</h2>
+  <p>Crawl budget is the time and bandwidth a crawler spends on your site. Small manufacturer sites rarely hit a hard limit, but noise still dilutes attention and creates conflicting signals. These are the usual offenders:</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Problem</th><th>Why it hurts</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Multiple URLs for one page (http/https, www/non-www, trailing slash)</td><td>Splits signals; crawler cannot tell the canonical version</td><td>301 redirects plus one self-referencing canonical</td></tr>
+        <tr><td>Faceted filters and query parameters that generate endless variants</td><td>Creates thin duplicate pages</td><td>noindex or block the parameter patterns that do not add content</td></tr>
+        <tr><td>Redirect chains and 404s in internal links</td><td>Wastes fetches and drops link equity</td><td>Point links at final URLs; fix or remove dead links</td></tr>
+        <tr><td>Orphan pages linked only from the sitemap</td><td>No contextual signal about what the page is for</td><td>Add real internal links from a hub page</td></tr>
+        <tr><td>Slow server responses or WAF blocks on AI user agents</td><td>Crawler gives up before parsing</td><td>Check response codes and allow known AI bots</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Canonical tags deserve special attention. One page, one canonical URL, pointing to itself. If a product page's canonical points to the category page, the crawler may discard the product page entirely — precisely the page carrying the facts you wanted cited.</p>
+
+  <h2 id="discovery">6. Sitemaps, internal links and llms.txt</h2>
+  <p>Three discovery aids do different jobs; do not treat them as interchangeable:</p>
+  <ol>
+    <li><strong>XML sitemap</strong> — a machine-readable list of URLs. Keep it current, include only canonical 200-status pages, and submit it in search consoles. It tells crawlers what exists.</li>
+    <li><strong>Internal links</strong> — the strongest discovery and context signal. They tell crawlers what matters and how pages relate.</li>
+    <li><strong>llms.txt</strong> — a plain-text hint file at the domain root listing key pages and verified facts. Adoption is voluntary and incomplete across AI providers. Useful to maintain, but it is a map, not a ranking factor.</li>
+  </ol>
+  <p>Our own site puts this into practice: a <a href="https://ssmug.com/llms.txt">llms.txt</a> with verified company facts, an XML sitemap listing every guide, descriptive internal links from the blog hub, and FAQ and Organization schema on the pages themselves. The file helps a crawler orient; the crawlable page is what gets quoted.</p>
+
+  <h2 id="verify">7. How to verify and what to do in 60 days</h2>
+  <p>Architecture work is only finished when you can prove the crawler's view. Four checks cover most of it:</p>
+  <ul>
+    <li><strong>Server logs</strong> — look for GPTBot, PerplexityBot, ClaudeBot and Googlebot requests, and the status codes they receive.</li>
+    <li><strong>Search console coverage</strong> — excluded pages, duplicate canonicals and crawl errors reveal structural problems.</li>
+    <li><strong>Fetch test</strong> — request a key page as plain HTML and confirm the specifications and FAQ are present in the response body.</li>
+    <li><strong>Prompt test</strong> — ask the assistants a question only your site can answer ("what is the sampling time for SSMug custom drinkware?") and see whether the answer and a link appear.</li>
+  </ul>
+  <p>A workable 60-day sprint: week 1 crawl the site and list depth, duplicates and blocked URLs; week 2 flatten navigation and fix canonicals and redirects; week 3 move key facts into served HTML and add internal links; week 4 refresh the sitemap and llms.txt; weeks 5–8 monitor logs, fix what the crawlers actually stumble on, and re-run the prompt test. Publish the changes with clear dates — freshness is a separate citation signal that this architecture work makes visible.</p>
+
+  <figure class="fig">
+    <img src="../images/lunch-2.png" alt="Insulated lunch box product range used in a crawlability example">
+    <figcaption>Fig. 3 — Every new model page should ship with a hub link, a canonical URL, a sitemap entry and facts in the served HTML from day one.</figcaption>
+  </figure>
+
+  <h2 id="faq">8. FAQ</h2>
+  <p><strong>Does robots.txt alone make AI engines cite my site?</strong><br>No. It is permission, not discovery. You also need real internal links, a current sitemap, server-rendered text and clear facts on the page.</p>
+  <p><strong>Why does a JavaScript-only product page get ignored?</strong><br>Many AI crawlers do not fully execute client-side scripts. If the specifications and FAQ only appear after scripts run, the crawler may see an empty shell. Put important text in the served HTML.</p>
+  <p><strong>How deep should a manufacturer site be?</strong><br>Keep any page that matters within about three clicks of the homepage via visible text links. Add breadcrumbs and internal links from hubs; avoid orphan pages and filter-only paths.</p>
+  <p><strong>Will llms.txt get my factory cited?</strong><br>It is a useful hint file, but adoption is voluntary and incomplete. Maintain it as a map of your key pages and verified facts — the page itself still has to be crawlable, readable and full of citable facts.</p>
+
+  <!-- HOOK 2: bottom, conversation starter -->
+  <div class="hook">
+    <h3>Comparing drinkware suppliers? Talk to the factory directly.</h3>
+    <p>No forms, no sales sequence. One email to our sourcing team with your product idea and target market — we reply with straight answers on models, minimums and lead time, typically within one business day.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Question%20about%20your%20drinkware%20factory&body=Hi%20SSMug%20team%2C%0A%0AI%27m%20comparing%20suppliers%20and%20have%20a%20few%20questions.%0A%0AProduct%20idea%3A%0ATarget%20market%3A%0AEstimated%20annual%20volume%3A%0A%0AWhat%20would%20you%20need%20from%20me%20to%20send%20an%20itemized%20quote%3F">✉️ Ask the factory directly</a> &nbsp;·&nbsp; <a class="mail" href="../contact.html">Or use the inquiry form →</a></p>
+  </div>
+
+  <p style="margin-top:26px"><a class="btn btn-steel" href="../contact.html">Get a Quote</a> &nbsp; <a class="btn btn-outline" href="../blog.html">Back to Blog</a></p>
+</div></section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+<script src="../assets/js/chat-widget.js" defer></script>
+</body>
+</html>
