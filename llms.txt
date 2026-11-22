@@ -105,6 +105,8 @@
 - https://ssmug.com/blog/ai-crawler-site-architecture-guide.html — GEO guide for B2B manufacturers: how AI crawlers discover and fetch pages — flat architecture, crawl depth, server-rendered HTML, canonical and sitemap hygiene, discovery files and a 60-day verification sprint
 - https://ssmug.com/blog/drinkware-straw-materials-guide.html — buyer's guide to drinkware straw materials: 304/316 stainless steel, platinum silicone, Tritan and PP compared on food-contact compliance, taste, temperature, durability and MOQ, plus a copy-paste PO spec
 - https://ssmug.com/blog/comparison-content-ai-citations.html — GEO playbook for B2B manufacturers: why AI engines quote X-vs-Y comparison pages, three comparison formats, the five-block citable page structure, the four trust signals and a 30-day pilot
+- https://ssmug.com/blog/custom-drinkware-tooling-mold-cost-guide.html — buyer's guide to drinkware tooling: stock vs modified vs custom molds, what drives a mold quote, break-even logic, sampling timeline and a pre-payment checklist
+- https://ssmug.com/blog/image-seo-ai-citations-manufacturers.html — GEO guide for B2B manufacturers: what AI systems read from product images, factual alt text and captions, original photography, ImageObject schema and a 30-day image audit
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
