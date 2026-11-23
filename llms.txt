@@ -107,6 +107,8 @@
 - https://ssmug.com/blog/comparison-content-ai-citations.html — GEO playbook for B2B manufacturers: why AI engines quote X-vs-Y comparison pages, three comparison formats, the five-block citable page structure, the four trust signals and a 30-day pilot
 - https://ssmug.com/blog/custom-drinkware-tooling-mold-cost-guide.html — buyer's guide to drinkware tooling: stock vs modified vs custom molds, what drives a mold quote, break-even logic, sampling timeline and a pre-payment checklist
 - https://ssmug.com/blog/image-seo-ai-citations-manufacturers.html — GEO guide for B2B manufacturers: what AI systems read from product images, factual alt text and captions, original photography, ImageObject schema and a 30-day image audit
+- https://ssmug.com/blog/drinkware-surface-finishes-guide.html — buyer's guide to drinkware surface finishes: powder coating, wet spray, electroplating, anodizing (aluminium only), brushed/polished steel and soft-touch compared on durability, food-contact compliance, MOQ and cost, plus a paste-in PO spec block
+- https://ssmug.com/blog/brand-mentions-ai-recommendations.html — GEO playbook for B2B manufacturers: how AI answer engines decide which brands to recommend, the three inputs behind a recommendation, why unlinked brand mentions matter, building a stable entity and a 30-day measurement program
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
