@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your PDF Catalog Is Invisible to AI Search: A Fix for B2B Manufacturers</title>
+<meta name="description" content="Why PDF catalogs and spec sheets are poorly cited by ChatGPT, Perplexity and Gemini, and how B2B manufacturers can make product facts citable with an HTML mirror, structured data and llms.txt. A practical GEO guide.">
+<link rel="canonical" href="https://ssmug.com/blog/pdf-catalogs-ai-search-manufacturers.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Your PDF Catalog Is Invisible to AI Search: A Fix for B2B Manufacturers",
+      "description": "Why AI answer engines under-cite PDF catalogs and the HTML-mirror workflow that makes a manufacturer's product facts citable.",
+      "author": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "publisher": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "datePublished": "2026-11-25",
+      "dateModified": "2026-11-25",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://ssmug.com/blog/pdf-catalogs-ai-search-manufacturers.html"},
+      "keywords": "PDF catalog SEO, GEO for manufacturers, AI citations, llms.txt, structured data, product spec sheets, answer engine optimization"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ssmug.com/blog/pdf-catalogs-ai-search-manufacturers.html#breadcrumb",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ssmug.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://ssmug.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"PDF Catalogs and AI Search","item":"https://ssmug.com/blog/pdf-catalogs-ai-search-manufacturers.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ssmug.com/blog/pdf-catalogs-ai-search-manufacturers.html#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"Can ChatGPT, Perplexity and Gemini read PDF catalogs?","acceptedAnswer":{"@type":"Answer","text":"Sometimes, but unreliably. Text-based PDFs that are linked from an indexable page can be parsed, while scanned or image-only catalogs often cannot. Even when parsed, PDFs lack the headings, internal links and structured data that answer engines use to attribute a fact to a source. Treat a PDF as a download for humans, not as the canonical home of your product facts."}},
+        {"@type":"Question","name":"What is the fastest way to make a PDF catalog citable by AI?","acceptedAnswer":{"@type":"Answer","text":"Mirror its content as real HTML pages: one indexable page per product or category, with the key facts written as plain text, an honest last-updated date, FAQ answers, Product and Offer schema, and links from the sitemap and llms.txt. Keep the PDF available as a download, but link to the HTML page as the primary source."}},
+        {"@type":"Question","name":"Should I convert every catalog page into a separate web page?","acceptedAnswer":{"@type":"Answer","text":"Prioritise the pages buyers ask about: category overviews, individual product specs, compliance and MOQ/lead-time pages. A single 80-page PDF can usually be reduced to 10–20 focused HTML pages. Thin duplicate pages hurt both SEO and GEO, so consolidate where the content is genuinely the same."}},
+        {"@type":"Question","name":"Does adding schema to an HTML product page help AI citations?","acceptedAnswer":{"@type":"Answer","text":"Structured data helps machines interpret entities, attributes and relationships, and it supports rich results in traditional search. It is one signal among several: clear entity naming, server-rendered facts, consistent company data and external mentions matter just as much. Schema is the plumbing, not the whole strategy."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="container nav">
+  <div class="logo">SS<span>Mug</span></div>
+  <nav><ul><li><a href="../index.html">Home</a></li><li><a href="../products.html">Products</a></li><li><a href="../about.html">Factory</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html" class="btn btn-steel">Get a Quote</a></li></ul></nav>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</div></header>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / PDF Catalogs and AI Search</div></div>
+
+<section class="hero" style="padding:54px 0 46px">
+  <div class="container">
+    <span class="badge">SEO / GEO · 2026</span>
+    <h1>Your PDF Catalog Is Invisible to AI Search</h1>
+    <p>Answer engines rarely cite a downloadable brochure. Here is why that happens, and the HTML-mirror workflow that turns a factory's spec sheets into citable, attributable product facts.</p>
+  </div>
+</section>
+
+<section style="padding-top:18px"><div class="container article">
+
+  <div class="stats">
+    <div class="stat"><b>HTML</b><span>the citable source format</span></div>
+    <div class="stat"><b>10–20</b><span>focused pages per catalog</span></div>
+    <div class="stat"><b>4</b><span>signals that make facts stick</span></div>
+    <div class="stat"><b>60 days</b><span>to a working mirror</span></div>
+  </div>
+
+  <div class="toc">
+    <h4>In this guide</h4>
+    <ol>
+      <li><a href="#problem">The problem: a great catalog that machines skip</a></li>
+      <li><a href="#why">Why PDFs underperform in AI answers</a></li>
+      <li><a href="#mirror">The HTML mirror, step by step</a></li>
+      <li><a href="#schema">Schema, llms.txt and sitemap wiring</a></li>
+      <li><a href="#plan">A 60-day migration plan</a></li>
+      <li><a href="#mistakes">Five mistakes that waste the effort</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <p class="lead">Manufacturers spend weeks designing a PDF catalog, upload it to the site as "Download our catalog", and then wonder why ChatGPT names a competitor when a buyer asks for a stainless steel tumbler supplier. The catalog is not bad. It is in a format that answer engines treat as a secondary, hard-to-attribute source. For GEO — generating engine optimization — the fix is not more PDFs. It is a lean HTML mirror of the facts that matter.</p>
+
+  <h2 id="problem">1. The problem: a great catalog that machines skip</h2>
+  <p>A B2B catalog is usually the densest concentration of verified facts a company owns: capacities, materials, certifications, MOQs, lead times, model numbers. That is exactly the material AI answer engines look for. But those facts are locked inside a file that a crawler must fetch, download and parse, and that offers almost no signals about which company should be credited for each sentence.</p>
+  <p>Meanwhile a competitor with a plain HTML product page — capacity in a heading, certifications in a table, an FAQ block, a last-updated date — gives the engine a clean, attributable passage. When the model writes its answer, it reaches for the passage it can parse and attribute. The PDF never enters the conversation.</p>
+
+  <figure class="fig">
+    <img src="../images/bottle-1.png" alt="Insulated stainless steel bottle from a manufacturer's product range" loading="lazy">
+    <figcaption>Fig. 1 — A catalog page can show a product beautifully. For AI citation, the same product also needs an HTML page where capacity, material and compliance are plain text.</figcaption>
+  </figure>
+
+  <h2 id="why">2. Why PDFs underperform in AI answers</h2>
+  <p>Four mechanical reasons explain most of the gap:</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Issue with the PDF</th><th>What the engine sees</th><th>Consequence for GEO</th></tr></thead>
+      <tbody>
+        <tr><td>Scanned or image-only pages</td><td>Pictures with little or no extractable text</td><td>Facts cannot be read at all</td></tr>
+        <tr><td>No semantic structure</td><td>Flat text without headings, lists or tables</td><td>Hard to isolate a single citable passage</td></tr>
+        <tr><td>Weak attribution</td><td>No canonical page, entity name or internal links</td><td>The factory is not connected to the fact</td></tr>
+        <tr><td>No freshness signal</td><td>A file date buried in metadata, if present</td><td>The engine cannot tell if specs are current</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>This does not mean PDFs are useless. Google can index text-based PDFs, and answer engines sometimes retrieve them. The problem is reliability and attribution: a document format that works occasionally is a poor foundation for a sourcing strategy. Keep the PDF for humans who want a printable overview; make HTML the primary source of truth for machines.</p>
+
+  <h2 id="mirror">3. The HTML mirror, step by step</h2>
+  <p>You do not need to rebuild the entire catalog. The goal is to cover the questions buyers actually ask, in a format an engine can quote.</p>
+  <p><strong>Step 1 — Inventory the facts.</strong> List every claim a buyer might quote: model numbers, capacities, materials, certifications, MOQ ranges, sampling and lead time, ports of loading. This becomes your fact register.</p>
+  <p><strong>Step 2 — Choose the page set.</strong> One category page per major product line, one spec page per priority model, plus standalone pages for compliance, OEM/ODM, MOQ and lead time. A typical 80-page PDF compresses well into 10–20 focused HTML pages.</p>
+  <p><strong>Step 3 — Write passages, not marketing.</strong> Each page should answer a question in 40–80 words of plain text near the top, then expand with tables and detail. "A 500 ml insulated bottle from this supplier uses 304 stainless steel and is available with a 500–1,000 piece MOQ" is citable; "premium quality for every lifestyle" is not.</p>
+  <p><strong>Step 4 — Make the facts visible.</strong> Render specifications as HTML tables and definitions as text, not as screenshots of a spreadsheet. Add a visible "last updated" date and a named author organisation.</p>
+  <p><strong>Step 5 — Link the two formats.</strong> On each HTML page, offer the PDF as a download for convenience. On the first page of the PDF, point to the HTML product page as the current source. The HTML page is canonical; the PDF is a companion.</p>
+
+  <figure class="fig">
+    <img src="../images/plastic-2.png" alt="BPA-free plastic water bottle from a drinkware catalogue" loading="lazy">
+    <figcaption>Fig. 2 — Material claims such as "BPA-free" belong in plain HTML text with a compliance page linked nearby, not only inside a downloaded brochure.</figcaption>
+  </figure>
+
+  <h2 id="schema">4. Schema, llms.txt and sitemap wiring</h2>
+  <p>Once the pages exist, three pieces of plumbing make them easier to discover and attribute:</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Asset</th><th>What to put in it</th><th>Why it helps</th></tr></thead>
+      <tbody>
+        <tr><td>Product / Offer schema</td><td>Product name, category, material, SKU, brand, and an Offer with availability and price range if published</td><td>Machines interpret attributes and relationships, not just strings</td></tr>
+        <tr><td>FAQPage + Organization schema</td><td>Buyer questions with direct answers; legal name, address, sameAs profiles</td><td>Connects a fact to a stable company entity</td></tr>
+        <tr><td>sitemap.xml</td><td>Every HTML mirror page, monthly change frequency, sensible priority</td><td>Discovery for crawlers that do not follow links deeply</td></tr>
+        <tr><td>llms.txt</td><td>One line per key page with a short factual description</td><td>A concise map of the most useful sources for AI systems</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>All of these are server-rendered, plain-text signals. They cost nothing to maintain compared with a redesign, and they compound: each new HTML page strengthens the same entity the last one built. If your site is currently JavaScript-only for product data, put the critical facts into the initial HTML response — many crawlers do not execute scripts.</p>
+  <div class="callout"><b>Rule of thumb:</b> if a fact matters enough to put in your catalog, it matters enough to have its own indexable HTML sentence. The PDF is the brochure; the HTML page is the evidence.</div>
+
+  <h2 id="plan">5. A 60-day migration plan</h2>
+  <p>A realistic sequence for a manufacturer with an existing PDF catalog:</p>
+  <ul>
+    <li><strong>Days 1–10:</strong> build the fact register and decide the 10–20 page set. Prioritise top-selling categories and the questions your sales team answers repeatedly.</li>
+    <li><strong>Days 11–30:</strong> publish category and priority-model pages with plain-text specs, tables, FAQ blocks and last-updated dates. Keep URLs short and stable.</li>
+    <li><strong>Days 31–45:</strong> add Product, Offer, FAQPage and Organization schema; validate the JSON-LD; add every page to sitemap.xml and llms.txt.</li>
+    <li><strong>Days 46–60:</strong> link the HTML pages from the home page, product index and relevant blog posts; update the PDF with a pointer to the HTML source; track AI crawler visits and referral traffic.</li>
+  </ul>
+  <p>Measure progress with a fixed prompt set — for example " stainless steel tumbler manufacturer with FDA and LFGB certificates" — run monthly in ChatGPT, Perplexity and Gemini. Log whether your company name appears, which page is cited and what the competitor answer used. Citation changes take weeks, so judge the program on a 60-day window, not a single afternoon.</p>
+
+  <figure class="fig">
+    <img src="../images/tumbler-3.png" alt="Can-shaped stainless steel tumbler from a drinkware catalogue" loading="lazy">
+    <figcaption>Fig. 3 — Every model in a catalog can become a focused HTML spec page. The strongest pages answer a buyer question in the first paragraph, then support it with a table.</figcaption>
+  </figure>
+
+  <h2 id="mistakes">6. Five mistakes that waste the effort</h2>
+  <ul>
+    <li><strong>Converting PDF pages to images on HTML pages.</strong> Visually identical, machine-invisible. Use real text.</li>
+    <li><strong>Publishing 80 thin pages to mimic the PDF's page count.</strong> Depth on a few useful pages beats mass duplication.</li>
+    <li><strong>Hiding specs inside an accordion that renders only after a click.</strong> If it is not in the initial HTML, assume crawlers never see it.</li>
+    <li><strong>Letting the PDF become the only dated source.</strong> Put a visible last-updated date on each HTML page and keep the facts in sync.</li>
+    <li><strong>Treating schema as a substitute for clear writing.</strong> Structured data labels facts; it does not create them.</li>
+  </ul>
+
+  <!-- HOOK 1: mid-article, high intent -->
+  <div class="hook">
+    <h3>Want a fact sheet your buyers can quote?</h3>
+    <p>Tell us which products and markets matter to you. We will send the specification, certification and MOQ details in a format you can paste straight into your own sourcing documents — and show how we structure ours.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Request%20drinkware%20specification%20fact%20sheet&body=Hi%20SSMug%20team%2C%0A%0APlease%20send%20the%20fact%20sheet%20for%3A%0A-%20Product%20line%3A%0A-%20Capacity%2Fmodel%3A%0A-%20Target%20market%3A%0A%0AWe%20would%20like%20specs%2C%20certifications%20and%20MOQ%20details%20in%20text%20form.">✉️ Request a specification fact sheet</a></p>
+  </div>
+
+  <h2 id="faq">7. FAQ</h2>
+  <p><strong>Can ChatGPT, Perplexity and Gemini read PDF catalogs?</strong><br>Sometimes, but unreliably. Text-based PDFs linked from an indexable page can be parsed; scanned or image-only catalogs often cannot. Even when parsed, PDFs lack the headings, internal links and structured data used to attribute a fact to a source. Treat a PDF as a download for humans, not the canonical home of your product facts.</p>
+  <p><strong>What is the fastest way to make a PDF catalog citable by AI?</strong><br>Mirror its content as real HTML: one indexable page per product or category, key facts in plain text, a visible last-updated date, FAQ answers, Product and Offer schema, and links from the sitemap and llms.txt. Keep the PDF downloadable, but treat the HTML page as the primary source.</p>
+  <p><strong>Should I convert every catalog page into a separate web page?</strong><br>Prioritise what buyers ask about: category overviews, individual product specs, compliance, MOQ and lead time. A single 80-page PDF usually becomes 10–20 focused HTML pages. Avoid thin duplicate pages, which hurt both SEO and GEO.</p>
+  <p><strong>Does adding schema to an HTML product page help AI citations?</strong><br>Structured data helps machines interpret entities, attributes and relationships, and supports rich results in search. It is one signal among several: clear entity naming, server-rendered facts, consistent company data and external mentions matter just as much.</p>
+
+  <p>SSMug is the drinkware brand of Yongkang STWADD Houseware Co., Ltd., a manufacturer founded in 2017 with 500,000+ units of monthly capacity, 167+ stock models and SGS, TÜV, ISO 9001, FDA and LFGB certification. Our product specifications are published as indexable HTML — and yes, we still keep a PDF for the people who ask for one.</p>
+
+  <!-- HOOK 2: bottom, conversation starter -->
+  <div class="hook">
+    <h3>Not sure your catalog is doing its job?</h3>
+    <p>Send us your catalog URL and we will tell you, in plain language, which facts an AI engine can actually see — and the three fixes with the biggest payoff.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Quick%20review%20of%20my%20product%20catalog&body=Hi%20SSMug%20team%2C%0A%0AI%20would%20like%20a%20quick%20review%20of%20our%20catalog%20for%20AI%20visibility%3A%0A%0ACatalog%20URL%3A%0AMain%20products%3A%0A%0AWhich%20facts%20would%20an%20AI%20engine%20be%20able%20to%20see%3F">✉️ Ask for a catalog review</a> &nbsp;·&nbsp; <a class="mail" href="../contact.html">Or use the inquiry form →</a></p>
+  </div>
+
+  <p style="margin-top:26px"><a class="btn btn-steel" href="../contact.html">Get a Quote</a> &nbsp; <a class="btn btn-outline" href="../blog.html">Back to Blog</a></p>
+</div></section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+<script src="../assets/js/chat-widget.js" defer></script>
+</body>
+</html>
