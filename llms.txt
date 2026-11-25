@@ -112,6 +112,8 @@
 
 - https://ssmug.com/blog/drinkware-hs-code-import-classification-guide.html — buyer's guide to HS codes for drinkware imports: the headings covering vacuum flasks, stainless tumblers and plastic bottles, why vacuum construction changes the code, material declarations and a classification worksheet
 - https://ssmug.com/blog/glossary-definition-pages-geo-manufacturers.html — GEO playbook for B2B manufacturers: how definition and glossary pages get cited by AI answer engines, the five-block citable definition, term shortlist, DefinedTerm schema, llms.txt wiring and a 30-day pilot
+- https://ssmug.com/blog/drinkware-payment-terms-deposit-guide.html — buyer's guide to payment terms for custom drinkware: T/T vs L/C at sight, typical deposit structures by scenario, milestone payments tied to documents, wire details, and red flags that protect buyer and factory
+- https://ssmug.com/blog/pdf-catalogs-ai-search-manufacturers.html — GEO guide for B2B manufacturers: why PDF catalogs are poorly parsed and rarely cited by AI answer engines, and how an HTML mirror with Product/Offer/FAQ schema, sitemap and llms.txt makes product facts citable
 
 ## Policies / disclaimer
 Prices, MOQs and lead times are indicative and confirmed per inquiry. Compliance certificates supplied on request.
