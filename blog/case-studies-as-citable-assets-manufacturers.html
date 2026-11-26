@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Studies as Citable Assets: How B2B Manufacturers Get Quoted by AI Search Engines</title>
+<meta name="description" content="A GEO playbook for B2B manufacturers: how to write case studies that AI answer engines can quote — five-block structure, proof types, schema and llms.txt wiring, a 30-day pilot and common mistakes.">
+<link rel="canonical" href="https://ssmug.com/blog/case-studies-as-citable-assets-manufacturers.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Case Studies as Citable Assets: How B2B Manufacturers Get Quoted by AI Search Engines",
+      "description": "Why AI engines quote specific evidence, and how a manufacturer can structure a case study so its facts are attributable, parseable and repeatable.",
+      "author": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "publisher": {"@type":"Organization","@id":"https://ssmug.com/#organization","name":"SSMug"},
+      "datePublished": "2026-11-26",
+      "dateModified": "2026-11-26",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://ssmug.com/blog/case-studies-as-citable-assets-manufacturers.html"},
+      "keywords": "GEO for manufacturers, AI citations, case study structure, B2B content, llms.txt, FAQPage schema, generative engine optimization"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://ssmug.com/blog/case-studies-as-citable-assets-manufacturers.html#breadcrumb",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://ssmug.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://ssmug.com/blog.html"},
+        {"@type":"ListItem","position":3,"name":"Case Studies as Citable Assets","item":"https://ssmug.com/blog/case-studies-as-citable-assets-manufacturers.html"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ssmug.com/blog/case-studies-as-citable-assets-manufacturers.html#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"Do AI answer engines really cite case studies?","acceptedAnswer":{"@type":"Answer","text":"They quote specific, attributable evidence, and a well-structured case study is a compact bundle of it: a problem, a method, numbers and an outcome. The format itself is not magic. A case study gets quoted when the facts are in plain HTML text, the company behind them is named, and the page can be parsed as a self-contained passage. A glossy PDF brochure with no extractable text usually fails all three tests."}},
+        {"@type":"Question","name":"How long should a B2B case study be for GEO?","acceptedAnswer":{"@type":"Answer","text":"Roughly 600–1,200 words is enough if it is structured. Put a 60–80 word answer-first summary at the top, then a facts table, the method, the outcome, boundaries, and the source or next step. The summary gives an engine a clean passage to quote; the detail gives it supporting context. Length without structure does not help."}},
+        {"@type":"Question","name":"Should a case study be gated or published as a PDF?","acceptedAnswer":{"@type":"Answer","text":"Neither, if the goal is AI visibility. Gated content cannot be fetched, and a PDF is harder to parse and attribute than an HTML page. Publish the facts as a normal HTML page with a stable URL, headings, a table and FAQ markup. A downloadable PDF can still be offered as a convenience, but it should mirror the HTML, not replace it."}},
+        {"@type":"Question","name":"What schema should a manufacturer's case study use?","acceptedAnswer":{"@type":"Answer","text":"Use BlogPosting or Article for the page, FAQPage if you include a real question-and-answer block, BreadcrumbList for site context, and Organization with sameAs links so the engine connects the facts to the company entity. Product and Offer schema belong on product pages, not on a case study. Validate the JSON-LD and keep the entity name identical across the site, llms.txt and the schema."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="site"><div class="container nav">
+  <div class="logo">SS<span>Mug</span></div>
+  <nav><ul><li><a href="../index.html">Home</a></li><li><a href="../products.html">Products</a></li><li><a href="../about.html">Factory</a></li><li><a href="../blog.html">Blog</a></li><li><a href="../faq.html">FAQ</a></li><li><a href="../contact.html" class="btn btn-steel">Get a Quote</a></li></ul></nav>
+  <button class="menu-btn" aria-label="menu">☰</button>
+</div></header>
+
+<div class="container"><div class="crumb"><a href="../index.html">Home</a> / <a href="../blog.html">Blog</a> / Case Studies as Citable Assets</div></div>
+
+<section class="hero" style="padding:54px 0 46px">
+  <div class="container">
+    <span class="badge">SEO / GEO · 2026</span>
+    <h1>Case Studies as Citable Assets</h1>
+    <p>AI answer engines quote evidence, not adjectives. A five-block case-study format that turns a factory's real projects into passages machines can parse, attribute and repeat.</p>
+  </div>
+</section>
+
+<section style="padding-top:18px"><div class="container article">
+
+  <div class="stats">
+    <div class="stat"><b>5 blocks</b><span>per citable case study</span></div>
+    <div class="stat"><b>60–80 words</b><span>answer-first summary</span></div>
+    <div class="stat"><b>HTML</b><span>the source format that gets parsed</span></div>
+    <div class="stat"><b>30 days</b><span>to a working pilot</span></div>
+  </div>
+
+  <div class="toc">
+    <h4>In this playbook</h4>
+    <ol>
+      <li><a href="#why">Why case studies get quoted</a></li>
+      <li><a href="#blocks">The five-block citable structure</a></li>
+      <li><a href="#proof">Three proof layers that matter</a></li>
+      <li><a href="#text">Facts in text, not only in a brochure</a></li>
+      <li><a href="#wiring">Schema, links, llms.txt and sitemap</a></li>
+      <li><a href="#plan">A 30-day pilot for a small team</a></li>
+      <li><a href="#mistakes">Five mistakes that waste the effort</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </div>
+
+  <p class="lead">Ask ChatGPT, Perplexity or Gemini who makes a certain kind of product and you will notice a pattern: the answers that feel most credible name a specific company, a specific number and a specific situation. That is not a stylistic preference. Answer engines assemble replies from passages they can extract and attribute, and a well-built case study is the densest, cleanest bundle of such passages a manufacturer can publish. Most factories already have the underlying stories. What they lack is a format that makes those stories readable to a machine — and to a buyer who is tired of the word "quality".</p>
+
+  <h2 id="why">1. Why case studies get quoted</h2>
+  <p>A product page says a bottle holds 500 ml and keeps drinks cold. A case study says a distributor needed a 500 ml tumbler for a chain of gyms, needed it in three colours with a laser-engraved logo, received samples in five to seven days, and moved to bulk production with a 25–35 day lead time after deposit. The second version contains a <strong>problem, a method, numbers and an outcome</strong>. Those four elements give an answer engine something it can quote in response to a real buyer question such as "how fast can a drinkware factory make custom tumblers?"</p>
+  <p>Three properties make the case study format work for GEO — generating engine optimization:</p>
+  <ul>
+    <li><strong>Attribution.</strong> A named company and a named product connect the fact to an entity the engine can track across pages.</li>
+    <li><strong>Self-containment.</strong> A complete story in one passage survives being pulled out of context, which is exactly how retrieval works.</li>
+    <li><strong>Specificity.</strong> Numbers, dates and materials are harder to paraphrase away than claims like "high quality" or "fast delivery".</li>
+  </ul>
+  <p>The catch: the story has to be <em>true</em>. Invented case studies are easy to spot once a buyer asks for the sample or the certificate, and they poison the trust signals the rest of your site depends on.</p>
+
+  <figure class="fig">
+    <img src="../images/bottle-3.png" alt="Stainless steel vacuum coffee pot with lever top, one of the factory's stock models" loading="lazy">
+    <figcaption>Fig. 1 — A stock vacuum coffee pot. A product photo shows the object; a case study explains the buyer problem it solved, the numbers involved and what was delivered.</figcaption>
+  </figure>
+
+  <h2 id="blocks">2. The five-block citable structure</h2>
+  <p>Use the same skeleton for every case study. Consistency helps both readers and parsers: once an engine learns the pattern, each new page is easy to interpret.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Block</th><th>What to write</th><th>Why it helps citation</th></tr></thead>
+      <tbody>
+        <tr><td>1. Answer-first summary</td><td>60–80 words stating the buyer's problem, the solution and the headline result</td><td>Gives the engine one clean, quotable passage at the top of the page</td></tr>
+        <tr><td>2. Fact table</td><td>Product type, capacity, material, market, quantity, sampling time, lead time, certifications</td><td>Tabulated facts are easy to extract and hard to misattribute</td></tr>
+        <tr><td>3. Method</td><td>What the buyer asked for, what the factory changed, which steps were involved</td><td>Shows how the result happened; separates you from a trading broker</td></tr>
+        <tr><td>4. Outcome and boundaries</td><td>What shipped, what was tested, and what conditions or limits applied</td><td>Honest limits make the numbers credible and reduce misuse</td></tr>
+        <tr><td>5. Source and next step</td><td>Named company, date, contact or link to the relevant product and FAQ pages</td><td>Connects the passage to a stable entity and a verifiable origin</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Block 4 is the one most manufacturers skip, and it is the one that separates a report from an advertisement. If the quoted lead time depended on a deposit date, say so. If the retention figure came from a specific test method, name it. Buyers respect bounds; engines treat bounded claims as more reliable than universal ones.</p>
+
+  <h2 id="proof">3. Three proof layers that matter</h2>
+  <p>Not all evidence carries the same weight. Aim for all three layers where you can, and say plainly when a client cannot be named.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Proof layer</th><th>Example for a drinkware factory</th><th>Caution</th></tr></thead>
+      <tbody>
+        <tr><td>Numbers</td><td>167+ existing models, 500,000+ units per month capacity, 5–7 day sampling, 25–35 day bulk production</td><td>Use ranges and per-inquiry wording where figures vary; never round a real number into a boast</td></tr>
+        <tr><td>Documents</td><td>SGS, TÜV, ISO 9001, FDA and LFGB certification; AQL inspection records; compliance files by component</td><td>Name the real certificate and the real scope, not a generic "fully certified"</td></tr>
+        <tr><td>Observable process</td><td>2D/3D drawings for confirmation, a signed fitted sample, live video audit of the production floor</td><td>Only claim what a buyer can actually verify on request</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>SSMug's own published facts are a useful model: founded in 2017 in Yongkang, Zhejiang; a manufacturer rather than a trading company; serving buyers in more than 50 countries; with in-house mold making, printing and assembly. Each is a plain sentence, tied to a named entity, repeated consistently on the site and in llms.txt. That consistency is what makes a fact reusable in an answer.</p>
+
+  <div class="hook">
+    <h3>Want the case-study template we use?</h3>
+    <p>We can send the five-block outline as a fill-in sheet, with the fact-table fields already mapped to drinkware sourcing. Useful for any factory, not just ours.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Request%20the%20five-block%20case%20study%20template&body=Hi%20SSMug%20team%2C%0A%0APlease%20send%20me%20the%20five-block%20case%20study%20outline%20mentioned%20in%20your%20article.%0A%0A-%20My%20industry%3A%0A-%20What%20I%20want%20to%20document%3A%0A-%20Will%20the%20client%20be%20named%3A%0A%0AThank%20you.">✉️ Send me the template</a></p>
+  </div>
+
+  <figure class="fig">
+    <img src="../images/bottle-1.png" alt="Five colours of insulated camp mugs with slide lids" loading="lazy">
+    <figcaption>Fig. 2 — Camp mugs in five colours. A case study can document a real colour-matching or decoration project around a stock shape — proof that does not require a bespoke mold.</figcaption>
+  </figure>
+
+  <h2 id="text">4. Facts in text, not only in a brochure</h2>
+  <p>Many factories keep their best evidence in a PDF: a catalog, a lookbook, a scanned audit report. For GEO that is a dead end. A crawler has to fetch and convert the file, and the attribution back to your site is weak even when it succeeds. A plain HTML page with a stable URL, headings and a table gives the engine everything in the open.</p>
+  <p>The practical workflow is simple. Keep the PDF for sales conversations, but mirror its citable facts in HTML: one paragraph per claim, one table per dataset, a visible updated date, and a link back to the product page. Do not hide the numbers behind an accordion that only renders after a click, and do not gate the page behind an email form. If a buyer has to log in, the engine cannot quote you.</p>
+  <div class="callout"><b>Rule of thumb:</b> a case study with no numbers is a testimonial. A case study with numbers, a method and a named source is evidence — and evidence is what gets quoted.</div>
+
+  <h2 id="wiring">5. Schema, links, llms.txt and sitemap</h2>
+  <p>Structure alone is not enough; the page has to be connected to the rest of your site so the engine knows who is speaking. Four pieces of wiring do most of the work.</p>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Signal</th><th>Where it goes</th><th>What it tells the engine</th></tr></thead>
+      <tbody>
+        <tr><td>BlogPosting / Article JSON-LD</td><td>In the page head, with author and publisher pointing to the Organization entity</td><td>This is a dated article by this company</td></tr>
+        <tr><td>FAQPage + BreadcrumbList</td><td>Same JSON-LD graph; real questions only, matching visible text</td><td>Here are the direct answers and where the page sits in the site</td></tr>
+        <tr><td>Organization with sameAs</td><td>Site-wide schema; identical legal name across pages and llms.txt</td><td>All these facts belong to one stable entity</td></tr>
+        <tr><td>Internal links + llms.txt + sitemap</td><td>From case study to product/FAQ pages; listed in llms.txt and sitemap.xml</td><td>The page is current, discoverable and part of a coherent body of work</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>One common mistake is putting Product and Offer schema on every article. Keep those on product pages where the offer actually lives. A case study should describe the project, not pretend to be a shopping listing.</p>
+
+  <figure class="fig">
+    <img src="../images/tumbler-1.png" alt="Skinny straw tumblers in ten Pantone-matched colours" loading="lazy">
+    <figcaption>Fig. 3 — Ten colour options on one stock tumbler shape. Specific, verifiable details like this are what make a case study passage worth quoting.</figcaption>
+  </figure>
+
+  <h2 id="plan">6. A 30-day pilot for a small team</h2>
+  <p>You do not need a content department. One person with access to past orders can ship a useful pilot in a month.</p>
+  <ul>
+    <li><strong>Days 1–5 — pick three real projects.</strong> Choose ones with numbers you can prove: a colour-match run, a mixed-container order, a rush sample that met a launch date.</li>
+    <li><strong>Days 6–12 — draft the five blocks.</strong> Keep client names generic if confidentiality requires it; keep the facts specific either way.</li>
+    <li><strong>Days 13–18 — publish as HTML.</strong> Add the fact table, the answer-first summary, visible date, schema and internal links.</li>
+    <li><strong>Days 19–23 — wire discovery.</strong> Add the URLs to llms.txt and sitemap.xml; confirm the pages render in raw HTML, not only in a script.</li>
+    <li><strong>Days 24–30 — measure and adjust.</strong> Track a fixed set of buyer questions weekly across your chosen answer engines, and check crawler logs for visits to the new URLs.</li>
+  </ul>
+  <p>Measure slowly. Citations tend to follow discovery and trust, not publication day. A 30-day pilot tells you whether the pages are being fetched and whether the format is being picked up; it is too short to prove a sales outcome.</p>
+
+  <h2 id="mistakes">7. Five mistakes that waste the effort</h2>
+  <ul>
+    <li><strong>Writing about your company, not the buyer's problem.</strong> "We are a leading manufacturer" is not a question anyone asks.</li>
+    <li><strong>Burying the numbers in an image.</strong> Text inside a photo is barely readable to a parser.</li>
+    <li><strong>Publishing one case study and stopping.</strong> A single page is an anecdote; a consistent set is a body of evidence.</li>
+    <li><strong>Inventing client names or results.</strong> The first verification request ends the relationship.</li>
+    <li><strong>Never updating the facts.</strong> A stale capacity or certification figure damages the trust the whole site relies on.</li>
+  </ul>
+
+  <h2 id="faq">8. FAQ</h2>
+  <p><strong>Do AI answer engines really cite case studies?</strong><br>They quote specific, attributable evidence, and a structured case study bundles it: problem, method, numbers and outcome. The format works when the facts are in plain HTML, the company is named and the passage stands alone. A glossy PDF usually fails all three tests.</p>
+  <p><strong>How long should a B2B case study be for GEO?</strong><br>Around 600–1,200 words if structured: a 60–80 word answer-first summary, a fact table, method, outcome with boundaries, and a source or next step. Length without structure does not help.</p>
+  <p><strong>Should a case study be gated or published as a PDF?</strong><br>Neither, if the goal is AI visibility. Gated pages cannot be fetched, and PDFs are harder to parse and attribute. Publish HTML with a stable URL; offer a PDF as a mirror, not a replacement.</p>
+  <p><strong>What schema should a manufacturer's case study use?</strong><br>BlogPosting or Article, FAQPage for real question-and-answer blocks, BreadcrumbList for site context, and Organization with sameAs links. Keep Product and Offer schema on product pages, and keep the entity name identical everywhere.</p>
+
+  <p>SSMug is the drinkware brand of Yongkang STWADD Houseware Co., Ltd., a manufacturer in Yongkang, Zhejiang since 2017. We publish our operating facts in plain text on purpose — 167+ stock models, 500,000+ units per month, 5–7 day sampling, 25–35 day production, FOB Ningbo or Shanghai — because a buyer and an answer engine both deserve numbers they can check.</p>
+
+  <div class="hook">
+    <h3>Verify the facts behind this article yourself</h3>
+    <p>Ask us for the compliance files, a live video walkthrough of the line, or an itemized quote on a real SKU. One email starts the conversation; we reply within one business day.</p>
+    <p><a class="btn" href="mailto:bob@ssmug.com?subject=Ask%20SSMug%20about%20our%20OEM%20ODM%20process&body=Hi%20SSMug%20team%2C%0A%0AI%20read%20your%20article%20on%20citable%20case%20studies%20and%20would%20like%20to%20verify%20the%20facts.%0A%0A-%20Product%20Im%20interested%20in%3A%0A-%20Target%20market%3A%0A-%20Quantity%3A%0A-%20Would%20I%20like%20a%20video%20audit%3A%20yes%2Fno%0A%0APlease%20send%20the%20relevant%20documents%20and%20an%20itemized%20quote.">✉️ Ask us for documents and a quote</a> &nbsp;·&nbsp; <a class="mail" href="../contact.html">Or use the inquiry form →</a></p>
+  </div>
+
+  <p style="margin-top:26px"><a class="btn btn-steel" href="../contact.html">Get a Quote</a> &nbsp; <a class="btn btn-outline" href="../blog.html">Back to Blog</a></p>
+</div></section>
+
+<footer class="site">
+  <div class="container foot-bottom">© <span id="y"></span> SSMug. A drinkware brand of <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Yongkang STWADD Houseware Co., Ltd.</a> · <a href="https://stwadd.com" style="color:inherit;text-decoration:underline">Powered by STWADD</a></div>
+</footer>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+var mb=document.querySelector('.menu-btn'),nu=document.querySelector('.nav ul');
+if(mb&&nu){mb.addEventListener('click',function(){nu.classList.toggle('open')});}
+</script>
+<script src="../assets/js/chat-widget.js" defer></script>
+</body>
+</html>
